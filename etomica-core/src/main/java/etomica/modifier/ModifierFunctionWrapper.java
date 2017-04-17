@@ -31,6 +31,8 @@ public class ModifierFunctionWrapper extends ModifierGeneral {
     
     /**
      * Applies function to given value before setting modified property.
+     *
+     * @param d
      */
     public void setValue(double d) {
         super.setValue(function.f(d));

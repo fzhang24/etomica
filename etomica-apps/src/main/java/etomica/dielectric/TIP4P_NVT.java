@@ -60,6 +60,10 @@ import etomica.util.RandomNumberGenerator;
  * TIP4P water
  * @author shu and Weisong
  */
+
+//Test for git push and branch
+
+
 public class TIP4P_NVT extends Simulation {
      private static final long serialVersionUID = 1L;
      protected final IPotentialMaster potentialMaster;
