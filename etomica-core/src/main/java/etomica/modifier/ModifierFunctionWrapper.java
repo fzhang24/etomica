@@ -14,21 +14,37 @@ import etomica.util.FunctionInvertible;
  *
  * @author David Kofke
  */
- 
+
 public class ModifierFunctionWrapper extends ModifierGeneral {
-    
+
     private FunctionInvertible function = new Function.Identity();
-    
+
+    /**
+     *
+     * @param obj array
+     * @param prop
+     */
     public ModifierFunctionWrapper(Object[] obj, String prop) {
         super(obj, prop);
     }
+
+    /**
+     *
+     * @param obj
+     * @param prop
+     */
     public ModifierFunctionWrapper(Object obj, String prop) {
         super(obj, prop);
     }
 
-    public void setFunction(FunctionInvertible f) {function = f;}
-    public FunctionInvertible getFunction() {return function;}
-    
+    public void setFunction(FunctionInvertible f) {
+        function = f;
+    }
+
+    public FunctionInvertible getFunction() {
+        return function;
+    }
+
     /**
      * Applies function to given value before setting modified property.
      *
@@ -37,13 +53,13 @@ public class ModifierFunctionWrapper extends ModifierGeneral {
     public void setValue(double d) {
         super.setValue(function.f(d));
     }
-    
+
     /**
      * Applies inverse of function to property before returning it.
      */
     public double getValue() {
         return function.inverse(super.getValue());
     }
-    
+
     private static final long serialVersionUID = 1L;
 }
