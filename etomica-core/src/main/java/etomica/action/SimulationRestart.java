@@ -5,7 +5,7 @@
 package etomica.action;
 
 import etomica.action.activity.ActivityIntegrate;
-import etomica.action.activity.IController;
+import etomica.action.activity.Controller;
 import etomica.config.Configuration;
 import etomica.config.ConfigurationLattice;
 import etomica.exception.ConfigurationOverlapException;
@@ -116,5 +116,5 @@ public final class SimulationRestart extends SimulationActionAdapter {
     protected Configuration configuration;
     protected boolean ignoreOverlap;
     protected SimulationDataAction accumulatorAction;
-    private IController controller;
+    private Controller controller;
 }
