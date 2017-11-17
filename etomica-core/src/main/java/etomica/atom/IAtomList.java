@@ -4,6 +4,11 @@
 
 package etomica.atom;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Interface for a list of IAtoms.  The IAtomList might contain 0, 1, 2 or many
  * IAtoms.
@@ -20,8 +25,19 @@ public interface IAtomList {
      */
     IAtom getAtom(int i);
 
+    @JsonValue
+    default List<IAtom> getAtoms() {
+        List<IAtom> list = new ArrayList<>();
+        for(int i = 0; i < getAtomCount(); i++) {
+            list.add(getAtom(i));
+        }
+        return list;
+    }
+
     /**
      * @return the number of atoms in the list
      */
     int getAtomCount();
 }
+
+

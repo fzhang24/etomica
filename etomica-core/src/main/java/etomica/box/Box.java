@@ -4,6 +4,8 @@
 
 package etomica.box;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import etomica.action.BoxInflate;
 import etomica.atom.AtomArrayList;
 import etomica.atom.IAtom;
@@ -53,6 +55,7 @@ import etomica.util.Debug;
  * @see Boundary
  * @see BoxEventManager
  */
+@JsonIdentityInfo(generator = JSOGGenerator.class)
 public class Box implements java.io.Serializable {
 
     private static final long serialVersionUID = 2L;

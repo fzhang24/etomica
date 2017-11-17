@@ -4,6 +4,8 @@
 
 package etomica.atom;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import etomica.meta.annotations.IgnoreProperty;
 import etomica.molecule.IMolecule;
 import etomica.space.Vector;
@@ -14,6 +16,7 @@ import etomica.space.Vector;
  * Atoms also have indices (one for the list of atoms in the box, one for the
  * list of atoms in a molecule).
  */
+@JsonIdentityInfo(generator = JSOGGenerator.class)
 public interface IAtom {
 
     /**

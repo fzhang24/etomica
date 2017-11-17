@@ -4,6 +4,8 @@
 
 package etomica.atom;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import etomica.chem.elements.IElement;
 import etomica.meta.annotations.IgnoreProperty;
 import etomica.species.ISpecies;
@@ -14,6 +16,7 @@ import etomica.units.dimensions.Mass;
  * Identifies a set of atoms and defines properties of those atoms.
  * Properties include indices used for tracking, mass and element.
  */
+@JsonIdentityInfo(generator = JSOGGenerator.class)
 public class AtomType {
 
     protected final IElement element;
