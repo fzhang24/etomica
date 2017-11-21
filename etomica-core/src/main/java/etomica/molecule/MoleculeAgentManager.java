@@ -6,10 +6,10 @@ package etomica.molecule;
 
 import etomica.box.*;
 import etomica.simulation.*;
-import etomica.util.Arrays;
 
 import java.io.Serializable;
 import java.lang.reflect.Array;
+import java.util.Arrays;
 
 /**
  * MoleculeAgentManager acts on behalf of client classes (an AgentSource) to
@@ -162,7 +162,7 @@ public class MoleculeAgentManager implements BoxEventListener, SimulationListene
             // needs to be, shrink it.
             // ... or we've been notified that atoms are about to get added to the
             // system.  Make room for them
-            agents[speciesIndex] = Arrays.resizeArray(agents[speciesIndex],newMaxIndex+reservoirSize);
+            agents[speciesIndex] = Arrays.copyOf(agents[speciesIndex], newMaxIndex + reservoirSize);
         }
     }
 
@@ -171,12 +171,12 @@ public class MoleculeAgentManager implements BoxEventListener, SimulationListene
     public void boxAtomLeafIndexChanged(BoxAtomIndexEvent e) {}
 
     public void simulationSpeciesAdded(SimulationSpeciesEvent e) {
-        agents = (Object[][])Arrays.resizeArray(agents, agents.length+1);
+        agents = Arrays.copyOf(agents, agents.length+1);
         agents[agents.length-1] = (Object[])Array.newInstance(agentSource.getMoleculeAgentClass(), 0);
     }
 
     public void simulationSpeciesRemoved(SimulationSpeciesEvent e) {
-        agents = (Object[][])Arrays.removeObject(agents, agents[e.getSpecies().getIndex()]);
+        agents = (Object[][])etomica.util.Arrays.removeObject(agents, agents[e.getSpecies().getIndex()]);
 
     }
 
@@ -202,7 +202,7 @@ public class MoleculeAgentManager implements BoxEventListener, SimulationListene
         int speciesIndex = a.getType().getIndex();
         if (agents[speciesIndex].length < a.getIndex()+1) {
             // no room in the array.  reallocate the array with an extra cushion.
-            agents[speciesIndex] = Arrays.resizeArray(agents[speciesIndex],a.getIndex()+1+reservoirSize);
+            agents[speciesIndex] = Arrays.copyOf(agents[speciesIndex],a.getIndex()+1+reservoirSize);
         }
         agents[speciesIndex][a.getIndex()] = agentSource.makeAgent(a);
     }
