@@ -15,7 +15,8 @@ import etomica.space.Space;
 import etomica.space.Tensor;
 import etomica.space.Vector;
 import etomica.space3d.Vector3D;
-import etomica.util.Arrays;
+
+import java.util.Arrays;
 
 /**
  * @author Kate Schadel
@@ -276,7 +277,7 @@ public class PotentialMEAM extends PotentialN implements PotentialSoft {
     public void setParameters(AtomType atomType, ParameterSetMEAM p) {
         int index = atomType.getIndex();
         if(index >= parameters.length) { //15 parameters for each species
-			 parameters = (ParameterSetMEAM[])Arrays.resizeArray(parameters, index+1);
+			 parameters = Arrays.copyOf(parameters, index + 1);
 		 }
 		 parameters[index] = p;
 	 }
@@ -285,8 +286,7 @@ public class PotentialMEAM extends PotentialN implements PotentialSoft {
         //If Cu (Ag) is involved, the reference IMC structure is Cu3Sn (Ag3Sn).
         int index = atomType.getIndex();
         if(index > parametersIMC.length) {
-             parametersIMC =
-                     (ParameterSetMEAM[])Arrays.resizeArray(parametersIMC, index+1);
+             parametersIMC = Arrays.copyOf(parametersIMC, index+1);
 		 }
         parametersIMC[index] = p;
     }
