@@ -4,32 +4,35 @@
 
 package etomica.action;
 
-import etomica.util.Arrays;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
- * A set of Action instances grouped and performed in series 
+ * A set of Action instances grouped and performed in series
  * as if a single action.  Actions may be defined at construction
  * and/or added afterward.  Actions are performed in the order in
  * which they are specifed in the constructor and subsequently added.
  *
  * @author David Kofke
- *
  */
-public class ActionGroupSeries implements IAction, java.io.Serializable, ActionGroup {
+public class ActionGroupSeries implements ActionGroup {
+
+    private final List<IAction> actions;
 
     /**
      * Constructs an action group that holds no actions.
      */
     public ActionGroupSeries() {
-        this(new IAction[0]);
+        this.actions = new ArrayList<>();
     }
-    
+
     /**
      * Defines group via the given array of actions.  Copy
      * of array is made and used internally.
      */
     public ActionGroupSeries(IAction[] actions) {
-        this.actions = actions.clone();
+        this.actions = new ArrayList<>(Arrays.asList(actions));
     }
 
     /**
@@ -37,34 +40,32 @@ public class ActionGroupSeries implements IAction, java.io.Serializable, ActionG
      * in the method, in the order given by the array at construction.
      */
     public void actionPerformed() {
-        for(int i=0; i<actions.length; i++) {
-            actions[i].actionPerformed();
+        for(IAction action : this.actions) {
+            action.actionPerformed();
         }
     }
-    
+
+    /**
+     * Removes the given action from the group.
+     *
+     * @return true if the action was present and removed, false if
+     * the action was not present.
+     */
+    public boolean removeAction(IAction oldAction) {
+        return this.actions.remove(oldAction);
+    }
+
     /**
      * Adds the given action to the group.  No check is made of whether
-     * action is already in group; it is added regardless.  
+     * action is already in group; it is added regardless.
+     *
      * @param newAction
      */
     public void addAction(IAction newAction) {
-        actions = (IAction[])Arrays.addObject(actions, newAction);
+        this.actions.add(newAction);
     }
-    
-    /**
-     * Removes the given action from the group.  No warning or
-     * error is given if action is not in the group already.
-     */
-    public boolean removeAction(IAction oldAction) {
-        int num = actions.length;
-        actions = (IAction[])Arrays.removeObject(actions, oldAction);
-        return actions.length != num; 
-    }
-    
+
     public IAction[] getAllActions() {
-    	return actions.clone();
+        return actions.toArray(new IAction[]{});
     }
-    
-    private static final long serialVersionUID = 1L;
-    private IAction[] actions;
 }
