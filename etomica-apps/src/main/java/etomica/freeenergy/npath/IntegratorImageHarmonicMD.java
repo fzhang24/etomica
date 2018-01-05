@@ -62,9 +62,9 @@ public class IntegratorImageHarmonicMD extends IntegratorVelocityVerlet {
         currentTime += timeStep;
         // IntegratorVelocityVerlet code
         IAtomList leafList = box.getLeafList();
-        int nLeaf = leafList.getAtomCount();
+        int nLeaf = leafList.size();
         for (int iLeaf=0; iLeaf<nLeaf; iLeaf++) {
-            IAtomKinetic a = (IAtomKinetic)leafList.getAtom(iLeaf);
+            IAtomKinetic a = (IAtomKinetic)leafList.get(iLeaf);
             MyAgent agent = agentManager.getAgent(a);
             Vector r = a.getPosition();
             Vector v = a.getVelocity();
@@ -92,8 +92,8 @@ public class IntegratorImageHarmonicMD extends IntegratorVelocityVerlet {
             if (iLeaf1 < iLeaf) {
                 continue;
             }
-            IAtomKinetic atom0 = (IAtomKinetic) leafList.getAtom(iLeaf);
-            IAtomKinetic atom1 = (IAtomKinetic) leafList.getAtom(iLeaf1);
+            IAtomKinetic atom0 = (IAtomKinetic) leafList.get(iLeaf);
+            IAtomKinetic atom1 = (IAtomKinetic) leafList.get(iLeaf1);
             Vector r0 = atom0.getPosition();
             Vector r1 = atom1.getPosition();
             Vector v0 = atom0.getVelocity();
@@ -159,7 +159,7 @@ public class IntegratorImageHarmonicMD extends IntegratorVelocityVerlet {
 
         //Finish integration step
         for (int iLeaf=0; iLeaf<nLeaf; iLeaf++) {
-            IAtomKinetic a = (IAtomKinetic)leafList.getAtom(iLeaf);
+            IAtomKinetic a = (IAtomKinetic)leafList.get(iLeaf);
 //            System.out.println("force: "+((MyAgent)a.ia).force.toString());
             Vector velocity = a.getVelocity();
             workTensor.Ev1v2(velocity, velocity);

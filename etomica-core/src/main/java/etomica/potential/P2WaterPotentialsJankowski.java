@@ -2110,11 +2110,11 @@ public class P2WaterPotentialsJankowski implements IPotentialAtomic {
 
         IAtomList atoms = new IAtomList() {
 
-            public int getAtomCount() {
+            public int size() {
                 return 2;
             }
 
-            public IAtom getAtom(int i) {
+            public IAtom get(int i) {
                 if (i == 0) return atom0;
                 return atom1;
             }
@@ -2159,12 +2159,12 @@ public class P2WaterPotentialsJankowski implements IPotentialAtomic {
     public static void processAtoms (IAtomList atomL) {
         Space space = Space3D.getInstance();
         Vector[] carta = space.makeVectorArray(3), cartb = space.makeVectorArray(3);
-        atomToPosVec(atomL.getAtom(0));
+        atomToPosVec(atomL.get(0));
         for (int i=0; i<3; i++) {
             carta[i].E(posVec[i]);
         }
 
-        atomToPosVec(atomL.getAtom(1));
+        atomToPosVec(atomL.get(1));
         for (int i=0; i<3; i++) {
             cartb[i].E(posVec[i]);
         }

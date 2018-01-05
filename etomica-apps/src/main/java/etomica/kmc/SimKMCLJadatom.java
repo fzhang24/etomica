@@ -88,7 +88,7 @@ public class SimKMCLJadatom extends Simulation{
         
         IMolecule iMolecule = movable.makeMolecule();
         box.addMolecule(iMolecule);
-        adAtomPos = iMolecule.getChildList().getAtom(0).getPosition();
+        adAtomPos = iMolecule.getChildList().get(0).getPosition();
         //adAtomPos = getSpace().makeVector();
         adAtomPos.setX(0, 3.5);
         adAtomPos.setX(1, -0.30);
@@ -138,7 +138,7 @@ public class SimKMCLJadatom extends Simulation{
         MoleculeArrayList movableList = new MoleculeArrayList();
         IMoleculeList loopSet = box.getMoleculeList();
         for (int i=0; i<loopSet.getMoleculeCount(); i++){
-            rij.Ev1Mv2(center,loopSet.getMolecule(i).getChildList().getAtom(0).getPosition());
+            rij.Ev1Mv2(center,loopSet.getMolecule(i).getChildList().get(0).getPosition());
             if(rij.getX(0) > (box.getBoundary().getBoxSize().getX(0) - 3.0)){continue;}
             //box.getBoundary().nearestImage(rij);
             if(rij.getX(0)< distance){
@@ -148,7 +148,7 @@ public class SimKMCLJadatom extends Simulation{
         for (int i=0; i<movableList.getMoleculeCount(); i++){
             IMolecule newMolecule = movable.makeMolecule();
             box.addMolecule(newMolecule);
-            newMolecule.getChildList().getAtom(0).getPosition().E(movableList.getMolecule(i).getChildList().getAtom(0).getPosition());
+            newMolecule.getChildList().get(0).getPosition().E(movableList.getMolecule(i).getChildList().get(0).getPosition());
             box.removeMolecule(movableList.getMolecule(i));
         }
         movableSet = box.getMoleculeList(movable);
@@ -161,7 +161,7 @@ public class SimKMCLJadatom extends Simulation{
 
         IMoleculeList loopSet = box.getMoleculeList(movable);
         for (int i=0; i<loopSet.getMoleculeCount(); i++){
-            rij.Ev1Mv2(center,loopSet.getMolecule(i).getChildList().getAtom(0).getPosition());
+            rij.Ev1Mv2(center,loopSet.getMolecule(i).getChildList().get(0).getPosition());
             if(rij.getX(0) > (box.getBoundary().getBoxSize().getX(0) - 3.0)){continue;}
             box.getBoundary().nearestImage(rij);
             if(rij.squared() < distance){
@@ -177,7 +177,7 @@ public class SimKMCLJadatom extends Simulation{
         double offset = 0;
         for(int i=0; i<currentPos.length; i++){
             currentPos[i] = space.makeVector();
-            currentPos[i] = (loopSet3.getMolecule(i).getChildList().getAtom(0).getPosition());
+            currentPos[i] = (loopSet3.getMolecule(i).getChildList().get(0).getPosition());
             for(int j=0; j<3; j++){
                 offset = random.nextGaussian()/10.0;
                 if(Math.abs(offset)>0.1){offset=0.1;}

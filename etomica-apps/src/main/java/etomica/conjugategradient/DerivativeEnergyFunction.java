@@ -137,8 +137,8 @@ public class DerivativeEnergyFunction implements FunctionMultiDimensionalDiffere
 				
 				moleculeForce.E(0); //initialize moleculeForce to zero
 				
-				for (int r=0; r<childList.getAtomCount(); r++){
-					moleculeForce.PE(agentManager.getAgent(childList.getAtom(r)).force);
+				for (int r = 0; r<childList.size(); r++){
+					moleculeForce.PE(agentManager.getAgent(childList.get(r)).force);
 				}
 					
 				

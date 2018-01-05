@@ -106,9 +106,9 @@ public class IntegratorGear4 extends IntegratorMD implements AgentSource<Integra
     protected void corrector() {
         
         IAtomList leafList = box.getLeafList();
-        int nLeaf = leafList.getAtomCount();
+        int nLeaf = leafList.size();
         for (int iLeaf=0; iLeaf<nLeaf; iLeaf++) {
-            IAtomKinetic a = (IAtomKinetic)leafList.getAtom(iLeaf);
+            IAtomKinetic a = (IAtomKinetic)leafList.get(iLeaf);
             Agent agent = agentManager.getAgent(a);
             Vector r = a.getPosition();
             Vector v = a.getVelocity();
@@ -139,9 +139,9 @@ public class IntegratorGear4 extends IntegratorMD implements AgentSource<Integra
         
     protected void predictor() {
         IAtomList leafList = box.getLeafList();
-        int nLeaf = leafList.getAtomCount();
+        int nLeaf = leafList.size();
         for (int iLeaf=0; iLeaf<nLeaf; iLeaf++) {
-            IAtomKinetic a = (IAtomKinetic)leafList.getAtom(iLeaf);
+            IAtomKinetic a = (IAtomKinetic)leafList.get(iLeaf);
             Agent agent = agentManager.getAgent(a);
             Vector r = a.getPosition();
             Vector v = a.getVelocity();
@@ -179,9 +179,9 @@ public class IntegratorGear4 extends IntegratorMD implements AgentSource<Integra
         super.reset();
         calculateForces();
         IAtomList leafList = box.getLeafList();
-        int nLeaf = leafList.getAtomCount();
+        int nLeaf = leafList.size();
         for (int iLeaf=0; iLeaf<nLeaf; iLeaf++) {
-            IAtomKinetic a = (IAtomKinetic)leafList.getAtom(iLeaf);
+            IAtomKinetic a = (IAtomKinetic)leafList.get(iLeaf);
             Agent agent = agentManager.getAgent(a);
             agent.dr1.E(a.getVelocity());
             agent.dr2.Ea1Tv1(a.getType().rm(),agent.force);

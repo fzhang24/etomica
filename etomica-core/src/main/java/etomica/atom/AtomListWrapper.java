@@ -23,9 +23,9 @@ public class AtomListWrapper implements IAtomList, java.io.Serializable {
      */
     public AtomListWrapper(IAtomList atomSet) {
         this();
-        atoms.ensureCapacity(atomSet.getAtomCount());
-        for (int i = 0; i < atoms.getAtomCount(); i++) {
-            atoms.add(atomSet.getAtom(i));
+        atoms.ensureCapacity(atomSet.size());
+        for (int i = 0; i < atoms.size(); i++) {
+            atoms.add(atomSet.get(i));
         }
     }
 
@@ -40,8 +40,8 @@ public class AtomListWrapper implements IAtomList, java.io.Serializable {
     /**
      * Part of implementation of AtomSet interface.
      */
-    public IAtom getAtom(int i) {
-        return atoms.getAtom(i);
+    public IAtom get(int i) {
+        return atoms.get(i);
     }
 
     /**
@@ -62,17 +62,17 @@ public class AtomListWrapper implements IAtomList, java.io.Serializable {
      */
     public void setAtoms(IAtomList atomSet) {
         atoms.clear();
-        atoms.ensureCapacity(atomSet.getAtomCount());
-        for (int i = 0; i < atomSet.getAtomCount(); i++) {
-            atoms.add(atomSet.getAtom(i));
+        atoms.ensureCapacity(atomSet.size());
+        for (int i = 0; i < atomSet.size(); i++) {
+            atoms.add(atomSet.get(i));
         }
     }
 
     /**
      * Returns the length of the wrapped array.
      */
-    public int getAtomCount() {
-        return atoms.getAtomCount();
+    public int size() {
+        return atoms.size();
     }
 
     private static final long serialVersionUID = 1L;

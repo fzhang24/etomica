@@ -74,8 +74,8 @@ public class MeterDADB implements IDataSource, AgentSource<MyAgent> {
         potentialMaster.calculate(box, id, pcForceSum);
         IAtomList atoms = box.getLeafList();
         double sum = 0;
-        for (int i=0; i<atoms.getAtomCount(); i++) {
-            IAtom atom = atoms.getAtom(i);
+        for (int i = 0; i<atoms.size(); i++) {
+            IAtom atom = atoms.get(i);
             Vector lPos = coordinateDefinition.getLatticePosition(atom);
             Vector pos = atom.getPosition();
             dr.Ev1Mv2(pos, lPos);
@@ -84,7 +84,7 @@ public class MeterDADB implements IDataSource, AgentSource<MyAgent> {
         }
         if (justDADB) {
             if (justU) {
-                x[0] = (x0+latticeEnergy) + (atoms.getAtomCount()*1.5*temperature) + 0.5*sum;
+                x[0] = (x0+latticeEnergy) + (atoms.size()*1.5*temperature) + 0.5*sum;
             }
             else {
 //                System.out.println(x0+" "+(0.5*sum)+" "+(x0+0.5*sum)/atoms.getAtomCount());

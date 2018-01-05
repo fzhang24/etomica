@@ -77,9 +77,9 @@ public class PotentialMasterListWorker extends Thread {
                 
                 //cannot use AtomIterator field because of recursive call
                 IAtomList list = molecule.getChildList();
-                int size = list.getAtomCount();
+                int size = list.size();
                 for (int j=0; j<size; j++) {
-                    IAtom a = list.getAtom(j);
+                    IAtom a = list.get(j);
                     calculate(a, id, pc);//recursive call
                 }
             }
@@ -128,8 +128,8 @@ public class PotentialMasterListWorker extends Thread {
                 if (direction != IteratorDirective.Direction.DOWN) {
                     IAtomList list = neighborLists[atom.getIndex()-startAtom][i];
                     atomPair.atom0 = atom;
-                    for (int j=0; j<list.getAtomCount(); j++) {
-                        atomPair.atom1 = list.getAtom(j);
+                    for (int j = 0; j<list.size(); j++) {
+                        atomPair.atom1 = list.get(j);
                         pc.doCalculation(atomPair, potentialThread);
                     }
                 }
@@ -138,8 +138,8 @@ public class PotentialMasterListWorker extends Thread {
                 if (direction != IteratorDirective.Direction.UP) {
                     IAtomList list = neighborManager.getDownList(atom)[i];
                     atomPair.atom1 = atom;
-                    for (int j=0; j<list.getAtomCount(); j++) {
-                        atomPair.atom0 = list.getAtom(j);
+                    for (int j = 0; j<list.size(); j++) {
+                        atomPair.atom0 = list.get(j);
                         pc.doCalculation(atomPair, potentialThread);
                     }
                 }
@@ -153,13 +153,13 @@ public class PotentialMasterListWorker extends Thread {
                     // we have to do the calculation considering each of the 
                     // target's neighbors
                     IAtomList list = neighborLists[atom.getIndex()+startAtom][i];
-                    for (int j=0; j<list.getAtomCount(); j++) {
-                        IAtom otherAtom = list.getAtom(j);
+                    for (int j = 0; j<list.size(); j++) {
+                        IAtom otherAtom = list.get(j);
                         doNBodyStuff(otherAtom, pc, i, potentialThread);
                     }
                     list = neighborManager.getDownList(atom)[i];
-                    for (int j=0; j<list.getAtomCount(); j++) {
-                        IAtom otherAtom = list.getAtom(j);
+                    for (int j = 0; j<list.size(); j++) {
+                        IAtom otherAtom = list.get(j);
                         doNBodyStuff(otherAtom, pc, i, potentialThread);
                     }
                 }
@@ -201,7 +201,7 @@ public class PotentialMasterListWorker extends Thread {
                 
         for(int i=0; i<(stopAtom-startAtom); i++){
             threadList.add(list.getMolecule(i+startAtom));
-            neighborLists[i] = neighborManager.getUpList(list.getMolecule(i+startAtom).getChildList().getAtom(0));
+            neighborLists[i] = neighborManager.getUpList(list.getMolecule(i+startAtom).getChildList().get(0));
             
         }
             

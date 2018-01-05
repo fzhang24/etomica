@@ -65,10 +65,10 @@ public class AtomIteratorAllLeafType implements AtomsetIteratorBoxDependent,
         AtomArrayList arrayList = next.getArrayList();
         arrayList.clear();
         IAtomList leafList = box.getLeafList();
-        for (int i=0; i<leafList.getAtomCount(); i++) {
+        for (int i = 0; i<leafList.size(); i++) {
         	for (int j=0; j<atomType.length; j++) {
-        		if(leafList.getAtom(i).getType()==atomType[j]){
-        			arrayList.add(leafList.getAtom(i));
+        		if(leafList.get(i).getType()==atomType[j]){
+        			arrayList.add(leafList.get(i));
         		}
         	}
         }
@@ -80,7 +80,7 @@ public class AtomIteratorAllLeafType implements AtomsetIteratorBoxDependent,
     }
 
     public IAtomList next() {
-        if (nextCursor + 1 > next.getAtomCount()) {
+        if (nextCursor + 1 > next.size()) {
             return null;
         }
         if (nextCursor < 0) {
@@ -89,8 +89,8 @@ public class AtomIteratorAllLeafType implements AtomsetIteratorBoxDependent,
             return next;
         }
         AtomArrayList arrayList = next.getArrayList();
-        IAtom oldFirst = arrayList.getAtom(0);
-        arrayList.set(0,arrayList.getAtom(nextCursor));
+        IAtom oldFirst = arrayList.get(0);
+        arrayList.set(0,arrayList.get(nextCursor));
         arrayList.set(nextCursor,oldFirst);
         nextCursor++;
         return next;
@@ -105,6 +105,6 @@ public class AtomIteratorAllLeafType implements AtomsetIteratorBoxDependent,
      * a call to reset().
      */
     public int size() {
-        return next.getAtomCount();
+        return next.size();
     }
 }

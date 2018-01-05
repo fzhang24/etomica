@@ -86,9 +86,9 @@ public class IntegratorDroplet extends IntegratorMD implements AgentSource<Integ
         super.doStepInternal();
 
         IAtomList leafList = box.getLeafList();
-        int nLeaf = leafList.getAtomCount();
+        int nLeaf = leafList.size();
         for (int iLeaf=0; iLeaf<nLeaf; iLeaf++) {
-            IAtomKinetic a = (IAtomKinetic)leafList.getAtom(iLeaf);
+            IAtomKinetic a = (IAtomKinetic)leafList.get(iLeaf);
             MyAgent agent = agentManager.getAgent(a);
             agent.r0.E(a.getPosition());
             agent.rp.E(a.getPosition());
@@ -97,7 +97,7 @@ public class IntegratorDroplet extends IntegratorMD implements AgentSource<Integ
         foo();
 
         for (int iLeaf=0; iLeaf<nLeaf; iLeaf++) {
-            IAtomKinetic a = (IAtomKinetic)leafList.getAtom(iLeaf);
+            IAtomKinetic a = (IAtomKinetic)leafList.get(iLeaf);
             MyAgent agent = agentManager.getAgent(a);
             Vector r = a.getPosition();
             r.E(agent.r0);
@@ -114,7 +114,7 @@ public class IntegratorDroplet extends IntegratorMD implements AgentSource<Integ
         foo();
         
         for (int iLeaf=0; iLeaf<nLeaf; iLeaf++) {
-            IAtomKinetic a = (IAtomKinetic)leafList.getAtom(iLeaf);
+            IAtomKinetic a = (IAtomKinetic)leafList.get(iLeaf);
             MyAgent agent = agentManager.getAgent(a);
             Vector r = a.getPosition();
             r.E(agent.r0);
@@ -131,7 +131,7 @@ public class IntegratorDroplet extends IntegratorMD implements AgentSource<Integ
         foo();
 
         for (int iLeaf=0; iLeaf<nLeaf; iLeaf++) {
-            IAtomKinetic a = (IAtomKinetic)leafList.getAtom(iLeaf);
+            IAtomKinetic a = (IAtomKinetic)leafList.get(iLeaf);
             MyAgent agent = agentManager.getAgent(a);
             Vector r = a.getPosition();
             r.E(agent.r0);
@@ -148,7 +148,7 @@ public class IntegratorDroplet extends IntegratorMD implements AgentSource<Integ
         foo();
 
         for (int iLeaf=0; iLeaf<nLeaf; iLeaf++) {
-            IAtomKinetic a = (IAtomKinetic)leafList.getAtom(iLeaf);
+            IAtomKinetic a = (IAtomKinetic)leafList.get(iLeaf);
             MyAgent agent = agentManager.getAgent(a);
             agent.rp.PEa1Tv1(timeStep/6.0, a.getVelocity());
             a.getPosition().E(agent.rp);
@@ -174,14 +174,14 @@ public class IntegratorDroplet extends IntegratorMD implements AgentSource<Integ
         double sp = 2.0*Math.pow(dv,1.0/3.0);
 
         IAtomList leafList = box.getLeafList();
-        int nLeaf = leafList.getAtomCount();
+        int nLeaf = leafList.size();
         for (int iLeaf=0; iLeaf<nLeaf; iLeaf++) {
-            IAtomKinetic a = (IAtomKinetic)leafList.getAtom(iLeaf);
+            IAtomKinetic a = (IAtomKinetic)leafList.get(iLeaf);
             Vector v = a.getVelocity();
             v.E(0);
         }
         for (int iLeaf=0; iLeaf<nLeaf; iLeaf++) {
-            IAtomKinetic a = (IAtomKinetic)leafList.getAtom(iLeaf);
+            IAtomKinetic a = (IAtomKinetic)leafList.get(iLeaf);
             Vector v = a.getVelocity();
             dr.E(0);
             stokeslet(sp);
@@ -190,7 +190,7 @@ public class IntegratorDroplet extends IntegratorMD implements AgentSource<Integ
             workTensor.transform(dr);
             v.PE(dr);
             for (int jLeaf=iLeaf+1; jLeaf<nLeaf; jLeaf++) {
-                IAtomKinetic aj = (IAtomKinetic)leafList.getAtom(jLeaf);
+                IAtomKinetic aj = (IAtomKinetic)leafList.get(jLeaf);
                 MyAgent jAgent = agentManager.getAgent(aj);
                 dr.Ev1Mv2(a.getPosition(),aj.getPosition());
                 stokeslet(sp);
@@ -256,7 +256,7 @@ public class IntegratorDroplet extends IntegratorMD implements AgentSource<Integ
             IAtomList pair = Debug.getAtoms(box);
             if (pair != null) {
                 Vector dr = space.makeVector();
-                dr.Ev1Mv2(pair.getAtom(1).getPosition(), pair.getAtom(0).getPosition());
+                dr.Ev1Mv2(pair.get(1).getPosition(), pair.get(0).getPosition());
                 System.out.println(pair+" dr "+dr);
             }
         }

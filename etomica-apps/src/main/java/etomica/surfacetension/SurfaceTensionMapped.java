@@ -79,7 +79,7 @@ public class SurfaceTensionMapped extends DataProcessor implements AgentSource<F
         double c = 2/param[2];
 //        System.out.println("fit: "+Arrays.toString(param));
         IAtomList atoms = box.getLeafList();
-        double rho = atoms.getAtomCount()/box.getBoundary().volume();
+        double rho = atoms.size()/box.getBoundary().volume();
         double L = box.getBoundary().getBoxSize().getX(0);
         double tL1 = Math.tanh(c * (L/2 - param[3]));
         double tL2 = Math.tanh(c * (L/2 + param[3]));
@@ -95,8 +95,8 @@ public class SurfaceTensionMapped extends DataProcessor implements AgentSource<F
         double cL1 = Math.cosh(c*(L/2-param[3]));
         double cL2 = Math.cosh(c*(L/2+param[3]));
         double jFac = (param[1]-param[0])/(2*L) * ((tL2-tL1)*c*L + 2*Math.log(cL1/cL2))/(tL1+tL2);
-        for (int i=0; i<atoms.getAtomCount(); i++) {
-            IAtom atom = atoms.getAtom(i);
+        for (int i = 0; i<atoms.size(); i++) {
+            IAtom atom = atoms.get(i);
             Vector f = forceAgentManager.getAgent(atom).force();
             double px = atom.getPosition().getX(0);
             double t1 = Math.tanh(c * (px + param[3]));

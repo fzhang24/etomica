@@ -43,7 +43,7 @@ public class MeterPressureHard extends DataSourceScalar implements
         if (elapsedTime < 0) throw new RuntimeException("you should have called reset");
         double numAtomTemp = integratorHard.getKineticEnergy() * 2 / dim;
         if (integratorHard.isIsothermal()) {
-            numAtomTemp = integratorHard.getTemperature()*box.getLeafList().getAtomCount();
+            numAtomTemp = integratorHard.getTemperature()*box.getLeafList().size();
         }
         double value = (numAtomTemp - virialSum/(dim*elapsedTime)) / 
                         box.getBoundary().volume();

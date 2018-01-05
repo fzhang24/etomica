@@ -346,8 +346,8 @@ public class SimHSMDVacancy extends Simulation {
                     }
                     if (nbrs==null) return Color.RED;
                     int n = 0;
-                    for (int j=0; j<nbrs.getAtomCount(); j++) {
-                        IAtom nbrj = nbrs.getAtom(j);
+                    for (int j = 0; j<nbrs.size(); j++) {
+                        IAtom nbrj = nbrs.get(j);
                         if (nbrj == null) break;
                         dr.Ev1Mv2(pi, nbrj.getPosition());
                         boundary.nearestImage(dr);
@@ -357,8 +357,8 @@ public class SimHSMDVacancy extends Simulation {
                         }
                     }
                     nbrs = nbrManager.getDownList(a)[0];
-                    for (int j=0; j<nbrs.getAtomCount(); j++) {
-                        IAtom nbrj = nbrs.getAtom(j);
+                    for (int j = 0; j<nbrs.size(); j++) {
+                        IAtom nbrj = nbrs.get(j);
                         if (nbrj == null) break;
                         dr.Ev1Mv2(pi, nbrj.getPosition());
                         boundary.nearestImage(dr);
@@ -396,8 +396,8 @@ public class SimHSMDVacancy extends Simulation {
                     }
                     if (nbrs==null) return 0;
                     int n = 0;
-                    for (int j=0; j<nbrs.getAtomCount(); j++) {
-                        IAtom nbrj = nbrs.getAtom(j);
+                    for (int j = 0; j<nbrs.size(); j++) {
+                        IAtom nbrj = nbrs.get(j);
                         if (nbrj == null) break;
                         dr.Ev1Mv2(pi, nbrj.getPosition());
                         boundary.nearestImage(dr);
@@ -407,8 +407,8 @@ public class SimHSMDVacancy extends Simulation {
                         }
                     }
                     nbrs = nbrManager.getDownList(a)[0];
-                    for (int j=0; j<nbrs.getAtomCount(); j++) {
-                        IAtom nbrj = nbrs.getAtom(j);
+                    for (int j = 0; j<nbrs.size(); j++) {
+                        IAtom nbrj = nbrs.get(j);
                         if (nbrj == null) break;
                         dr.Ev1Mv2(pi, nbrj.getPosition());
                         boundary.nearestImage(dr);

@@ -96,12 +96,12 @@ public class MeterMeanForce implements IDataSource, AgentSource<IntegratorVeloci
         potentialMaster.calculate(box, allAtoms, pcForce);
         IAtomList list = box.getLeafList();
 
-        int n = list.getAtomCount();
+        int n = list.size();
         for (int i=0; i<n; i++) {
-            IAtom a = list.getAtom(i);
+            IAtom a = list.get(i);
             Vector fi = forceManager.getAgent(a).force;
             for (int j=i+1; j<n; j++) {
-                IAtom b = list.getAtom(j);
+                IAtom b = list.get(j);
                 dr.Ev1Mv2(b.getPosition(),a.getPosition());
                 box.getBoundary().nearestImage(dr);
                 double r2 = dr.squared();

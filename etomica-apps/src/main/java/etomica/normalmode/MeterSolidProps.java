@@ -61,7 +61,7 @@ public class MeterSolidProps implements IDataSource, AgentSource<MyAgent> {
         this.ULat = ULat;
         this.PLat = PLat;
         volume = coordinateDefinition.getBox().getBoundary().volume();
-        nMol = coordinateDefinition.getBox().getLeafList().getAtomCount();
+        nMol = coordinateDefinition.getBox().getLeafList().size();
         density = nMol/volume;
     	f1 = (-1.0/volume + dP/temperature)/3.0/(nMol-1.0);
     	f2 = (1.0/volume/volume + ddP/temperature)/3.0/(nMol-1.0)  +  f1*f1;

@@ -35,8 +35,8 @@ public class FixedWall implements IntegratorListenerMD {
         double totMass = 0;
         for (int i=0; i<molecules.getMoleculeCount(); i++) {
             IAtomList atoms = molecules.getMolecule(i).getChildList();
-            for (int j=0; j<atoms.getAtomCount(); j++) {
-                IAtomKinetic jAtom = (IAtomKinetic)atoms.getAtom(j);
+            for (int j = 0; j<atoms.size(); j++) {
+                IAtomKinetic jAtom = (IAtomKinetic)atoms.get(j);
                 double m = jAtom.getType().getMass();
                 zTotMomentum += m*jAtom.getVelocity().getX(2);
                 totMass += m;
@@ -46,8 +46,8 @@ public class FixedWall implements IntegratorListenerMD {
         double vz = zTotMomentum/totMass;
         for (int i=0; i<molecules.getMoleculeCount(); i++) {
             IAtomList atoms = molecules.getMolecule(i).getChildList();
-            for (int j=0; j<atoms.getAtomCount(); j++) {
-                IAtomKinetic jAtom = (IAtomKinetic)atoms.getAtom(j);
+            for (int j = 0; j<atoms.size(); j++) {
+                IAtomKinetic jAtom = (IAtomKinetic)atoms.get(j);
                 Vector v = jAtom.getVelocity();
                 v.E(0);
                 v.setX(2, vz);
@@ -67,8 +67,8 @@ public class FixedWall implements IntegratorListenerMD {
         double totMass = 0;
         for (int i=0; i<molecules.getMoleculeCount(); i++) {
             IAtomList atoms = molecules.getMolecule(i).getChildList();
-            for (int j=0; j<atoms.getAtomCount(); j++) {
-                IAtom jAtom = atoms.getAtom(j);
+            for (int j = 0; j<atoms.size(); j++) {
+                IAtom jAtom = atoms.get(j);
                 fz += agentManager.getAgent(jAtom).force.getX(2);
                 totMass += jAtom.getType().getMass();
             }
@@ -78,8 +78,8 @@ public class FixedWall implements IntegratorListenerMD {
         fz /= totMass;
         for (int i=0; i<molecules.getMoleculeCount(); i++) {
             IAtomList atoms = molecules.getMolecule(i).getChildList();
-            for (int j=0; j<atoms.getAtomCount(); j++) {
-                IAtom jAtom = atoms.getAtom(j);
+            for (int j = 0; j<atoms.size(); j++) {
+                IAtom jAtom = atoms.get(j);
                 Vector jf = agentManager.getAgent(jAtom).force;
                 jf.E(0);
                 jf.setX(2, fz*jAtom.getType().getMass());

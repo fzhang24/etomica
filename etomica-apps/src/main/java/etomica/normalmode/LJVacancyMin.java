@@ -144,7 +144,7 @@ public class LJVacancyMin extends Simulation {
         PotentialCalculationForceSum pc = new PotentialCalculationForceSum();
         AtomLeafAgentManager<VectorForce> forceManager = new AtomLeafAgentManager<VectorForce>(null, sim.box);
         for (int i=0; i<numAtoms-1; i++) {
-            forceManager.setAgent(sim.box.getLeafList().getAtom(i), new VectorForce(sim.space));
+            forceManager.setAgent(sim.box.getLeafList().get(i), new VectorForce(sim.space));
         }
         pc.setAgentManager(forceManager);
 
@@ -163,7 +163,7 @@ public class LJVacancyMin extends Simulation {
             sim.potentialMaster.calculate(sim.box, all, pc);
             double dSum = 0;
             for (int j=0; j<numAtoms-1; j++) {
-                IAtom jAtom = sim.box.getLeafList().getAtom(j);
+                IAtom jAtom = sim.box.getLeafList().get(j);
                 Vector fj = forceManager.getAgent(jAtom).f;
                 Vector pj = jAtom.getPosition();
                 for (int k=0; k<pj.getD(); k++) {
@@ -182,7 +182,7 @@ public class LJVacancyMin extends Simulation {
             }
             // take a small step
             for (int j=0; j<numAtoms-1; j++) {
-                IAtom jAtom = sim.box.getLeafList().getAtom(j);
+                IAtom jAtom = sim.box.getLeafList().get(j);
                 Vector pj = jAtom.getPosition();
                 for (int k=0; k<pj.getD(); k++) {
                     pj.setX(k, pj.getX(k)+step0*dir[3*j+k]);
@@ -193,7 +193,7 @@ public class LJVacancyMin extends Simulation {
             sim.potentialMaster.calculate(sim.box, all, pc);
             dSum = 0;
             for (int j=0; j<numAtoms-1; j++) {
-                IAtom jAtom = sim.box.getLeafList().getAtom(j);
+                IAtom jAtom = sim.box.getLeafList().get(j);
                 Vector fj = forceManager.getAgent(jAtom).f;
                 Vector pj = jAtom.getPosition();
                 for (int k=0; k<pj.getD(); k++) {
@@ -209,7 +209,7 @@ public class LJVacancyMin extends Simulation {
             double step1 = -step0*dNorm1/(dNorm1-dNorm0);
             if (verbose) System.out.print(String.format("  %10.4e\n", step1));
             for (int j=0; j<numAtoms-1; j++) {
-                IAtom jAtom = sim.box.getLeafList().getAtom(j);
+                IAtom jAtom = sim.box.getLeafList().get(j);
                 Vector pj = jAtom.getPosition();
                 for (int k=0; k<pj.getD(); k++) {
                     pj.setX(k, pj.getX(k)+step1*dir[3*j+k]);

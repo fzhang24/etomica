@@ -99,9 +99,9 @@ public final class IntegratorConNVT extends IntegratorMD implements AgentSource<
         double k=0.0;
         double chi;
         IAtomList leafList = box.getLeafList();
-        int nLeaf = leafList.getAtomCount();
+        int nLeaf = leafList.size();
         for (int iLeaf=0; iLeaf<nLeaf; iLeaf++) {
-            IAtomKinetic a = (IAtomKinetic)leafList.getAtom(iLeaf);
+            IAtomKinetic a = (IAtomKinetic)leafList.get(iLeaf);
             Vector v = a.getVelocity();
 
             work1.E(v); //work1 = v
@@ -116,7 +116,7 @@ public final class IntegratorConNVT extends IntegratorMD implements AgentSource<
 
         //calculate constrained velbox.getSpace()ocities at T+Dt/2
         for (int iLeaf=0; iLeaf<nLeaf; iLeaf++) {
-            IAtomKinetic a = (IAtomKinetic)leafList.getAtom(iLeaf);
+            IAtomKinetic a = (IAtomKinetic)leafList.get(iLeaf);
             Agent agent = agentManager.getAgent(a);
             Vector v = a.getVelocity();
 
@@ -129,7 +129,7 @@ public final class IntegratorConNVT extends IntegratorMD implements AgentSource<
         } 
 
         for (int iLeaf=0; iLeaf<nLeaf; iLeaf++) {
-            IAtomKinetic a = (IAtomKinetic)leafList.getAtom(iLeaf);
+            IAtomKinetic a = (IAtomKinetic)leafList.get(iLeaf);
             Vector r = a.getPosition();
             Vector v = a.getVelocity();
 

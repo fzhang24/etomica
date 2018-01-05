@@ -55,8 +55,8 @@ public class PotentialMasterListWorker extends Thread {
                         
            threadCalculate = System.currentTimeMillis(); 
            // Thread completes objective
-           for(int i=0; i<threadList.getAtomCount(); i++){
-                IAtom a = threadList.getAtom(i);
+           for(int i = 0; i<threadList.size(); i++){
+                IAtom a = threadList.get(i);
                 calculate(a, id, pc);
             }
            threadCalculate = System.currentTimeMillis()-threadCalculate;
@@ -104,8 +104,8 @@ public class PotentialMasterListWorker extends Thread {
                 if (direction != IteratorDirective.Direction.DOWN) {
                     IAtomList list = neighborManager.getUpList(atom)[i];
                     atomPair.atom0 = atom;
-                    for (int j=0; j<list.getAtomCount(); j++) {
-                        atomPair.atom1 = list.getAtom(j);
+                    for (int j = 0; j<list.size(); j++) {
+                        atomPair.atom1 = list.get(j);
                         pc.doCalculation(atomPair, potentialThread);
                     }
                 }
@@ -114,8 +114,8 @@ public class PotentialMasterListWorker extends Thread {
                 if (direction != IteratorDirective.Direction.UP) {
                     IAtomList list = neighborManager.getDownList(atom)[i];
                     atomPair.atom1 = atom;
-                    for (int j=0; j<list.getAtomCount(); j++) {
-                        atomPair.atom0 = list.getAtom(j);
+                    for (int j = 0; j<list.size(); j++) {
+                        atomPair.atom0 = list.get(j);
                         pc.doCalculation(atomPair, potentialThread);
                     }
                 }
@@ -129,13 +129,13 @@ public class PotentialMasterListWorker extends Thread {
                     // we have to do the calculation considering each of the 
                     // target's neighbors
                     IAtomList list = neighborManager.getUpList(atom)[i];
-                    for (int j=0; j<list.getAtomCount(); j++) {
-                        IAtom otherAtom = list.getAtom(j);
+                    for (int j = 0; j<list.size(); j++) {
+                        IAtom otherAtom = list.get(j);
                         doNBodyStuff(otherAtom, pc, i, potentialThread);
                     }
                     list = neighborManager.getDownList(atom)[i];
-                    for (int j=0; j<list.getAtomCount(); j++) {
-                        IAtom otherAtom = list.getAtom(j);
+                    for (int j = 0; j<list.size(); j++) {
+                        IAtom otherAtom = list.get(j);
                         doNBodyStuff(otherAtom, pc, i, potentialThread);
                     }
                 }
