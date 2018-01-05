@@ -6,9 +6,11 @@ package etomica.atom;
 
 import etomica.util.Debug;
 
+import java.util.AbstractList;
 import java.util.Arrays;
+import java.util.RandomAccess;
 
-public final class AtomArrayList implements IAtomList {
+public final class AtomArrayList extends AbstractList<IAtom> implements IAtomList, RandomAccess {
 
     private float trimThreshold = 0.8f;
     private IAtom[] atomList;
@@ -62,7 +64,7 @@ public final class AtomArrayList implements IAtomList {
         return itemsInList == 0;
     }
 
-    protected IAtom[] toArray() {
+    public IAtom[] toArray() {
         IAtom[] tempList = new IAtom[itemsInList];
 
         System.arraycopy(atomList, 0, tempList, 0, itemsInList);

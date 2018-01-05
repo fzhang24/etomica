@@ -169,7 +169,7 @@ public class PotentialMasterListWorker extends Thread {
 	}
 	
 	protected void doNBodyStuff(IAtom atom, PotentialCalculation pc, int potentialIndex, IPotentialAtomic potential) {
-        AtomArrayList arrayList = atomsetArrayList.getArrayList();
+        AtomArrayList arrayList = atomArrayList;
         arrayList.clear();
         arrayList.add(atom);
         IAtomList[] list = neighborManager.getUpList(atom);
@@ -180,7 +180,7 @@ public class PotentialMasterListWorker extends Thread {
         if (potentialIndex < list.length) {
             arrayList.addAll(list[potentialIndex]);
         }
-        pc.doCalculation(atomsetArrayList, potential);
+        pc.doCalculation(atomArrayList, potential);
         arrayList.clear();
     }
     
@@ -231,7 +231,7 @@ public class PotentialMasterListWorker extends Thread {
     public IAtomList[][] neighborLists;
     
 	//	 things needed for N-body potentials
-	protected AtomListWrapper atomsetArrayList;
+	protected AtomArrayList atomArrayList;
 		
 	
 }

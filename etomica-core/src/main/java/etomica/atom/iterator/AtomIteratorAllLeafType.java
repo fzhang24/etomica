@@ -22,7 +22,7 @@ public class AtomIteratorAllLeafType implements AtomsetIteratorBoxDependent,
 
     private static final long serialVersionUID = 1L;
     private final AtomType[] atomType;
-    private final AtomListWrapper next;
+    private final AtomArrayList next;
     private Box box;
     private int nextCursor;
     
@@ -32,7 +32,7 @@ public class AtomIteratorAllLeafType implements AtomsetIteratorBoxDependent,
      */
     public AtomIteratorAllLeafType(AtomType[] atomType) {
         this.atomType = atomType;
-        next = new AtomListWrapper();
+        next = new AtomArrayList();
     }
 
     /**
@@ -62,7 +62,7 @@ public class AtomIteratorAllLeafType implements AtomsetIteratorBoxDependent,
 
     public void reset() {
         // add all Atoms to ArrayList we will return
-        AtomArrayList arrayList = next.getArrayList();
+        AtomArrayList arrayList = next;
         arrayList.clear();
         IAtomList leafList = box.getLeafList();
         for (int i = 0; i<leafList.size(); i++) {
@@ -76,7 +76,7 @@ public class AtomIteratorAllLeafType implements AtomsetIteratorBoxDependent,
     }
 
     public void unset() {
-        next.getArrayList().clear();
+        next.clear();
     }
 
     public IAtomList next() {
@@ -88,7 +88,7 @@ public class AtomIteratorAllLeafType implements AtomsetIteratorBoxDependent,
             nextCursor = -nextCursor;
             return next;
         }
-        AtomArrayList arrayList = next.getArrayList();
+        AtomArrayList arrayList = next;
         IAtom oldFirst = arrayList.get(0);
         arrayList.set(0,arrayList.get(nextCursor));
         arrayList.set(nextCursor,oldFirst);

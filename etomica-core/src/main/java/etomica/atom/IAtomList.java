@@ -4,9 +4,6 @@
 
 package etomica.atom;
 
-import com.fasterxml.jackson.annotation.JsonValue;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,7 +12,7 @@ import java.util.List;
  * 
  * @author Andrew Schultz
  */
-public interface IAtomList {
+public interface IAtomList extends List<IAtom> {
 
     /**
      * Returns the i-th atom, with numbering beginning from 0.
@@ -29,13 +26,4 @@ public interface IAtomList {
      * @return the number of atoms in the list
      */
     int size();
-
-    @JsonValue
-    default List<IAtom> getAtoms() {
-        List<IAtom> list = new ArrayList<>();
-        for(int i = 0; i < size(); i++) {
-            list.add(get(i));
-        }
-        return list;
-    }
 }
