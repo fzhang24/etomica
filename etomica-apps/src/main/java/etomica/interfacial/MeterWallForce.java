@@ -6,7 +6,6 @@ package etomica.interfacial;
 
 import etomica.atom.AtomType;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.data.DataSourceScalar;
 import etomica.molecule.IMoleculeList;
@@ -15,6 +14,8 @@ import etomica.space.Space;
 import etomica.space.Vector;
 import etomica.species.ISpecies;
 import etomica.units.dimensions.Force;
+
+import java.util.List;
 
 public class MeterWallForce extends DataSourceScalar {
 
@@ -76,7 +77,7 @@ public class MeterWallForce extends DataSourceScalar {
          * Adds forces due to given potential acting on the atoms produced by the iterator.
          * Implemented for only 1- and 2-body potentials.
          */
-        public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+        public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
             if (atoms.size()==1) return;
             PotentialSoft potentialSoft = (PotentialSoft)potential;
             Vector[] f = potentialSoft.gradient(atoms);

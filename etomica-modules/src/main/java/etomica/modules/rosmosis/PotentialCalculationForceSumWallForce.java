@@ -4,12 +4,14 @@
 
 package etomica.modules.rosmosis;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.potential.IPotential;
 import etomica.potential.IPotentialAtomic;
 import etomica.potential.PotentialCalculationForceSum;
 import etomica.potential.PotentialSoft;
 import etomica.space.Vector;
+
+import java.util.List;
 
 /**
  * Sums the force and torque on each iterated atom or molecule and adds it to
@@ -38,7 +40,7 @@ public class PotentialCalculationForceSumWallForce extends PotentialCalculationF
      * Adds forces and torques due to given potential acting on the atoms produced by the iterator.
      * Implemented for 1-, 2- and N-body potentials.
      */
-    public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+    public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
         int nBody = potential.nBody();
         if (potential instanceof PotentialSoft) {
             PotentialSoft potentialSoft = (PotentialSoft)potential;

@@ -7,7 +7,6 @@ package etomica.mappedRdf;
 import etomica.atom.AtomLeafAgentManager;
 import etomica.atom.AtomPair;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.integrator.IntegratorVelocityVerlet;
 import etomica.potential.*;
@@ -18,6 +17,7 @@ import etomica.space3d.Space3D;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by aksharag on 5/16/17.
@@ -181,7 +181,7 @@ public class PotentialCalculationMappedRdf implements PotentialCalculation{
         sum = 0;
     }
 
-    public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+    public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
         if (!(potential instanceof Potential2SoftSpherical)) return;
         Potential2SoftSpherical p2 = (Potential2SoftSpherical)potential;
         IAtom a = atoms.get(0);

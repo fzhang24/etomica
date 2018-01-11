@@ -4,7 +4,7 @@
 
 package etomica.freeenergy.npath;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.box.Box;
 import etomica.data.DataTag;
 import etomica.data.IData;
@@ -17,6 +17,8 @@ import etomica.potential.IteratorDirective;
 import etomica.potential.PotentialCalculationEnergySum;
 import etomica.potential.PotentialMaster;
 import etomica.units.dimensions.Energy;
+
+import java.util.List;
 
 /**
  * Created by andrew on 4/12/17.
@@ -95,7 +97,7 @@ public class DataSourceEnergies implements IDataSource {
         }
 
         @Override
-        public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+        public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
             double u = potential.energy(atoms);
             if (potential.nBody() == 1) {
                 sum1 += u;

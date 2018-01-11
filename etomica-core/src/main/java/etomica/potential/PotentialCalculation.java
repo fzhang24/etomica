@@ -4,7 +4,9 @@
 
 package etomica.potential;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
+
+import java.util.List;
 
 /**
  * Class defining a particular action to be performed on a set of atoms using an
@@ -24,6 +26,6 @@ public interface PotentialCalculation {
 	 * @param atoms IAtomSet the atom sets for which the calculation is performed.
 	 * @param potential The potential used to apply the action defined by this class.
 	 */
-	public void doCalculation(IAtomList atoms, IPotentialAtomic potential);
+	public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential);
 	
 }

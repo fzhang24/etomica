@@ -4,13 +4,15 @@
 
 package etomica.potential;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.molecule.DipoleSource;
 import etomica.molecule.IMolecule;
 import etomica.molecule.IMoleculeList;
 import etomica.space.Space;
 import etomica.space.Tensor;
 import etomica.space.Vector;
+
+import java.util.List;
 
 public class PotentialCalculationPhiSum implements PotentialCalculationMolecular {
 	 protected Vector fieldE;
@@ -44,7 +46,7 @@ public class PotentialCalculationPhiSum implements PotentialCalculationMolecular
 		iT.E(a);
 	}
 
-	public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+	public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
 		// TODO Auto-generated method stub 
 		
 		

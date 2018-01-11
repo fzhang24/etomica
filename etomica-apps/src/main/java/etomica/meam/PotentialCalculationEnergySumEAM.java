@@ -4,9 +4,11 @@
 
 package etomica.meam;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.potential.IPotentialAtomic;
 import etomica.potential.PotentialCalculationEnergySum;
+
+import java.util.List;
 
 /**
  * Evaluate the energy for the EAM model using the P2EAM potential.  This
@@ -26,7 +28,7 @@ public class PotentialCalculationEnergySumEAM extends PotentialCalculationEnergy
      * Adds to the energy sum the energy values obtained from application of the given potential to the
      * atoms.
      */
-    public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+    public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
         sum += potential.energy(atoms);
     }
     

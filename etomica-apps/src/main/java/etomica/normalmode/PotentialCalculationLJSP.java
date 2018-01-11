@@ -4,13 +4,15 @@
 
 package etomica.normalmode;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.box.Box;
 import etomica.potential.IPotentialAtomic;
 import etomica.potential.Potential2SoftSpherical;
 import etomica.potential.PotentialCalculation;
 import etomica.space.Space;
 import etomica.space.Vector;
+
+import java.util.List;
 
 public class PotentialCalculationLJSP implements PotentialCalculation {
 		
@@ -38,7 +40,7 @@ public class PotentialCalculationLJSP implements PotentialCalculation {
         volume = coordinateDefinition.getBox().getBoundary().volume();
         nMol = coordinateDefinition.getBox().getLeafList().size();
 	}
-	public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+	public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
 		Potential2SoftSpherical potentialSoft = (Potential2SoftSpherical)potential;
         Vector[] g = potentialSoft.gradient(atoms);// gradient do nearestImage() !!!
         int nNbrAtoms = atoms.size();

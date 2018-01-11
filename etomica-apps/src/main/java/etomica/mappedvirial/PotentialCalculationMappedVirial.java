@@ -7,7 +7,6 @@ package etomica.mappedvirial;
 import etomica.atom.AtomLeafAgentManager;
 import etomica.atom.AtomPair;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.integrator.IntegratorVelocityVerlet.MyAgent;
 import etomica.potential.*;
@@ -15,6 +14,8 @@ import etomica.simulation.Simulation;
 import etomica.space.Space;
 import etomica.space.Vector;
 import etomica.space3d.Space3D;
+
+import java.util.List;
 
 //import etomica.potential.P2SoftSphericalTruncatedForceShifted;
 
@@ -145,7 +146,7 @@ public class PotentialCalculationMappedVirial implements PotentialCalculation {
         sum = 0;
     }
     
-    public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+    public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
         if (!(potential instanceof Potential2SoftSpherical)) return;
         Potential2SoftSpherical p2 = (Potential2SoftSpherical)potential;
         IAtom a = atoms.get(0);

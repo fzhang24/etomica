@@ -6,7 +6,7 @@ package etomica.normalmode;
 
 import etomica.action.BoxInflate;
 import etomica.action.MoleculeActionTranslateTo;
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.atom.iterator.AtomIterator;
 import etomica.atom.iterator.AtomIteratorLeafAtoms;
 import etomica.box.Box;
@@ -26,6 +26,8 @@ import etomica.space.Vector;
 import etomica.units.dimensions.Dimension;
 import etomica.units.dimensions.Pressure;
 import etomica.util.random.IRandom;
+
+import java.util.List;
 
 /**
  * Monte Carlo volume-change move for simulations of crystalline solids in the
@@ -133,8 +135,8 @@ public class MCMoveVolumeMonoclinicScaled extends MCMoveBoxStep {
         if (uOld == Double.POSITIVE_INFINITY) {
             PotentialCalculationEnergySum myPcSum = new PotentialCalculationEnergySum() {
 
-                public void doCalculation(IAtomList atoms,
-                        IPotentialAtomic potential) {
+                public void doCalculation(List<IAtom> atoms,
+                                          IPotentialAtomic potential) {
                     super.doCalculation(atoms, potential);
                     if (sum == Double.POSITIVE_INFINITY && !found) {
                         System.out.println("atoms "+atoms+" are overlapping");

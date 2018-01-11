@@ -17,6 +17,8 @@ import etomica.potential.PotentialCalculationForceSum;
 import etomica.space.Space;
 import etomica.space.Vector;
 
+import java.util.List;
+
 public class PotentialCalculationForceSumThreaded extends PotentialCalculationForceSum implements IPotentialCalculationThreaded, AgentSource<MyAgent> {
 
 	final protected PotentialCalculationForceSum[] pc;
@@ -47,7 +49,7 @@ public class PotentialCalculationForceSumThreaded extends PotentialCalculationFo
 		
 	}
 	
-	public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+	public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
 		throw new RuntimeException("This is not the correct 'doCalculation' to call.");
 	}
 	

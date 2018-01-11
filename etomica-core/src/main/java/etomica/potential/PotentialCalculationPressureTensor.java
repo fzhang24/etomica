@@ -4,12 +4,15 @@
 
 package etomica.potential;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomKinetic;
 import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.integrator.IntegratorBox;
 import etomica.space.Space;
 import etomica.space.Tensor;
+
+import java.util.List;
 
 /**
  * Calculates the pressure tensor by calculating the force on each atom, along
@@ -51,7 +54,7 @@ public class PotentialCalculationPressureTensor implements PotentialCalculation 
 	 * Adds the pressure tensor contribution based on the forces acting on each
      * pair of atoms produced by the iterator.
 	 */
-	public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+	public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
 		((PotentialSoft)potential).gradient(atoms, pressureTensor);
 	}
 

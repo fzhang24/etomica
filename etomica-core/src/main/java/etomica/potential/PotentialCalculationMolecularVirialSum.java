@@ -4,8 +4,10 @@
 
 package etomica.potential;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.molecule.IMoleculeList;
+
+import java.util.List;
 
 /**
  * Evaluates the virial summed over all iterated molecules.
@@ -15,7 +17,7 @@ import etomica.molecule.IMoleculeList;
 public class PotentialCalculationMolecularVirialSum implements PotentialCalculationMolecular {
 		
 	
-	public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+	public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
 		// TODO Auto-generated method stub
 		
 	}

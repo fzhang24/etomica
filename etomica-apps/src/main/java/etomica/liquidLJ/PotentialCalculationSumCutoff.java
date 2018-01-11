@@ -4,7 +4,7 @@
 
 package etomica.liquidLJ;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.box.Box;
 import etomica.potential.IPotentialAtomic;
 import etomica.potential.Potential2SoftSpherical;
@@ -12,6 +12,8 @@ import etomica.potential.PotentialCalculation;
 import etomica.space.Boundary;
 import etomica.space.Space;
 import etomica.space.Vector;
+
+import java.util.List;
 
 /**
  * Evaluates the energy summed over all iterated atoms. Each call to doCalculate
@@ -43,7 +45,7 @@ public class PotentialCalculationSumCutoff implements PotentialCalculation {
 	 * Adds to the energy sum the energy values obtained from application of the given potential to the
 	 * atoms produced by the given iterator.  Iterator is reset by method before beginning calculation.
 	 */
-	public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+	public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
         dr.Ev1Mv2(atoms.get(1).getPosition(),atoms.get(0).getPosition());
         boundary.nearestImage(dr);
         double r2 = dr.squared();

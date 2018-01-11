@@ -595,7 +595,7 @@ public class IntegratorHard extends IntegratorMD implements INeighborListListene
         }//end of setAtom
 
         //atom pair
-        public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+        public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
             PotentialHard pHard = (PotentialHard)potential;
             if(atoms.get(0) != atom1) setAtom(atoms.get(0)); //need this if doing minimum collision time calculation for more than one atom
             double collisionTime = pHard.collisionTime(atoms,collisionTimeStep);
@@ -629,7 +629,7 @@ public class IntegratorHard extends IntegratorMD implements INeighborListListene
             integratorAgentManager = newAgentManager;
         }
 
-		public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+		public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
 			if (atoms.size() != 2) return;
             PotentialHard pHard = (PotentialHard)potential;
 
@@ -671,7 +671,7 @@ public class IntegratorHard extends IntegratorMD implements INeighborListListene
             integratorAgentManager = newAgentManager;
         }
 
-        public void doCalculation(IAtomList pair, IPotentialAtomic p) {
+        public void doCalculation(List<IAtom> pair, IPotentialAtomic p) {
             if (pair.size() != 2) return;
             // look for pairs in which pair[0] is the collision partner of pair[1]
             IAtom aPartner = integratorAgentManager.getAgent(pair.get(0)).collisionPartner();

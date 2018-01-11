@@ -5,12 +5,14 @@
 package etomica.modules.rosmosis;
 
 import etomica.atom.AtomLeafAgentManager;
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.integrator.IntegratorBox;
 import etomica.molecule.IMoleculeList;
 import etomica.molecule.MoleculeAgentManager;
 import etomica.potential.*;
 import etomica.space.Vector;
+
+import java.util.List;
 
 /**
  * Sums the force and torque on each iterated atom or molecule and adds it to
@@ -97,7 +99,7 @@ public class PotentialCalculationTorqueSumWallForce extends PotentialCalculation
         }
     }
 
-    public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+    public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
         int nBody = potential.nBody();
         if(potential instanceof IPotentialTorque) {
             // IPotentialTorque will give us gradient and torque in one call

@@ -5,7 +5,6 @@
 package etomica.normalmode;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.potential.IPotentialAtomic;
 import etomica.potential.Potential2SoftSpherical;
@@ -13,6 +12,8 @@ import etomica.potential.PotentialCalculation;
 import etomica.space.Boundary;
 import etomica.space.Space;
 import etomica.space.Vector;
+
+import java.util.List;
 
 /**
  * Sums the force on each iterated atom and adds it to the integrator agent
@@ -71,7 +72,7 @@ public class PotentialCalculationSolidSuperCut implements PotentialCalculation {
      * Adds forces due to given potential acting on the atoms produced by the iterator.
      * Implemented for only 1- and 2-body potentials.
      */
-    public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+    public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
         IAtom atom0 = atoms.get(0);
         IAtom atom1 = atoms.get(1);
         Vector site0 = coordinateDefinition.getLatticePosition(atom0);

@@ -5,7 +5,6 @@
 package etomica.data.meter;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.data.DataSourceUniform;
 import etomica.data.DataSourceUniform.LimitType;
@@ -15,6 +14,8 @@ import etomica.space.Boundary;
 import etomica.space.Space;
 import etomica.space.Vector;
 import etomica.units.dimensions.Length;
+
+import java.util.List;
 
 /**
  * PotentialCalculation that simply does the work of collecting an RDF.
@@ -58,7 +59,7 @@ public class PotentialCalculationRDF implements PotentialCalculation {
         gSum = new long[xDataSource.getData().getLength()];
     }
 
-    public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+    public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
         IAtom atom0 = atoms.get(0);
         IAtom atom1 = atoms.get(1);
         dr.Ev1Mv2(atom0.getPosition(), atom1.getPosition());

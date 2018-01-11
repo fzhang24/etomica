@@ -4,7 +4,7 @@
 
 package etomica.normalmode;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.box.Box;
 import etomica.meam.PotentialCuLREP;
 import etomica.meam.PotentialEAM;
@@ -14,6 +14,8 @@ import etomica.potential.IPotentialAtomic;
 import etomica.potential.PotentialCalculation;
 import etomica.space.Space;
 import etomica.space.Vector;
+
+import java.util.List;
 
 public class PotentialCalculationEFSSP implements PotentialCalculation {
 		
@@ -36,7 +38,7 @@ public class PotentialCalculationEFSSP implements PotentialCalculation {
         nMol = coordinateDefinition.getBox().getLeafList().size();
 	}
 
-	public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+	public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
         int nNbrAtoms = atoms.size();
 		Vector[] g = null;
 		if(isLS){

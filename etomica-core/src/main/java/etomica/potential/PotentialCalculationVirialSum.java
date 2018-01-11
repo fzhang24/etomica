@@ -4,7 +4,9 @@
 
 package etomica.potential;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
+
+import java.util.List;
 
 /**
  * Evaluates the virial summed over all iterated atoms.
@@ -17,7 +19,7 @@ public class PotentialCalculationVirialSum implements PotentialCalculation {
 	 * Adds to the virial sum the energy values obtained from application of the given potential to the
 	 * atoms produced by the given iterator.  Iterator is reset by method before beginning calculation.
 	 */
-	public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+	public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
         if (!(potential instanceof PotentialSoft)) {
             return;
         }

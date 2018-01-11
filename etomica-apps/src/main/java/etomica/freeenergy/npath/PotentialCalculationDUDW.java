@@ -3,9 +3,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 package etomica.freeenergy.npath;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.potential.IPotentialAtomic;
 import etomica.potential.PotentialCalculation;
+
+import java.util.List;
 
 /**
  * Potential calculation whose sole purpose in life is to invoke getDUDW
@@ -25,7 +27,7 @@ public class PotentialCalculationDUDW implements PotentialCalculation {
     }
 
     @Override
-    public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+    public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
         if (!(potential instanceof P1ImageHarmonic)) return;
         sum += ((P1ImageHarmonic)potential).getDUDW(atoms);
     }

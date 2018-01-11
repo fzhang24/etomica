@@ -4,11 +4,13 @@
 
 package etomica.modules.sam;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.potential.IPotentialAtomic;
 import etomica.potential.PotentialCalculationForceSum;
 import etomica.potential.PotentialSoft;
 import etomica.space.Vector;
+
+import java.util.List;
 
 public class PotentialCalculationForceSumWall extends
         PotentialCalculationForceSum {
@@ -30,7 +32,7 @@ public class PotentialCalculationForceSumWall extends
         return wallForceSum;
     }
     
-    public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+    public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
         PotentialSoft potentialSoft = (PotentialSoft)potential;
         int nBody = potential.nBody();
         Vector[] f = potentialSoft.gradient(atoms);

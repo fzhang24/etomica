@@ -4,12 +4,14 @@
 
 package etomica.modules.materialfracture;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.potential.IPotentialAtomic;
 import etomica.potential.PotentialCalculationForcePressureSum;
 import etomica.potential.PotentialSoft;
 import etomica.space.Space;
 import etomica.space.Vector;
+
+import java.util.List;
 
 public class PotentialCalculationForceStress extends
         PotentialCalculationForcePressureSum {
@@ -31,7 +33,7 @@ public class PotentialCalculationForceStress extends
      * Adds forces due to given potential acting on the atoms produced by the iterator.
      * Implemented for only 1- and 2-body potentials.
      */
-    public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+    public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
         PotentialSoft potentialSoft = (PotentialSoft)potential;
         int nBody = potential.nBody();
         Vector[] f = potentialSoft.gradient(atoms, pressureTensor);

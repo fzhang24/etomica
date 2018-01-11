@@ -4,9 +4,11 @@
 
 package etomica.liquidLJ;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.potential.IPotentialAtomic;
 import etomica.potential.PotentialCalculation;
+
+import java.util.List;
 
 /**
  * Evaluates the energy summed over all iterated atoms. Each call to doCalculate
@@ -27,7 +29,7 @@ public class PotentialCalculationSumCutoffLS implements PotentialCalculation {
 	 * Adds to the energy sum the energy values obtained from application of the given potential to the
 	 * atoms produced by the given iterator.  Iterator is reset by method before beginning calculation.
 	 */
-	public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+	public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
 	    if (!(potential instanceof Potential2SoftSphericalLSMulti)) return;
 	    Potential2SoftSphericalLSMulti p2 = (Potential2SoftSphericalLSMulti)potential;
         double[][] ijSums = p2.energyVirialCut(atoms);

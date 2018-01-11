@@ -4,8 +4,10 @@
 
 package etomica.potential;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.molecule.IMoleculeList;
+
+import java.util.List;
 
 /**
  * Evaluates the energy summed over all iterated atoms. Each call to doCalculate
@@ -24,7 +26,7 @@ public class PotentialCalculationEnergySum implements PotentialCalculation, Pote
 	 * Adds to the energy sum the energy values obtained from application of the given potential to the
 	 * atoms.
 	 */
-	public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+	public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
 	    sum += potential.energy(atoms);
 	    if (debug && Double.isInfinite(sum) || Double.isNaN(sum)) {
 	        System.err.println("unhappy energy "+sum+" for "+atoms);

@@ -4,11 +4,12 @@
 
 package etomica.potential;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.molecule.IMoleculeList;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.util.List;
 
 /**
  * Mimics original PotentialEnergySum calculation, but uses a BigDecimal
@@ -29,7 +30,7 @@ public class PotentialCalculationEnergySumBigDecimal extends PotentialCalculatio
 	 * Adds to the energy sum the energy values obtained from application of the given potential to the
 	 * atoms produced by the given iterator.  Iterator is reset by method before beginning calculation.
 	 */
-	public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+	public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
 	    BigDecimal u = new BigDecimal(potential.energy(atoms), mc);
 	    sum = sum.add(u); 
 	}

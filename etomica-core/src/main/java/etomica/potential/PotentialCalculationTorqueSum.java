@@ -5,13 +5,14 @@
 package etomica.potential;
 
 import etomica.atom.AtomLeafAgentManager;
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.integrator.Integrator;
 import etomica.integrator.IntegratorBox;
 import etomica.molecule.IMoleculeList;
 import etomica.molecule.MoleculeAgentManager;
 import etomica.space.Vector;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 /**
@@ -110,7 +111,7 @@ public class PotentialCalculationTorqueSum implements PotentialCalculationMolecu
      * Adds forces and torques due to given potential acting on the atoms produced by the iterator.
      * Implemented for 1-, 2- and N-body potentials.
      */
-    public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+    public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
         int nBody = potential.nBody();
 	    if (potential instanceof IPotentialTorque) {
 	        // IPotentialTorque will give us gradient and torque in one call

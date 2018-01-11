@@ -4,12 +4,14 @@
 
 package etomica.normalmode;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.liquidLJ.Potential2SoftSphericalLSMultiLat;
 import etomica.liquidLJ.Potential2SoftSphericalLSMultiLat.ReturnValue;
 import etomica.potential.IPotentialAtomic;
 import etomica.space.Space;
 import etomica.space.Vector;
+
+import java.util.List;
 
 /**
  * Sums the force on each iterated atom and adds it to the integrator agent
@@ -25,7 +27,7 @@ public class PotentialCalculationSolidSuperCutLS extends PotentialCalculationSol
      * Adds forces due to given potential acting on the atoms produced by the iterator.
      * Implemented for only 1- and 2-body potentials.
      */
-    public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+    public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
         if (!(potential instanceof Potential2SoftSphericalLSMultiLat)) return;
         Potential2SoftSphericalLSMultiLat potentialSoft = (Potential2SoftSphericalLSMultiLat)potential;
         ReturnValue rv = potentialSoft.energyVirialCut(atoms);

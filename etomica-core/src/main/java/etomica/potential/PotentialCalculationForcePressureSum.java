@@ -4,10 +4,12 @@
 
 package etomica.potential;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.space.Space;
 import etomica.space.Tensor;
 import etomica.space.Vector;
+
+import java.util.List;
 
 /**
  * Sums the force on each iterated atom and adds it to the integrator agent
@@ -38,7 +40,7 @@ public class PotentialCalculationForcePressureSum extends PotentialCalculationFo
 	 * Adds forces due to given potential acting on the atoms produced by the iterator.
 	 * Implemented for only 1- and 2-body potentials.
 	 */
-	public void doCalculation(IAtomList atoms, IPotentialAtomic potential) {
+	public void doCalculation(List<IAtom> atoms, IPotentialAtomic potential) {
 	    if (!(potential instanceof PotentialSoft)) return;
 		PotentialSoft potentialSoft = (PotentialSoft)potential;
 		int nBody = potential.nBody();
