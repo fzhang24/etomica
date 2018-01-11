@@ -7,9 +7,10 @@ package etomica.atom.iterator;
 
 import etomica.atom.AtomsetArray;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.molecule.IMolecule;
 import etomica.molecule.IMoleculeList;
+
+import java.util.List;
 
 /**
  * Atomset Iterator that iterates over set-of-three atoms
@@ -130,7 +131,7 @@ public class Atomset3IteratorIndexList implements AtomsetIteratorBasisDependent 
     /**
      * Same as nextSet().
      */
-    public IAtomList next() {
+    public List<IAtom> next() {
         return nextSet();
     }
 

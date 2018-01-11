@@ -498,7 +498,7 @@ public class MCMoveInsertDeleteLatticeVacancy extends MCMoveInsertDeleteBiased i
             return a;
         }
 
-        public IAtomList next() {
+        public List<IAtom> next() {
             // don't be silly
             return null;
         }
@@ -540,14 +540,14 @@ public class MCMoveInsertDeleteLatticeVacancy extends MCMoveInsertDeleteBiased i
         }
 
         public IAtom nextAtom() {
-            IAtomList pair = api.next();
+            List<IAtom> pair = api.next();
             if (pair==null) return null;
             IAtom a = pair.get(0);
             if (a==myAtom) a = pair.get(1);
             return a;
         }
 
-        public IAtomList next() {
+        public List<IAtom> next() {
             // don't be silly
             return null;
         }
@@ -606,7 +606,7 @@ public class MCMoveInsertDeleteLatticeVacancy extends MCMoveInsertDeleteBiased i
             return 1;
         }
         
-        public IAtomList next() {
+        public List<IAtom> next() {
             IAtom n = nextAtom();
             if (n==null) return null;
             singlet.atom = n;

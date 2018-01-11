@@ -8,6 +8,8 @@ import etomica.atom.*;
 import etomica.potential.IteratorDirective;
 import etomica.potential.IteratorDirective.Direction;
 
+import java.util.List;
+
 
 /**
  * Returns one or both of the atoms adjacent to a specified atom in
@@ -64,7 +66,7 @@ public class AtomIteratorArrayListAdjacent implements AtomIteratorAtomDependent,
     /**
      * Same as nextAtom.
      */
-    public IAtomList next() {
+    public List<IAtom> next() {
         atomSetSinglet.atom = nextAtom();
         if (atomSetSinglet.atom == null) return null;
         return atomSetSinglet;

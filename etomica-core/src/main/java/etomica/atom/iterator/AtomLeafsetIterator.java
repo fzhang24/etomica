@@ -4,7 +4,9 @@
 
 package etomica.atom.iterator;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
+
+import java.util.List;
 
 /**
  * Interface for classes that loop over a set of atoms. Permits
@@ -18,5 +20,5 @@ public interface AtomLeafsetIterator extends AtomsetIterator {
 	/**
 	 * Returns the next AtomSet iterate, or null if hasNext() is false.
 	 */
-    public IAtomList next();
+    public List<IAtom> next();
 }

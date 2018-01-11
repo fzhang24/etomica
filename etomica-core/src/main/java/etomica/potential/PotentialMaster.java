@@ -7,7 +7,6 @@ package etomica.potential;
 import etomica.atom.AtomArrayList;
 import etomica.atom.AtomType;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.atom.iterator.AtomsetIteratorBasisDependent;
 import etomica.box.Box;
 import etomica.chem.models.Model;
@@ -383,7 +382,7 @@ public class PotentialMaster {
             return 0;
         }
 
-        public IAtomList next() {
+        public List<IAtom> next() {
             if (finished) {
                 return null;
             }

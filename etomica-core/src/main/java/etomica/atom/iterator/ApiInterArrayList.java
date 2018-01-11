@@ -6,7 +6,10 @@ package etomica.atom.iterator;
 
 import etomica.atom.AtomArrayList;
 import etomica.atom.AtomPair;
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
+
+import java.util.List;
 
 /**
  * Returns all pairs formed from two different untabbed lists of atoms.
@@ -71,7 +74,7 @@ public class ApiInterArrayList implements AtomLeafsetIterator, java.io.Serializa
      * Returns the next iterate pair. Returns null if there are no more
      * iterates.
      */
-    public IAtomList next() {
+    public List<IAtom> next() {
         if (innerIndex > innerList.size() - 2) {
             if (outerIndex > outerList.size() - 2 || innerList.size() == 0) {
                 return null;

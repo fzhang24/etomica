@@ -16,6 +16,8 @@ import etomica.potential.IteratorDirective;
 import etomica.potential.PotentialCalculation;
 import etomica.potential.PotentialGroup;
 
+import java.util.List;
+
 public class PotentialGroupNbr extends PotentialGroup {
 
     private static final long serialVersionUID = 1L;
@@ -50,7 +52,7 @@ public class PotentialGroupNbr extends PotentialGroup {
             atomIterator.setBasis(atomSetSinglet);
             atomIterator.reset();
             final IPotentialAtomic potential = link.potential;
-            for (IAtomList atoms = atomIterator.next(); atoms != null;
+            for (List<IAtom> atoms = atomIterator.next(); atoms != null;
                  atoms = atomIterator.next()) {
                 pc.doCalculation(atoms, potential);
             }

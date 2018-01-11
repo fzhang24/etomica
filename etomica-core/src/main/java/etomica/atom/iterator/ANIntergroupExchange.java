@@ -11,6 +11,8 @@ import etomica.molecule.IMoleculeList;
 import etomica.molecule.MoleculePair;
 import etomica.molecule.MoleculeSetSinglet;
 
+import java.util.List;
+
 /**
  */
 public class ANIntergroupExchange implements AtomsetIteratorBasisDependent {
@@ -38,7 +40,7 @@ public class ANIntergroupExchange implements AtomsetIteratorBasisDependent {
         return 3;
     }
 
-    public IAtomList next() {
+    public List<IAtom> next() {
     	//find all corresponding triplets from two polymers: one from polymer 1 and two from polymer 2, and vice versa
     	// if possible, we begin by extracting pairs from polymer 0
     	atoms.clear();
@@ -158,5 +160,5 @@ public class ANIntergroupExchange implements AtomsetIteratorBasisDependent {
     protected final int P;
     protected ANIntragroupExchange anIntragroupExchange;
     protected boolean stillOnPolymer0;
-    protected IAtomList pair;
+    protected List<IAtom> pair;
 }

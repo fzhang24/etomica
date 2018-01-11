@@ -10,6 +10,7 @@ import etomica.atom.IAtomList;
 import etomica.molecule.IMoleculeList;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Iterator that returns coupled iterates of any size; the first set contains
@@ -39,7 +40,7 @@ public class ANIntergroupCoupled implements AtomsetIteratorBasisDependent {
         return nBody;
     }
 
-    public IAtomList next() {
+    public List<IAtom> next() {
         if (counter >= nLeafAtoms) {
             return null;
         }

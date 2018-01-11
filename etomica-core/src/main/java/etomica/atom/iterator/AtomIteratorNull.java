@@ -5,9 +5,9 @@
 package etomica.atom.iterator;
 
 import java.io.Serializable;
+import java.util.List;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 
 /**
  * Static iterator that returns no atoms.
@@ -18,7 +18,7 @@ public final class AtomIteratorNull implements AtomIterator, Serializable {
     // prevent instantiation.  Consumers should use the INSTANCE field.
     private AtomIteratorNull() {}
     
-    public IAtomList next() {return null;}
+    public List<IAtom> next() {return null;}
 
     public IAtom nextAtom() {return null;}
 

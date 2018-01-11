@@ -5,8 +5,9 @@
 package etomica.atom.iterator;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.molecule.IMoleculeList;
+
+import java.util.List;
 
 /**
  */
@@ -33,7 +34,7 @@ public class ApiIntergroupExchange extends ApiIntergroup {
      * every time, but the Atoms it holds are (of course) different for each
      * iterate.
      */
-    public IAtomList next() {
+    public List<IAtom> next() {
     	//Advance through first monomer of polymer1 and all of polymer 2; then second monomer of polymer1 and all of polymer 2, etc.
     
     	//outer = iterator over atoms in polymer 1 

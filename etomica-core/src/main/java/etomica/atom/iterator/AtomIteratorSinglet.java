@@ -5,8 +5,9 @@
 package etomica.atom.iterator;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.atom.AtomSetSinglet;
+
+import java.util.List;
 
 /**
  * Iterator that expires after returning a single atom, which is
@@ -80,7 +81,7 @@ public final class AtomIteratorSinglet implements AtomIteratorAtomDependent, jav
     	return atom;
     }
     
-    public IAtomList next() {
+    public List<IAtom> next() {
         atomSetSinglet.atom = nextAtom();
         if (atomSetSinglet.atom == null) return null;
         return atomSetSinglet;

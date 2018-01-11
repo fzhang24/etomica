@@ -9,7 +9,9 @@ import etomica.atom.IAtomList;
 import etomica.atom.AtomArrayList;
 import etomica.atom.AtomSetSinglet;
 
- /**
+import java.util.List;
+
+/**
   * An atom iterator of the elements from an AtomArrayList (in proper
   * sequence).  Iterator will fail if element are added to or removed 
   * from list while iteration is proceeding.
@@ -70,7 +72,7 @@ public class AtomIteratorArrayListSimple implements AtomIterator, java.io.Serial
     /**
      * Same as nextAtom().
      */
- 	public IAtomList next() {
+ 	public List<IAtom> next() {
         IAtom atom = nextAtom();
         if (atom == null) return null;
         atomSetSinglet.atom = atom;

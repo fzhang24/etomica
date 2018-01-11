@@ -4,10 +4,13 @@
 
 package etomica.atom.iterator;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.atom.AtomArrayList;
 import etomica.atom.AtomPair;
 import etomica.util.Debug;
+
+import java.util.List;
 
 /**
  * Returns all pairs formed from a single list of atoms.
@@ -64,7 +67,7 @@ public class ApiIntraArrayList implements AtomLeafsetIterator, java.io.Serializa
     /**
      * Returns the next iterate pair. Returns null if hasNext() is false.
      */
-    public IAtomList next() {
+    public List<IAtom> next() {
         if (innerIndex > list.size() - 2) {
             if (outerIndex > list.size() - 3) {
                 return null;

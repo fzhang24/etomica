@@ -8,6 +8,8 @@ import etomica.atom.AtomType;
 import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 
+import java.util.List;
+
 public class AtomIteratorBasisFilteredType extends AtomIteratorBasis {
 
     private static final long serialVersionUID = 1L;
@@ -29,8 +31,8 @@ public class AtomIteratorBasisFilteredType extends AtomIteratorBasis {
         return null;
     }
 
-    public IAtomList next() {
-        IAtomList atom = super.next();
+    public List<IAtom> next() {
+        List<IAtom> atom = super.next();
         while (atom != null) {
             if (atom.get(0).getType() == filteredType) {
                 return atom;

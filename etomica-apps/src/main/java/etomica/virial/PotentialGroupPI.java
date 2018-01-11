@@ -4,11 +4,14 @@
 
 package etomica.virial;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.molecule.IMoleculeList;
 import etomica.potential.IPotentialMolecular;
 import etomica.potential.PotentialGroup;
+
+import java.util.List;
 
 /**
  * PotentialGroup that calculates the energy between PI molecule pairs.
@@ -63,7 +66,7 @@ public class PotentialGroupPI extends PotentialGroup {
                 link.iterator.setBasis(molecules);
                 link.iterator.reset();
                 int i=0;
-                for (IAtomList atoms = link.iterator.next(); atoms != null; atoms = link.iterator.next()) {
+                for (List<IAtom> atoms = link.iterator.next(); atoms != null; atoms = link.iterator.next()) {
                     uBeads[i%beadFac][thisPairID] += link.potential.energy(atoms);
                     i++;
                 }

@@ -5,6 +5,7 @@
 package etomica.graphics;
 
 import java.awt.Color;
+import java.util.List;
 
 import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
@@ -38,7 +39,7 @@ public class ColorSchemeNeighborCell extends ColorSchemeCollectiveAgent {
         }
         //color blue the neighbor atoms in same group
         nbrIterator.reset();
-        for (IAtomList pair = nbrIterator.next(); pair != null;
+        for (List<IAtom> pair = nbrIterator.next(); pair != null;
              pair = nbrIterator.next()) {
             IAtom atom = pair.get(1);
             if(atom.getType() == referenceAtom.getType()) {

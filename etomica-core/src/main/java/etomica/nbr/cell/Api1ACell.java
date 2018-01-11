@@ -7,7 +7,6 @@ package etomica.nbr.cell;
 import etomica.atom.AtomPair;
 import etomica.atom.AtomToAtomSetFixed;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.atom.iterator.AtomIterator;
 import etomica.atom.iterator.AtomIteratorArrayList;
 import etomica.atom.iterator.AtomIteratorArrayListSimple;
@@ -17,6 +16,8 @@ import etomica.box.BoxAgentManager;
 import etomica.lattice.CellLattice;
 import etomica.potential.IteratorDirective;
 import etomica.potential.IteratorDirective.Direction;
+
+import java.util.List;
 
 /**
  * Generates pairs that are cell-based neighbors of a specific Atom. Iteration is
@@ -79,7 +80,7 @@ public class Api1ACell implements AtomsetIteratorPDT, AtomsetIteratorCellular,
         return count;
 	}
 
-    public IAtomList next() {
+    public List<IAtom> next() {
         IAtom innerAtom = aiInner.nextAtom();
         if (innerAtom == null) {
             innerAtom = advanceLists();

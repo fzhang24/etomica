@@ -17,6 +17,8 @@ import etomica.space.Space;
 import etomica.space.Vector;
 import etomica.util.random.IRandom;
 
+import java.util.List;
+
 /**
  * Standard Monte Carlo atom-displacement trial move.
  *
@@ -81,7 +83,7 @@ public class MCMoveDimer extends MCMoveBoxStep {
         neighborIterator.reset();
         IAtom atom0 = atom;
         atom1 = null;
-        for (IAtomList pair = neighborIterator.next(); pair != null;
+        for (List<IAtom> pair = neighborIterator.next(); pair != null;
              pair = neighborIterator.next()) {
         	 atom1 = pair.get(1);
         	dr.Ev1Mv2(atom0.getPosition(),atom1.getPosition());

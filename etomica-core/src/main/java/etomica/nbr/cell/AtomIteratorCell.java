@@ -5,7 +5,6 @@
 package etomica.nbr.cell;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.atom.AtomSetSinglet;
 import etomica.atom.iterator.AtomIterator;
@@ -13,6 +12,8 @@ import etomica.atom.iterator.AtomIteratorArrayListSimple;
 import etomica.box.BoxAgentManager;
 import etomica.lattice.CellLattice;
 import etomica.lattice.RectangularLattice;
+
+import java.util.List;
 
 /**
  * Returns occupants of all cells as iterates.
@@ -58,7 +59,7 @@ public class AtomIteratorCell implements AtomIterator, java.io.Serializable {
         throw new RuntimeException("jfdka");
     }
     
-    public final IAtomList next() {
+    public final List<IAtom> next() {
         atomSetSinglet.atom = nextAtom();
         return atomSetSinglet;
     }

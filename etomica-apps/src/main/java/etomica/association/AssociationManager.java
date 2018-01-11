@@ -17,6 +17,8 @@ import etomica.nbr.cell.PotentialMasterCell;
 import etomica.util.IEvent;
 import etomica.util.IListener;
 
+import java.util.List;
+
 /**
  * Class to define and track atom associations.  Constructed given an iterator
  * that defines the set of atoms that is managed, and an association definition
@@ -104,7 +106,7 @@ public class AssociationManager implements AgentSource<AtomArrayList>,IListener 
         	
         	neighborIterator.setTarget(atomi);
         	neighborIterator.reset();
-        	for (IAtomList atomij = neighborIterator.next();atomij != null; atomij =neighborIterator.next()){
+        	for (List<IAtom> atomij = neighborIterator.next(); atomij != null; atomij =neighborIterator.next()){
             	IAtom atomj = atomij.get(0);
             	if (atomj == atomi){
             		atomj = atomij.get(1);

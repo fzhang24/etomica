@@ -10,6 +10,7 @@ import etomica.molecule.IMoleculeList;
 import etomica.potential.IteratorDirective;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Returns iterates from the childList of a single basis atom.  Behavior is set
@@ -110,9 +111,9 @@ public final class ApiIntragroup implements AtomsetIteratorBasisDependent, Atoms
 	    return count;
 	}
     
-    public IAtomList next() {
+    public List<IAtom> next() {
         if (upListNow) {
-            IAtomList next = apiUp.next();
+            List<IAtom> next = apiUp.next();
             if (next != null || !doGoDown) {
                 return next;
             }

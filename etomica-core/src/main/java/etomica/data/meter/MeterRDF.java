@@ -6,6 +6,7 @@ package etomica.data.meter;
 
 import etomica.action.IAction;
 import etomica.atom.AtomType;
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.atom.iterator.ApiLeafAtoms;
 import etomica.atom.iterator.AtomsetIteratorBoxDependent;
@@ -21,6 +22,8 @@ import etomica.space.Space;
 import etomica.space.Vector;
 import etomica.units.dimensions.Length;
 import etomica.units.dimensions.Null;
+
+import java.util.List;
 
 /**
  * Meter for tabulation of the atomic radial distribution function (RDF).  The
@@ -116,7 +119,7 @@ public class MeterRDF implements IAction, IDataSource, DataSourceIndependent, ja
         iterator.setBox(box);
         iterator.reset();
         // iterate over all pairs
-        for (IAtomList pair = iterator.next(); pair != null;
+        for (List<IAtom> pair = iterator.next(); pair != null;
              pair = iterator.next()) {
             if (type1 != null && (pair.get(0).getType() != type1 || pair.get(1).getType() != type2)) continue;
             dr.Ev1Mv2(pair.get(1).getPosition(),pair.get(0).getPosition());
@@ -152,7 +155,7 @@ public class MeterRDF implements IAction, IDataSource, DataSourceIndependent, ja
         else {
             iterator.setBox(box);
             iterator.reset();
-            for (IAtomList pair = iterator.next(); pair != null; pair = iterator.next()) {
+            for (List<IAtom> pair = iterator.next(); pair != null; pair = iterator.next()) {
                 if (pair.get(0).getType() != type1 || pair.get(1).getType() != type2) continue;
                 numAtomPairs++;
             }

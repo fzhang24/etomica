@@ -4,12 +4,15 @@
 
 package etomica.modules.pistoncylinder;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.space.Boundary;
 import etomica.space.Vector;
 import etomica.atom.iterator.ApiLeafAtoms;
 import etomica.atom.iterator.AtomsetIteratorBoxDependent;
 import etomica.potential.P1HardMovingBoundary;
+
+import java.util.List;
 
 
 /**
@@ -21,8 +24,8 @@ public class ApiFilteredCylinder extends ApiLeafAtoms implements AtomsetIterator
         this.filter = filter;
     }
 
-    public IAtomList next() {
-        IAtomList list = super.next();
+    public List<IAtom> next() {
+        List<IAtom> list = super.next();
         while (list != null && !filter.accept(list)) {
             list = super.next();
         }

@@ -6,10 +6,11 @@ package etomica.atom.iterator;
 
 import etomica.atom.AtomPair;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.molecule.IMoleculeList;
 import etomica.molecule.MoleculeSetSinglet;
 import etomica.util.Debug;
+
+import java.util.List;
 
 /**
  * Iterator that returns pairs formed using two different basis atoms, so that
@@ -81,7 +82,7 @@ public class ApiIntergroup implements AtomsetIteratorBasisDependent {
      * every time, but the Atoms it holds are (of course) different for each
      * iterate.
      */
-    public IAtomList next() {
+    public List<IAtom> next() {
         //Advance the inner loop, if it is not at its end.
         IAtom nextInner = aiInner.nextAtom();
         if (nextInner != null) {

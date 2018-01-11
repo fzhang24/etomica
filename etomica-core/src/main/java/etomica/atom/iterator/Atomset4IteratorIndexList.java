@@ -6,9 +6,10 @@ package etomica.atom.iterator;
 
 import etomica.atom.AtomsetArray;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.molecule.IMolecule;
 import etomica.molecule.IMoleculeList;
+
+import java.util.List;
 
 /**
  * Atomset Iterator that iterates over set-of-four atoms
@@ -121,7 +122,7 @@ public class Atomset4IteratorIndexList implements AtomsetIteratorBasisDependent 
     	cursor = 0;
     }
 
-    public IAtomList next() {
+    public List<IAtom> next() {
         if (!hasNext())
             return null;
         atoms[0] = parentGroup.getChildList().get(index[cursor][0]);

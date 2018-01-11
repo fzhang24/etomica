@@ -9,6 +9,8 @@ import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.box.Box;
 
+import java.util.List;
+
 public class AtomIteratorLeafFilteredType extends AtomIteratorLeafAtoms {
 
     private static final long serialVersionUID = 1L;
@@ -30,8 +32,8 @@ public class AtomIteratorLeafFilteredType extends AtomIteratorLeafAtoms {
         return null;
     }
 
-    public IAtomList next() {
-        IAtomList atom = super.next();
+    public List<IAtom> next() {
+        List<IAtom> atom = super.next();
         while (atom != null) {
             if (atom.get(0).getType() == filteredType) {
                 return atom;

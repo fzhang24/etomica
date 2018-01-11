@@ -10,7 +10,6 @@ package etomica.nbr.site;
 
 import etomica.atom.AtomPair;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.atom.iterator.AtomsetIteratorPDT;
 import etomica.box.Box;
 import etomica.box.BoxAgentManager;
@@ -19,6 +18,8 @@ import etomica.lattice.RectangularLatticeNbrIterator;
 import etomica.lattice.RectangularLatticeNbrIteratorAdjacent;
 import etomica.potential.IteratorDirective;
 import etomica.potential.IteratorDirective.Direction;
+
+import java.util.List;
 
 /**
  * Iteration is performed using site lists.
@@ -65,7 +66,7 @@ public class Api1ASite implements AtomsetIteratorPDT, java.io.Serializable {
         return count;
 	}
 	
-    public IAtomList next() {
+    public List<IAtom> next() {
         if (upListNow) {
             if (neighborIterator.hasNext()) {
                 pair.atom1 = ((AtomSite)neighborIterator.next()).getAtom();

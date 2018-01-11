@@ -8,6 +8,8 @@ import etomica.atom.*;
 import etomica.box.Box;
 import etomica.potential.IteratorDirective.Direction;
 
+import java.util.List;
+
 /**
  * Iterator for all the molecules of a set of species in a box.  Each iterate
  * is all the molecules in a box, with each Atom as the first atom in the 
@@ -79,7 +81,7 @@ public class AtomIteratorAllLeafType implements AtomsetIteratorBoxDependent,
         next.clear();
     }
 
-    public IAtomList next() {
+    public List<IAtom> next() {
         if (nextCursor + 1 > next.size()) {
             return null;
         }

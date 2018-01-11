@@ -5,6 +5,7 @@
 package etomica.nbr.cell;
 
 import etomica.atom.AtomArrayList;
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.atom.iterator.ApiInterArrayList;
 import etomica.atom.iterator.ApiIntraArrayList;
@@ -13,6 +14,8 @@ import etomica.box.Box;
 import etomica.lattice.CellLattice;
 import etomica.lattice.RectangularLattice;
 import etomica.potential.IteratorDirective;
+
+import java.util.List;
 
 /**
  * Returns iterates formed from all cell-based neighbor pairs.
@@ -94,14 +97,14 @@ public class ApiAACell implements AtomsetIteratorCellular, java.io.Serializable 
     
     // Moves to next pair of lists that can provide an iterate
     // This should be invoked only if listIterator.hasNext is false
-    private IAtomList advanceLists() {
+    private List<IAtom> advanceLists() {
         do {
               //advance neighbor cell
             if(neighborIterator.hasNext()) {
                 interListIterator.setInnerList(((Cell)neighborIterator.next()).occupants());
                 listIterator = interListIterator;
                 interListIterator.reset();
-                IAtomList pair = listIterator.next();
+                List<IAtom> pair = listIterator.next();
                 if (pair != null) {
                     return pair;
                 }

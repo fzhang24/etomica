@@ -9,6 +9,8 @@ import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.molecule.IMoleculeList;
 
+import java.util.List;
+
 /**
  */
 public class ANIntragroupExchange implements AtomsetIteratorBasisDependent {
@@ -42,7 +44,7 @@ public class ANIntragroupExchange implements AtomsetIteratorBasisDependent {
         return nBody;
     }
 
-    public IAtomList next() {
+    public List<IAtom> next() {
         if (done[0]==1) {
             return null;
         }

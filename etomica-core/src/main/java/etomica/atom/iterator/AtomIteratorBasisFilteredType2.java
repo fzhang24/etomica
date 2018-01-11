@@ -8,6 +8,8 @@ import etomica.atom.AtomType;
 import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 
+import java.util.List;
+
 /**
  * This iterator returns atoms that are one of two types.  This can be used to
  * construct an ApiIntergroupIntraSpecies iterator.
@@ -36,8 +38,8 @@ public class AtomIteratorBasisFilteredType2 extends AtomIteratorBasis {
         return null;
     }
 
-    public IAtomList next() {
-        IAtomList atom = super.next();
+    public List<IAtom> next() {
+        List<IAtom> atom = super.next();
         while (atom != null) {
             AtomType t = atom.get(0).getType();
             if (t == filteredType1 || t == filteredType2) {

@@ -6,8 +6,9 @@ package etomica.atom.iterator;
 
 import etomica.atom.AtomArrayList;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.molecule.IMoleculeList;
+
+import java.util.List;
 
 /**
  * Iterator for all the molecules of a set of species in a box.  Each iterate
@@ -43,7 +44,7 @@ public class AtomsetIteratorAllLeafAtoms implements AtomsetIteratorBasisDependen
         next.clear();
     }
 
-    public IAtomList next() {
+    public List<IAtom> next() {
         if (!next.isEmpty()) {
             return null;
         }

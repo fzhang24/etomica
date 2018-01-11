@@ -5,8 +5,9 @@
 package etomica.atom.iterator;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.atom.AtomPair;
+
+import java.util.List;
 
 /**
  * Pair iterator synthesized from two atom iterators, such that the inner-loop
@@ -124,7 +125,7 @@ public class ApiInnerVariable implements AtomLeafsetIterator, java.io.Serializab
      * every time, but the Atoms it holds are (of course) different for each
      * iterate.
      */
-    public IAtomList next() {
+    public List<IAtom> next() {
         IAtom nextInner = aiInner.nextAtom();
         while (nextInner == null) {
             IAtom nextOuter = aiOuter.nextAtom();

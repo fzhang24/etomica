@@ -6,9 +6,10 @@ package etomica.atom.iterator;
 
 import etomica.atom.AtomPair;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.molecule.IMolecule;
 import etomica.molecule.IMoleculeList;
+
+import java.util.List;
 
 /**
  * Iterator that returns intramolecular pairs of atoms with specific indices.
@@ -106,7 +107,7 @@ public class ApiIndexList implements AtomsetIteratorBasisDependent {
     /**
      * Returns the iterator's pair and unsets iterator.
      */
-    public IAtomList next() {
+    public List<IAtom> next() {
         if (target != null){
             int[][] tPartners = partners[target.getIndex()];
             int t0Length = tPartners[0].length;

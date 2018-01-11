@@ -365,7 +365,7 @@ public class SimLJVacancy extends Simulation {
                     iter.reset();
                     Boundary boundary = sim.box.getBoundary();
                     int n = 0;
-                    for (IAtomList pair = iter.next(); pair!=null; pair=iter.next()) {
+                    for (List<IAtom> pair = iter.next(); pair!=null; pair=iter.next()) {
                         IAtom nbrj = pair.get(0);
                         if (nbrj==a) nbrj=pair.get(1);
                         dr.Ev1Mv2(pi, nbrj.getPosition());
@@ -952,7 +952,7 @@ public class SimLJVacancy extends Simulation {
                     iter.reset();
                     Boundary boundary = sim.box.getBoundary();
                     int n = 0;
-                    for (IAtomList pair = iter.next(); pair!=null; pair=iter.next()) {
+                    for (List<IAtom> pair = iter.next(); pair!=null; pair=iter.next()) {
                         IAtom nbrj = pair.get(0);
                         if (nbrj==a) nbrj=pair.get(1);
                         dr.Ev1Mv2(pi, nbrj.getPosition());

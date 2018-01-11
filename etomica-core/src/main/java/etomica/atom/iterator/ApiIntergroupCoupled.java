@@ -4,7 +4,9 @@
 
 package etomica.atom.iterator;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
+
+import java.util.List;
 
 /**
  * Iterator that returns coupled iterates; the first pair contains the first
@@ -34,7 +36,7 @@ public class ApiIntergroupCoupled extends ApiIntergroup {
      * every time, but the Atoms it holds are (of course) different for each
      * iterate.
      */
-    public IAtomList next() {
+    public List<IAtom> next() {
         //Advance the inner loop, if it is not at its end.
         pair.atom0 = aiOuter.nextAtom();
         if (pair.atom0 == null) {

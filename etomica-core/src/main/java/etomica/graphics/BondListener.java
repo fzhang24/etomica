@@ -21,6 +21,7 @@ import etomica.species.ISpecies;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * BondListener listens for Atoms being added to the Simulation, determines
@@ -80,7 +81,7 @@ public class BondListener implements AtomLeafAgentManager.AgentSource<ArrayList>
                 iterator.setBasis(atomSetSinglet);
                 iterator.setTarget(null);
                 iterator.reset();
-                for  (IAtomList bondedPair = iterator.next(); bondedPair != null;
+                for  (List<IAtom> bondedPair = iterator.next(); bondedPair != null;
                       bondedPair = iterator.next()) {
                     
                     Object bond = bondManager.makeBond(bondedPair, bondedPotential);
@@ -147,7 +148,7 @@ public class BondListener implements AtomLeafAgentManager.AgentSource<ArrayList>
                 iterator.setBasis(atomSetSinglet);
                 iterator.setTarget(newAtom);
                 iterator.reset();
-                for (IAtomList bondedAtoms = iterator.next(); bondedAtoms != null;
+                for (List<IAtom> bondedAtoms = iterator.next(); bondedAtoms != null;
                      bondedAtoms = iterator.next()) {
                     Object bond = bondManager.makeBond(bondedAtoms, bondedPotential);
                     bondList.add(bond);
