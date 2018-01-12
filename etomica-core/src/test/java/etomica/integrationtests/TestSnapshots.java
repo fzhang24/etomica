@@ -44,7 +44,7 @@ public class TestSnapshots {
 
         Simulation sim = new HSMD3DNeighborList();
         sim.getController().actionPerformed();
-        List<Vector> coords = sim.box().getLeafList().getAtoms().stream()
+        List<Vector> coords = sim.box().getLeafList().stream()
                 .map(IAtom::getPosition)
                 .collect(Collectors.toList());
 
