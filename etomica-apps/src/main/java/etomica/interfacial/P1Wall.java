@@ -38,13 +38,13 @@ public class P1Wall extends Potential1 implements PotentialSoft {
         return 0;
     }
 
-    public Vector[] gradient(IAtomList atoms) {
+    public Vector[] gradient(List<IAtom> atoms) {
         double dz = atoms.get(0).getPosition().getX(2)-springPosition;
         grad[0].setX(2, gSat + spring*dz);
         return grad;
     }
 
-    public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
         return gradient(atoms);
     }
 

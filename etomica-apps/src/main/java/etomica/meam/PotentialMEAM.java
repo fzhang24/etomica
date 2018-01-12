@@ -564,12 +564,12 @@ public class PotentialMEAM extends PotentialN implements PotentialSoft {
 		return calcVirial(atoms, null);
 	}
 
-    public Vector[] gradient(IAtomList atoms) {
+    public Vector[] gradient(List<IAtom> atoms) {
         calcVirial(atoms, null);
         return gnEi;
     }
 
-    public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
         calcVirial(atoms, pressureTensor);
         return gnEi;
     }

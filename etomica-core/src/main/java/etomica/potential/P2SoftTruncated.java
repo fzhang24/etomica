@@ -83,8 +83,9 @@ public class P2SoftTruncated extends Potential2
     /**
      * Returns the derivative (r du/dr) of the wrapped potential if the separation
      * is less than the cutoff value
+     * @param atoms
      */
-    public Vector[] gradient(IAtomList atoms) {
+    public Vector[] gradient(List<IAtom> atoms) {
         dr.Ev1Mv2(atoms.get(1).getPosition(),atoms.get(0).getPosition());
         boundary.nearestImage(dr);
         double r2 = dr.squared();
@@ -95,7 +96,7 @@ public class P2SoftTruncated extends Potential2
      * Returns the derivative (r du/dr) of the wrapped potential if the separation
      * is less than the cutoff value
      */
-    public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
         dr.Ev1Mv2(atoms.get(1).getPosition(),atoms.get(0).getPosition());
         boundary.nearestImage(dr);
         double r2 = dr.squared();
@@ -191,11 +192,11 @@ public class P2SoftTruncated extends Potential2
             return d2uCorrection(nPairs()/box.getBoundary().volume()) + duCorrection(nPairs()/box.getBoundary().volume());
         }
 
-        public Vector[] gradient(IAtomList atoms) {
+        public Vector[] gradient(List<IAtom> atoms) {
             throw new RuntimeException("Should not be calling gradient on zero-body potential");
         }
 
-        public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+        public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
             double virial = virial(atoms) / pressureTensor.D();
             for (int i=0; i<pressureTensor.D(); i++) {
                 pressureTensor.setComponent(i,i,pressureTensor.component(i,i)-virial);

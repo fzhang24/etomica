@@ -85,8 +85,9 @@ public class Potential2SoftSphericalLS extends Potential2 implements PotentialSo
     
     /**
      * Gradient of the pair potential as given by the du(double) method.
+     * @param atoms
      */
-    public Vector[] gradient(IAtomList atoms) {
+    public Vector[] gradient(List<IAtom> atoms) {
     	boolean isSelf = (atoms.get(1) == atoms.get(0));
         dr.Ev1Mv2(atoms.get(1).getPosition(),atoms.get(0).getPosition());
         boundary.nearestImage(dr);
@@ -111,7 +112,7 @@ public class Potential2SoftSphericalLS extends Potential2 implements PotentialSo
         return gradient;
     }
     
-    public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
         gradient(atoms);
         pressureTensor.PEv1v2(gradient[0],dr);
         return gradient;

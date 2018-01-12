@@ -73,7 +73,7 @@ public class P2SoftSphericalTruncatedSwitched extends Potential2 implements Pote
         return rCutoff;
     }
 
-    public Vector[] gradient(IAtomList atoms) {
+    public Vector[] gradient(List<IAtom> atoms) {
         dr.Ev1Mv2(atoms.get(1).getPosition(),atoms.get(0).getPosition());
         boundary.nearestImage(dr);
         double r2 = dr.squared();
@@ -139,7 +139,7 @@ public class P2SoftSphericalTruncatedSwitched extends Potential2 implements Pote
         }
     }
     
-    public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
         return gradient(atoms);
     }
     

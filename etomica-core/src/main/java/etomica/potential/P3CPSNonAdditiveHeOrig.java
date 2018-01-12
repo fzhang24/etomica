@@ -705,11 +705,11 @@ public class P3CPSNonAdditiveHeOrig extends Potential implements PotentialSoft {
         return Double.POSITIVE_INFINITY;
     }
 
-    public Vector[] gradient(IAtomList atoms) {
+    public Vector[] gradient(List<IAtom> atoms) {
        throw new RuntimeException("Sorry, no gradient available yet");
     }
 
-    public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
         return gradient(atoms);
     }
 

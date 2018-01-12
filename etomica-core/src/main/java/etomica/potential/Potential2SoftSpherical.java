@@ -84,8 +84,9 @@ public abstract class Potential2SoftSpherical extends Potential2 implements Pote
     
     /**
      * Gradient of the pair potential as given by the du(double) method.
+     * @param atoms
      */
-    public Vector[] gradient(IAtomList atoms) {
+    public Vector[] gradient(List<IAtom> atoms) {
         dr.Ev1Mv2(atoms.get(1).getPosition(),atoms.get(0).getPosition());
         boundary.nearestImage(dr);
         double r2 = dr.squared();
@@ -99,7 +100,7 @@ public abstract class Potential2SoftSpherical extends Potential2 implements Pote
         return gradient;
     }
     
-    public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
         gradient(atoms);
         pressureTensor.PEv1v2(gradient[0],dr);
         return gradient;

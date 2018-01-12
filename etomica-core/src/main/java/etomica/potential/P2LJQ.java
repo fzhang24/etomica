@@ -125,11 +125,11 @@ public class P2LJQ extends Potential2 implements Potential2Soft {
         return Q2;
     }
     
-    public Vector[] gradient(IAtomList pair, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> pair, Tensor pressureTensor) {
         return gradient(pair);
     }
 
-    public Vector[] gradient(IAtomList pair) {
+    public Vector[] gradient(List<IAtom> pair) {
         IAtomOriented atom1 = (IAtomOriented)pair.get(0);
         IAtomOriented atom2 = (IAtomOriented)pair.get(1);
 

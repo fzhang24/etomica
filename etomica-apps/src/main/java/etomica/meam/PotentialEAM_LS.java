@@ -203,7 +203,7 @@ public class PotentialEAM_LS extends PotentialN implements PotentialSoft{
 
     
     
-    public Vector[] gradient(IAtomList atoms) {
+    public Vector[] gradient(List<IAtom> atoms) {
       if(gradient.length<atoms.size()){
         rhograd=new Vector[atoms.size()];
         gradient=new Vector[atoms.size()];
@@ -273,7 +273,7 @@ public class PotentialEAM_LS extends PotentialN implements PotentialSoft{
         return gradient;
     }
 
-    public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
         return gradient(atoms);
     }
  }

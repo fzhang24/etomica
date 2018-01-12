@@ -114,7 +114,7 @@ public class PotentialCuLREP extends PotentialN implements PotentialSoft{
         return virial;
     }
 
-    public Vector[] gradient(IAtomList atoms) {
+    public Vector[] gradient(List<IAtom> atoms) {
         double v1, v2, dv1, dv2, dvdr, drhodr, dudrho, rij, rij_c, rij_d;
         int ng = atoms.size();
         if(gradient.length<ng){
@@ -168,7 +168,7 @@ public class PotentialCuLREP extends PotentialN implements PotentialSoft{
         return gradient;
     }
 
-    public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
         return gradient(atoms);
     }
     

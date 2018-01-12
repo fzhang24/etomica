@@ -5,7 +5,6 @@
 package etomica.paracetamol;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.space.Vector;
 import etomica.space.Space;
 
@@ -55,7 +54,7 @@ public class P2ElectrostaticDreiding extends etomica.potential.P2Exp6 {
         		
     }
     
-    public Vector[] gradient(IAtomList atomSet) {
+    public Vector[] gradient(List<IAtom> atomSet) {
     	
         IAtom atom0 = atomSet.get(0);
         IAtom atom1 = atomSet.get(1);

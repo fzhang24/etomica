@@ -45,7 +45,7 @@ public class P3BondAngleDreiding extends Potential implements PotentialSoft {
 		return 0.0;
 	}
 	
-	public Vector[] gradient(IAtomList atomSet, Tensor pressureTensor){
+	public Vector[] gradient(List<IAtom> atomSet, Tensor pressureTensor){
         IAtom atom0 = atomSet.get(0);
         IAtom atom1 = atomSet.get(1);
         IAtom atom2 = atomSet.get(2);
@@ -156,7 +156,7 @@ public class P3BondAngleDreiding extends Potential implements PotentialSoft {
 		return gradient;
 	}
 	
-    public Vector[] gradient(IAtomList atoms) {
+    public Vector[] gradient(List<IAtom> atoms) {
 
         return gradient(atoms,null);
     }

@@ -108,7 +108,7 @@ public class P3BondAngle extends Potential implements PotentialSoft {
         return Double.POSITIVE_INFINITY;
     }
 
-    public Vector[] gradient(IAtomList atoms) {
+    public Vector[] gradient(List<IAtom> atoms) {
         IAtom atom0 = atoms.get(0);
         IAtom atom1 = atoms.get(1);
         IAtom atom2 = atoms.get(2);
@@ -141,7 +141,7 @@ public class P3BondAngle extends Potential implements PotentialSoft {
         return gradient;
     }
 
-    public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
         return gradient(atoms);
     }
 

@@ -43,11 +43,11 @@ public class P1Smash implements PotentialSoft {
         return 0;
     }
 
-    public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
         return gradient(atoms);
     }
 
-    public Vector[] gradient(IAtomList atoms) {
+    public Vector[] gradient(List<IAtom> atoms) {
         IAtom a = atoms.get(0);
         if (a.getPosition().getX(2) > 0) {
             gradient[0].setX(2, g);

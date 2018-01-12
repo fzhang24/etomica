@@ -60,7 +60,7 @@ public class P1SoftBoundary extends Potential1 implements PotentialSoft {
 		return -12*r6*r6/r;
 	}
 	
-	public Vector[] gradient(IAtomList a) {
+	public Vector[] gradient(List<IAtom> a) {
 		Vector dimensions = boundary.getBoxSize();
 		double rx = a.get(0).getPosition().getX(0);
 		double ry = a.get(0).getPosition().getX(1);
@@ -73,7 +73,7 @@ public class P1SoftBoundary extends Potential1 implements PotentialSoft {
 		return gradient;
 	}
     
-    public Vector[] gradient(IAtomList a, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> a, Tensor pressureTensor) {
         return gradient(a);
     }
 	

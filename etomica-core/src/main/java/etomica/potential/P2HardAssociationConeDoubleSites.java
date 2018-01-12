@@ -207,12 +207,12 @@ public class P2HardAssociationConeDoubleSites extends Potential2 implements Pote
 	    return 0;
 	}
 
-	public Vector[] gradient(IAtomList atoms) {
+	public Vector[] gradient(List<IAtom> atoms) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+	public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
 		// TODO Auto-generated method stub
 		return null;
 	}

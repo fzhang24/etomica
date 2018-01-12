@@ -701,7 +701,7 @@ public class P2NitrogenHellmann implements IPotentialAtomic, IPotentialTorque {
     }
     protected final Vector[][] gradientAndTorque;
     
-    public Vector[][] gradientAndTorque(IAtomList atoms) {
+    public Vector[][] gradientAndTorque(List<IAtom> atoms) {
         IAtomOriented atom0 = (IAtomOriented)atoms.get(0);
         IAtomOriented atom1 = (IAtomOriented)atoms.get(1);
         Vector cm0 = atom0.getPosition();
@@ -793,12 +793,12 @@ public class P2NitrogenHellmann implements IPotentialAtomic, IPotentialTorque {
     }
 
 
-    public Vector[] gradient(IAtomList atoms) {
+    public Vector[] gradient(List<IAtom> atoms) {
         return gradientAndTorque(atoms)[0];
     }
 
 
-    public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
         return gradientAndTorque(atoms)[0];
     }
     

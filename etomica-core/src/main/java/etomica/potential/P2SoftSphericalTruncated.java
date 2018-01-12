@@ -157,11 +157,11 @@ public class P2SoftSphericalTruncated extends Potential2SoftSpherical
             return d2uCorrection(nPairs()/box.getBoundary().volume()) + duCorrection(nPairs()/box.getBoundary().volume());
         }
 
-        public Vector[] gradient(IAtomList atoms) {
+        public Vector[] gradient(List<IAtom> atoms) {
             return null;
         }
 
-        public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+        public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
             double virial = virial(atoms) / pressureTensor.D();
             for (int i=0; i<pressureTensor.D(); i++) {
                 pressureTensor.setComponent(i,i,pressureTensor.component(i,i)-virial);

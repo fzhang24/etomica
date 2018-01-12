@@ -70,7 +70,7 @@ public class P1HarmonicSite extends Potential1 implements PotentialSoft {
         return 0.0;
     }
 
-    public Vector[] gradient(IAtomList a){
+    public Vector[] gradient(List<IAtom> a){
         Vector r = a.get(0).getPosition();
         Vector x0 = atomAgentManager.getAgent(a.get(0));
         force[0].Ev1Mv2(r,x0);
@@ -79,7 +79,7 @@ public class P1HarmonicSite extends Potential1 implements PotentialSoft {
         return force;
     }
         
-    public Vector[] gradient(IAtomList a, Tensor pressureTensor){
+    public Vector[] gradient(List<IAtom> a, Tensor pressureTensor){
         return gradient(a);
     }
 }

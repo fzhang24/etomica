@@ -63,7 +63,7 @@ public class P1Sinusoidal implements IPotential, PotentialSoft {
         return b45 * (3.0 - sum);
     }
 
-    public Vector[] gradient(IAtomList atoms) {
+    public Vector[] gradient(List<IAtom> atoms) {
         IAtom a = atoms.get(0);
         r.Ev1Mv2(a.getPosition(), offset);
         gradient[0].E(0);
@@ -74,7 +74,7 @@ public class P1Sinusoidal implements IPotential, PotentialSoft {
         return gradient;
     }
 
-    public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
         return gradient(atoms);
     }
 

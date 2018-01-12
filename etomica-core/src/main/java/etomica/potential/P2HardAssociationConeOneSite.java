@@ -217,11 +217,11 @@ public class P2HardAssociationConeOneSite extends Potential2 implements Potentia
         return 0;
     }
 
-	public Vector[] gradient(IAtomList atoms) {
+	public Vector[] gradient(List<IAtom> atoms) {
 		return null;
 	}
 
-	public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+	public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
 		return null;
 	}
 

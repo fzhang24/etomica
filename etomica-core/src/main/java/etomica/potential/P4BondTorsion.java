@@ -83,7 +83,7 @@ public class P4BondTorsion extends Potential implements PotentialSoft {
         return Double.POSITIVE_INFINITY;
     }
     
-    public Vector[] gradient(IAtomList atoms) {
+    public Vector[] gradient(List<IAtom> atoms) {
         IAtom atom0 = atoms.get(0);
         IAtom atom1 = atoms.get(1);
         IAtom atom2 = atoms.get(2);
@@ -168,7 +168,7 @@ public class P4BondTorsion extends Potential implements PotentialSoft {
         return 12.0*a3*cos2phi - 4.0*a2*cosphi + a1 - 3*a3;
     }
 
-    public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
         return gradient(atoms);
     }
 

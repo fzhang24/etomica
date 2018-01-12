@@ -60,11 +60,11 @@ public class P1Tension implements PotentialSoft {
         return 0.5*w*aSum;
     }
 
-    public Vector[] gradient(IAtomList a, Tensor t){
+    public Vector[] gradient(List<IAtom> a, Tensor t){
         return gradient(a);
     }
     
-    public Vector[] gradient(IAtomList a) {
+    public Vector[] gradient(List<IAtom> a) {
         Vector r = a.get(0).getPosition();
         force[0].setX(1, 0);
         double x = r.getX(0);

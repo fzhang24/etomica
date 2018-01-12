@@ -251,11 +251,11 @@ public class P2HardAssociationConeFourSites extends Potential2 implements Potent
         return 0;
     }
 
-	public Vector[] gradient(IAtomList atoms) {
+	public Vector[] gradient(List<IAtom> atoms) {
 		return null;
 	}
 
-	public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+	public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
 		return null;
 	}
 

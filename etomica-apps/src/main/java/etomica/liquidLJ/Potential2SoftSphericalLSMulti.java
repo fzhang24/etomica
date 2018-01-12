@@ -95,12 +95,13 @@ public class Potential2SoftSphericalLSMulti extends Potential2 implements Potent
     
     /**
      * Gradient of the pair potential as given by the du(double) method.
+     * @param atoms
      */
-    public Vector[] gradient(IAtomList atoms) {
+    public Vector[] gradient(List<IAtom> atoms) {
         return gradient;
     }
     
-    public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
         gradient(atoms);
         pressureTensor.PEv1v2(gradient[0],dr);
         return gradient;

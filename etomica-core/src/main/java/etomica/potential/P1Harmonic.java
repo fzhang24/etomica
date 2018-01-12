@@ -69,7 +69,7 @@ public class P1Harmonic extends Potential1 implements PotentialSoft {
         return 0.0;
     }
 
-    public Vector[] gradient(IAtomList a){
+    public Vector[] gradient(List<IAtom> a){
         Vector r = a.get(0).getPosition();
         force[0].Ev1Mv2(r,x0);
         force[0].TE(w);
@@ -77,7 +77,7 @@ public class P1Harmonic extends Potential1 implements PotentialSoft {
         return force;
     }
         
-    public Vector[] gradient(IAtomList a, Tensor pressureTensor){
+    public Vector[] gradient(List<IAtom> a, Tensor pressureTensor){
         return gradient(a);
     }
 }

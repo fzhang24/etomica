@@ -51,7 +51,7 @@ public class P1Tether extends Potential1 implements AgentSource<Vector>, Potenti
         return 0.5 * epsilon * work.squared();
     }
 
-    public Vector[] gradient(IAtomList atoms) {
+    public Vector[] gradient(List<IAtom> atoms) {
         IAtom atom = atoms.get(0);
         work.E(atom.getPosition());
         work.ME(agentManager.getAgent(atom));
@@ -59,7 +59,7 @@ public class P1Tether extends Potential1 implements AgentSource<Vector>, Potenti
         return gradient;
     }
 
-    public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
         return gradient(atoms);
     }
 

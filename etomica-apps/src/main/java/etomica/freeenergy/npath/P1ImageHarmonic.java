@@ -145,7 +145,7 @@ public class P1ImageHarmonic extends Potential1 implements PotentialSoft {
     }
 
     @Override
-    public Vector[] gradient(IAtomList atoms) {
+    public Vector[] gradient(List<IAtom> atoms) {
         if (zeroF) {
             gradient[0].E(0);
             return gradient;
@@ -176,7 +176,7 @@ public class P1ImageHarmonic extends Potential1 implements PotentialSoft {
     }
 
     @Override
-    public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
         throw new RuntimeException("Implement me (just kidding.  call a different method instead)");
     }
 }

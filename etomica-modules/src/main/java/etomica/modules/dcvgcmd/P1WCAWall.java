@@ -71,7 +71,7 @@ public class P1WCAWall extends Potential1 implements PotentialSoft {
         return -48 * epsilon * r6 * (r6 - 0.5);
     }
 
-    public Vector[] gradient(IAtomList atom) {
+    public Vector[] gradient(List<IAtom> atom) {
         Vector dimensions = boundary.getBoxSize();
         double rz = atom.get(0).getPosition().getX(wallDim);
         double dzHalf = 0.5 * dimensions.getX(wallDim);
@@ -80,7 +80,7 @@ public class P1WCAWall extends Potential1 implements PotentialSoft {
         return gradient;
     }
     
-    public Vector[] gradient(IAtomList atom, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atom, Tensor pressureTensor) {
         return gradient(atom);
     }
     

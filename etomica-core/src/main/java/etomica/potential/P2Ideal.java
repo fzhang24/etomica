@@ -123,13 +123,14 @@ public class P2Ideal extends Potential2 implements Potential2Soft,
 
     /**
      * Returns a zero vector.
+     * @param atoms
      */
-    public Vector[] gradient(IAtomList atoms) {
+    public Vector[] gradient(List<IAtom> atoms) {
         zeroVector[0].E(0.0);
         return zeroVector;
     }
     
-    public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
         return gradient(atoms);
     }
         

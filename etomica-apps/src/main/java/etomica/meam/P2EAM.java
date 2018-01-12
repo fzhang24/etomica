@@ -130,7 +130,7 @@ public class P2EAM extends Potential2 implements PotentialSoft {
         throw new RuntimeException("implement me");
     }
 
-    public Vector[] gradient(IAtomList atoms) {
+    public Vector[] gradient(List<IAtom> atoms) {
 
         Vector pos0 = atoms.get(0).getPosition();
         Vector pos1 = atoms.get(1).getPosition();
@@ -162,7 +162,7 @@ public class P2EAM extends Potential2 implements PotentialSoft {
         return gradient;
     }
 
-    public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
         throw new RuntimeException("not implemented.  use gradient");
     }
     

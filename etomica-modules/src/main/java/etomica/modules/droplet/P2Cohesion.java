@@ -34,7 +34,7 @@ public class P2Cohesion extends Potential2SoftSpherical implements
         return super.energy(atoms);
     }
 
-    public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
         if (useSurfaceOnly && (liquidFilter.test(atoms.get(0)) || liquidFilter.test(atoms.get(1)))) {
             gradient[0].E(0);
             gradient[1].E(0);
@@ -44,7 +44,7 @@ public class P2Cohesion extends Potential2SoftSpherical implements
         return super.gradient(atoms, pressureTensor);
     }
 
-    public Vector[] gradient(IAtomList atoms) {
+    public Vector[] gradient(List<IAtom> atoms) {
         if (useSurfaceOnly && (liquidFilter.test(atoms.get(0)) || liquidFilter.test(atoms.get(1)))) {
             gradient[0].E(0);
             gradient[1].E(0);

@@ -18,6 +18,8 @@ import etomica.space.Tensor;
 import etomica.space3d.Space3D;
 import etomica.util.random.RandomNumberGenerator;
 
+import java.util.List;
+
 /**
  * OPLS Torsion potential.
  *
@@ -41,7 +43,7 @@ public class P4BondTorsionOPLS extends P4BondTorsion {
         throw new RuntimeException("Implement me");
     }
 
-    public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
         return gradient(atoms);
     }
 

@@ -442,11 +442,11 @@ public class P2WaterSzalewicz implements IPotentialTorque {
         return 0;
     }
 
-    public Vector[] gradient(IAtomList atoms) {
+    public Vector[] gradient(List<IAtom> atoms) {
         return null;
     }
 
-    public Vector[] gradient(IAtomList atoms, Tensor pressureTensor) {
+    public Vector[] gradient(List<IAtom> atoms, Tensor pressureTensor) {
         return null;
     }
 
@@ -951,7 +951,7 @@ public class P2WaterSzalewicz implements IPotentialTorque {
         return sitePos.length;
     }
 
-    public Vector[][] gradientAndTorque(IAtomList atoms) {
+    public Vector[][] gradientAndTorque(List<IAtom> atoms) {
         return null;
     }
     

@@ -4,10 +4,12 @@
 
 package etomica.potential;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.space.Vector;
+
+import java.util.List;
 
 public interface IPotentialTorque extends PotentialSoft {
 
-    public Vector[][] gradientAndTorque(IAtomList atoms);
+    public Vector[][] gradientAndTorque(List<IAtom> atoms);
 }

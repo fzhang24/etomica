@@ -84,7 +84,7 @@ public class P1LepsHarmonic extends Potential1 implements PotentialSoft {
 		return energy;
 	}
 		
-	public Vector[] gradient(IAtomList atom){
+	public Vector[] gradient(List<IAtom> atom){
 
 		double x = atom.get(0).getPosition().getX(0);
 		double y = atom.get(0).getPosition().getX(1);
@@ -124,7 +124,7 @@ public class P1LepsHarmonic extends Potential1 implements PotentialSoft {
 		return force;
 	}
 	
-	public Vector[] gradient(IAtomList atom, Tensor pressureTensor){
+	public Vector[] gradient(List<IAtom> atom, Tensor pressureTensor){
 		
 		return gradient(atom);
 	}
