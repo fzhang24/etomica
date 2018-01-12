@@ -4,7 +4,9 @@
 
 package etomica.nbr;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
+
+import java.util.List;
 
 /**
  * @author andrew
@@ -25,7 +27,7 @@ public class CriterionBondedSimple extends CriterionAdapter {
     }
     
     // always enforce intramolecularity
-    public boolean accept(IAtomList pair) {
+    public boolean accept(List<IAtom> pair) {
         int diff = pair.get(0).getIndex() - pair.get(1).getIndex();
         if (isBonded != (diff == 1 || diff == -1) 
                 || (pair.get(0).getParentGroup() != pair.get(1).getParentGroup())) {

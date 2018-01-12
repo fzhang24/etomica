@@ -6,7 +6,9 @@
 package etomica.nbr;
 
 import etomica.atom.AtomType;
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
+
+import java.util.List;
 
 /**
  * Filters atoms to match a given AtomType.
@@ -27,8 +29,9 @@ public class CriterionType extends CriterionAdapter {
     /**
      * Returns true if the AtomType of the atom matches the AtomType given at
      * construction and if the wrapped criterion accept also returns true.
+     * @param atom
      */
-    public boolean accept(IAtomList atom) {
+    public boolean accept(List<IAtom> atom) {
         if (atom.get(0).getType() == type) {
             return subCriterion.accept(atom);
         }

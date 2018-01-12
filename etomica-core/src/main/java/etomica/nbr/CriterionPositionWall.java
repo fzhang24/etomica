@@ -5,7 +5,6 @@
 package etomica.nbr;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.simulation.Simulation;
 import etomica.atom.AtomLeafAgentManager;
@@ -17,6 +16,8 @@ import etomica.nbr.CriterionPositionWall.DoubleWrapper;
 import etomica.units.dimensions.Dimension;
 import etomica.units.dimensions.Length;
 import etomica.util.Debug;
+
+import java.util.List;
 
 /**
  * Simple neighbor criterion based on distance moved by a leaf atom since
@@ -166,7 +167,7 @@ public class CriterionPositionWall implements NeighborCriterion, AgentSource<Dou
 		return dr > rMaxSafe;
 	}
 
-	public boolean accept(IAtomList atom) {
+	public boolean accept(List<IAtom> atom) {
 		dr = (atom.get(0)).getPosition().getX(neighborDim);
         if (!isBoundaryWall) {
             dr = Math.abs(dr - wallPosition);

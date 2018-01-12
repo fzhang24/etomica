@@ -4,7 +4,9 @@
 
 package etomica.nbr;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
+
+import java.util.List;
 
 /**
  * Pair criterion that judges whether two atoms are or are not in
@@ -41,8 +43,9 @@ public class CriterionMolecular extends CriterionAdapter {
      * Returns false if pair is/isn't in same molecule (depending on setting
      * of intraMolecular); if matches this criterion, return value will be
      * that given by any subCriterion.
+     * @param pair
      */
-    public boolean accept(IAtomList pair) {
+    public boolean accept(List<IAtom> pair) {
         if (isIntraMolecular != (pair.get(0).getParentGroup() == pair.get(1).getParentGroup())) {
             return false;
         }

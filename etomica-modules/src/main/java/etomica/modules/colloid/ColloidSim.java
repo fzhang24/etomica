@@ -26,6 +26,8 @@ import etomica.space3d.Space3D;
 import etomica.species.SpeciesSpheresMono;
 import etomica.util.random.RandomNumberGenerator;
 
+import java.util.List;
+
 /**
  * Colloid simulation.  Design by Alberto Striolo.
  *
@@ -256,6 +258,6 @@ public class ColloidSim extends Simulation {
         public void setBox(Box box) {}
         public void reset(IAtom atom) {}
         public boolean needUpdate(IAtom atom) {return false;}
-        public boolean accept(IAtomList pair) {return false;}
+        public boolean accept(List<IAtom> pair) {return false;}
     }
 }

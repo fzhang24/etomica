@@ -185,7 +185,7 @@ public class RenderMD extends Simulation {
         }
 
 
-        public boolean accept(IAtomList pair) {
+        public boolean accept(List<IAtom> pair) {
             return bondedSet.get(pair.get(0)).contains(pair.get(1));
         }
 

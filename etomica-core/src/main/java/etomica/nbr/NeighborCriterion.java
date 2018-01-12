@@ -4,8 +4,9 @@
 
 package etomica.nbr;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
+
+import java.util.List;
 
 /**
  * Atom filter used to specify whether two atoms are considered neighbors,
@@ -16,7 +17,7 @@ import etomica.box.Box;
  */
 public interface NeighborCriterion {
 
-    public boolean accept(IAtomList pair);
+    public boolean accept(List<IAtom> pair);
     
     /**
      * Indicates whether the neighbor list for the given atom should

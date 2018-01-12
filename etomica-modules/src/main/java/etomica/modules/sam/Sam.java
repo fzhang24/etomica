@@ -39,6 +39,8 @@ import etomica.units.Kelvin;
 import etomica.units.Pixel;
 import etomica.util.Constants;
 
+import java.util.List;
+
 /**
  * Self-assembled monolayer module.
  * @author Andrew Schultz
@@ -191,7 +193,7 @@ public class Sam extends Simulation {
         p2SCH2t = new P2SoftSphericalTruncatedSwitched(space, p2SCH2, rCut);
 
         NeighborCriterion nonBondedCriterion = new NeighborCriterion() {
-            public boolean accept(IAtomList pair) {
+            public boolean accept(List<IAtom> pair) {
                 int idx0 = pair.get(0).getIndex();
                 int idx1 = pair.get(1).getIndex();
                 int idxDiff = idx0 - idx1;

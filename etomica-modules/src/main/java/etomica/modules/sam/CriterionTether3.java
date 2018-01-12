@@ -16,6 +16,8 @@ import etomica.nbr.NeighborCriterion;
 import etomica.simulation.Simulation;
 import etomica.species.ISpecies;
 
+import java.util.List;
+
 /**
  * Returns first leaf atom of each polymer molecule and the atom its bonded to.
  */
@@ -52,7 +54,7 @@ public class CriterionTether3 implements NeighborCriterion, MoleculeAgentSource 
         bondManager.setAgent(polymerMolecule, surfaceAtoms);
     }
 
-    public boolean accept(IAtomList pair) {
+    public boolean accept(List<IAtom> pair) {
         IAtom atom1 = pair.get(0);
         IAtom atom2 = pair.get(1);
         if (atom1.getIndex() != 0 || atom1.getParentGroup().getType() != polymerSpecies) {

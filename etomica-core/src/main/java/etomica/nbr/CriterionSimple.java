@@ -5,7 +5,6 @@
 package etomica.nbr;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.space.Boundary;
 import etomica.box.Box;
 import etomica.simulation.Simulation;
@@ -19,6 +18,8 @@ import etomica.space.Space;
 import etomica.units.dimensions.Dimension;
 import etomica.units.dimensions.Length;
 import etomica.util.Debug;
+
+import java.util.List;
 
 /**
  * Simple neighbor criterion based on distance moved by a leaf atom since
@@ -110,7 +111,7 @@ public class CriterionSimple implements NeighborCriterion, AgentSource<Vector> {
 		return r2 > r2MaxSafe;
 	}
 
-	public boolean accept(IAtomList pair) {
+	public boolean accept(List<IAtom> pair) {
         dr.Ev1Mv2(pair.get(1).getPosition(),pair.get(0).getPosition());
         boundary.nearestImage(dr);
         if (Debug.ON && neighborRadius2 < interactionRange*interactionRange) {

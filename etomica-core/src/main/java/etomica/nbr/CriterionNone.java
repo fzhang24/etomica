@@ -5,8 +5,9 @@
 package etomica.nbr;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
+
+import java.util.List;
 
 public final class CriterionNone implements NeighborCriterion, java.io.Serializable {
     private static final long serialVersionUID = 1L;
@@ -35,6 +36,7 @@ public final class CriterionNone implements NeighborCriterion, java.io.Serializa
 
     /**
      * Always returns false, indicating that no atoms pairs are neighbors.
+     * @param pair
      */
-    public boolean accept(IAtomList pair) {return false;}
+    public boolean accept(List<IAtom> pair) {return false;}
 }
