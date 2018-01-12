@@ -2144,7 +2144,7 @@ public class P2WaterPotentialsJankowski implements IPotentialAtomic {
         }
     }
     
-    public static void processAtoms (IAtomList atomL) {
+    public static void processAtoms (List<IAtom> atomL) {
         Space space = Space3D.getInstance();
         Vector[] carta = space.makeVectorArray(3), cartb = space.makeVectorArray(3);
         atomToPosVec(atomL.get(0));
