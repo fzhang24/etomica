@@ -5,7 +5,6 @@
 package etomica.potential;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.atom.AtomLeafAgentManager;
 import etomica.atom.AtomLeafAgentManager.AgentSource;
@@ -96,7 +95,7 @@ public class P2HardBondedList extends Potential2 implements PotentialHard, Agent
         return isBonded(pair.get(0), pair.get(1));
     }
     
-    private MyBond getBond(IAtomList pair) {
+    private MyBond getBond(List<IAtom> pair) {
         return getBondedList(pair.get(0)).getBond(pair.get(1));
     }
     

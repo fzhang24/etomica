@@ -286,7 +286,7 @@ public class NeighborListManager implements IntegratorListener, AgentSource<Atom
         cellNbrIterator.reset();
         //TODO change looping scheme so getPotentials isn't called for every pair
         //consider doing this by introducing ApiNested interface, with hasNextInner and hasNextOuter methods
-        for (IAtomList pair = cellNbrIterator.nextPair(); pair != null;
+        for (List<IAtom> pair = cellNbrIterator.nextPair(); pair != null;
              pair = cellNbrIterator.nextPair()) {
             IAtom atom0 = pair.get(0);
             IAtom atom1 = pair.get(1);
