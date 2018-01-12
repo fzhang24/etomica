@@ -9,6 +9,8 @@ import junit.framework.TestCase;
 import etomica.space.Space;
 import etomica.util.Debug;
 
+import java.util.Arrays;
+
 public class AtomArrayListTest extends TestCase {
 
 	/*
@@ -299,12 +301,10 @@ public class AtomArrayListTest extends TestCase {
 			arrayList.add(atomList[i]);
 		}
 
-		AtomsetArray atomSet = new AtomsetArray(size);
 		for(int i = 0; i < size; i++) {
 			atomsetList[i] = new Atom(space);
 		}
-		atomSet.setAtoms(atomsetList);
-		arrayList.addAll(atomSet);
+		arrayList.addAll(Arrays.asList(atomsetList));
 
 		for(int i = 0; i < size; i++) {
 			assertSame(atomList[i], arrayList.get(i));

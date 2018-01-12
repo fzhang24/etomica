@@ -4,103 +4,113 @@
 
 package etomica.atom.iterator;
 
-import etomica.atom.AtomsetArray;
 import etomica.atom.IAtom;
 import etomica.molecule.IMolecule;
 import etomica.molecule.IMoleculeList;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * Atomset Iterator that iterates over set-of-four atoms
- * 
+ *
  * @author Tai Tan
  */
-
-
 public class Atomset4IteratorIndexList implements AtomsetIteratorBasisDependent {
-	
-	/**
+
+    private final int[][] index;
+    private final List<IAtom> atomList;
+    private final IAtom[] atoms;
+    private int cursor;
+    private IMolecule parentGroup;
+    private IAtom target;
+
+    /**
      * Constructs iterator without defining set of atoms.
      */
-    public Atomset4IteratorIndexList(int [][]index) {
-    	atomset = new AtomsetArray(4);
-    	atoms = atomset.getArray();
+    public Atomset4IteratorIndexList(int[][] index) {
+        this.atoms = new IAtom[4];
+        this.atomList = Arrays.asList(atoms);
         this.index = index;
     }
 
-    public int basisSize(){
-    	return 1;
+    public void setTarget(IAtom a) {
+        target = a;
+        unset();
     }
-    
+
+    public void setBasis(IMoleculeList parent) {
+        if (parent == null) {
+            parentGroup = null;
+        } else {
+            parentGroup = parent.getMolecule(0);
+        }
+        unset();
+    }
+
+    public int basisSize() {
+        return 1;
+    }
+
     public boolean haveTarget(IAtom a) {
         if (parentGroup == null) {
             return false;
         }
-        
-    	for(int i = 0; i < index.length; i++){   //index.length = number of sets
-    		
-    		if (a == parentGroup.getChildList().get(index[i][0])){
-    			return true;
-    		}
-    		if (a == parentGroup.getChildList().get(index[i][1])){
-    			return true;
-    		}
-    		if (a == parentGroup.getChildList().get(index[i][2])){
-    			return true;
-    		}
-    		if (a == parentGroup.getChildList().get(index[i][3])){
-    			return true;
-    		}
-    	}
-    	return false;
-    }
-    
-    public void setTarget(IAtom a){
-    	target = a;
-    	unset();
-    }
-                                
 
-	public void setBasis(IMoleculeList parent) {
-	    if (parent == null) {
-	        parentGroup = null;
-	    }
-	    else {
-	        parentGroup = parent.getMolecule(0);
-	    }
-		unset();
-	}
+        for (int i = 0; i < index.length; i++) {   //index.length = number of sets
 
-    public int size() {
-        return index.length;
+            if (a == parentGroup.getChildList().get(index[i][0])) {
+                return true;
+            }
+            if (a == parentGroup.getChildList().get(index[i][1])) {
+                return true;
+            }
+            if (a == parentGroup.getChildList().get(index[i][2])) {
+                return true;
+            }
+            if (a == parentGroup.getChildList().get(index[i][3])) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
-     * Returns true if three non-null atoms have set and a call to reset() has
-     * been performed, without any subsequent calls to next() or nextPair().
+     * Returns true if three non-null atoms have set and a call to reset() has been performed, without any subsequent
+     * calls to next() or nextPair().
      */
     protected boolean hasNext() {
 
-    	if (target != null){
-        	for(; cursor < index.length; cursor++){   //index.length = number of pairs
-        		
-        		if (target == parentGroup.getChildList().get(index[cursor][0])){
-        			break;
-        		}
-        		if (target == parentGroup.getChildList().get(index[cursor][1])){
-        			break;
-        		}
-        		if (target == parentGroup.getChildList().get(index[cursor][2])){
-        			break;
-        		}
-        		if (target == parentGroup.getChildList().get(index[cursor][3])){
-        			break;
-        		}
-        	}
-    	}
+        if (target != null) {
+            for (; cursor < index.length; cursor++) {   //index.length = number of pairs
+
+                if (target == parentGroup.getChildList().get(index[cursor][0])) {
+                    break;
+                }
+                if (target == parentGroup.getChildList().get(index[cursor][1])) {
+                    break;
+                }
+                if (target == parentGroup.getChildList().get(index[cursor][2])) {
+                    break;
+                }
+                if (target == parentGroup.getChildList().get(index[cursor][3])) {
+                    break;
+                }
+            }
+        }
         return (cursor < index.length);
-    	
+
+    }
+
+    /**
+     * Resets iterator to a state where hasNext is true, if atoms in pair are not null.
+     */
+    public void reset() {
+        if (parentGroup == null) {
+            return;
+        }
+
+        cursor = 0;
     }
 
     /**
@@ -110,16 +120,15 @@ public class Atomset4IteratorIndexList implements AtomsetIteratorBasisDependent 
         cursor = index.length;
     }
 
+    public int size() {
+        return index.length;
+    }
+
     /**
-     * Resets iterator to a state where hasNext is true, if atoms in pair are
-     * not null.
+     * Returns 4, indicating that this is a set of four iterator.
      */
-    public void reset() {
-        if (parentGroup == null) {
-            return;
-        }
-        
-    	cursor = 0;
+    public final int nBody() {
+        return 4;
     }
 
     public List<IAtom> next() {
@@ -129,27 +138,10 @@ public class Atomset4IteratorIndexList implements AtomsetIteratorBasisDependent 
         atoms[1] = parentGroup.getChildList().get(index[cursor][1]);
         atoms[2] = parentGroup.getChildList().get(index[cursor][2]);
         atoms[3] = parentGroup.getChildList().get(index[cursor][3]);
-        
+
         cursor++;
-        return atomset;
+        return atomList;
     }
-
-    /**
-     * Returns 4, indicating that this is a set of four iterator.
-     */
-    public final int nBody() {
-        return 4;
-   }
-
-    private int [][]index;
-    private int cursor;
-    private IMolecule parentGroup;
-    private IAtom target;
-    
-    private AtomsetArray atomset;
-    private IAtom[] atoms;
-    
-	private static final long serialVersionUID = 1L;
 
 }
 
