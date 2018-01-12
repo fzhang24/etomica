@@ -5,7 +5,6 @@
 package etomica.modules.sam;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.potential.IPotential;
 import etomica.potential.PotentialSoft;
@@ -78,7 +77,7 @@ public class P1Sinusoidal implements IPotential, PotentialSoft {
         return gradient(atoms);
     }
 
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
         return 0;
     }
 

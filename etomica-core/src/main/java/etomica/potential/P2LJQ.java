@@ -5,7 +5,6 @@
 package etomica.potential;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.space.Boundary;
 import etomica.box.Box;
 import etomica.space.Vector;
@@ -200,7 +199,7 @@ public class P2LJQ extends Potential2 implements Potential2Soft {
         return gradient;
     }
 
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
         gradient(atoms);
         IAtomOriented atom1 = (IAtomOriented)atoms.get(0);
         IAtomOriented atom2 = (IAtomOriented)atoms.get(1);
@@ -216,7 +215,7 @@ public class P2LJQ extends Potential2 implements Potential2Soft {
         return gradient[1].dot(dr);
     }
 
-    public double hyperVirial(IAtomList pair) {
+    public double hyperVirial(List<IAtom> pair) {
         throw new MethodNotImplementedException();
     }
 

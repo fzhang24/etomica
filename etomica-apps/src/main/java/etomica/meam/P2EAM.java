@@ -5,7 +5,6 @@
 package etomica.meam;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.integrator.IntegratorEvent;
 import etomica.integrator.IntegratorListenerMD;
@@ -126,7 +125,7 @@ public class P2EAM extends Potential2 implements PotentialSoft {
         }
     }
 
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
         throw new RuntimeException("implement me");
     }
 

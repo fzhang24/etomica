@@ -5,7 +5,6 @@
 package etomica.potential;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.space.Boundary;
 import etomica.box.Box;
 import etomica.space.Vector;
@@ -41,7 +40,7 @@ public class P3BondAngleDreiding extends Potential implements PotentialSoft {
 		gradient[2] = space.makeVector();
 	}
 
-	public double virial(IAtomList atomSet){
+	public double virial(List<IAtom> atomSet){
 		return 0.0;
 	}
 	

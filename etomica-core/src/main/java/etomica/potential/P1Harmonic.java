@@ -5,7 +5,6 @@
 package etomica.potential;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.space.Vector;
 import etomica.space.Space;
 import etomica.space.Tensor;
@@ -65,7 +64,7 @@ public class P1Harmonic extends Potential1 implements PotentialSoft {
         return 0.5*w*a.get(0).getPosition().Mv1Squared(x0);
     }
     
-    public double virial(IAtomList a) {
+    public double virial(List<IAtom> a) {
         return 0.0;
     }
 

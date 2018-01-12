@@ -5,7 +5,6 @@
 package etomica.dimer;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.space.Vector;
 import etomica.potential.Potential1;
 import etomica.potential.PotentialSoft;
@@ -129,7 +128,7 @@ public class P1LepsHarmonic extends Potential1 implements PotentialSoft {
 		return gradient(atom);
 	}
 	
-	public double virial(IAtomList atom){
+	public double virial(List<IAtom> atom){
 		
 		return 0.0;
 	}

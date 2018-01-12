@@ -5,7 +5,6 @@
 package etomica.potential;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.space.Tensor;
 import etomica.space.Vector;
 
@@ -19,7 +18,7 @@ import java.util.List;
  */
 public interface PotentialSoft extends IPotentialAtomic {
 
-    public double virial(IAtomList atoms);
+    public double virial(List<IAtom> atoms);
 
     /**
 	 * Returns the gradient of the potential as it applies to each atom in the 

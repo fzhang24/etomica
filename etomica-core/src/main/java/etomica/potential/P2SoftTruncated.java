@@ -7,7 +7,6 @@ package etomica.potential;
 import etomica.atom.IAtom;
 import etomica.space.Boundary;
 import etomica.atom.AtomType;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.space.Space;
 import etomica.space.Tensor;
@@ -72,8 +71,9 @@ public class P2SoftTruncated extends Potential2
     /**
      * Returns the 2nd derivative (r^2 d^2u/dr^2) of the wrapped potential if the separation
      * is less than the cutoff value
+     * @param atoms
      */
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
         dr.Ev1Mv2(atoms.get(1).getPosition(),atoms.get(0).getPosition());
         boundary.nearestImage(dr);
         double r2 = dr.squared();
@@ -104,7 +104,7 @@ public class P2SoftTruncated extends Potential2
         return wrappedPotential.gradient(atoms, pressureTensor);
     }
     
-    public double hyperVirial(IAtomList atoms) {
+    public double hyperVirial(List<IAtom> atoms) {
         dr.Ev1Mv2(atoms.get(1).getPosition(),atoms.get(0).getPosition());
         boundary.nearestImage(dr);
         double r2 = dr.squared();
@@ -184,11 +184,11 @@ public class P2SoftTruncated extends Potential2
             return uCorrection(nPairs()/box.getBoundary().volume());
         }
 
-        public double virial(IAtomList atoms) {
+        public double virial(List<IAtom> atoms) {
             return duCorrection(nPairs()/box.getBoundary().volume());
         }
 
-        public double hyperVirial(IAtomList pair) {
+        public double hyperVirial(List<IAtom> pair) {
             return d2uCorrection(nPairs()/box.getBoundary().volume()) + duCorrection(nPairs()/box.getBoundary().volume());
         }
 

@@ -136,7 +136,7 @@ public class P1ImageHarmonic extends Potential1 implements PotentialSoft {
     }
 
     @Override
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
         throw new RuntimeException("Implement me (please don't)");
     }
 

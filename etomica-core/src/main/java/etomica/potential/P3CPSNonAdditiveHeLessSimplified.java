@@ -11,7 +11,6 @@ import java.util.Date;
 import java.util.List;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.space.Boundary;
 import etomica.box.Box;
 import etomica.space.Vector;
@@ -516,7 +515,7 @@ public class P3CPSNonAdditiveHeLessSimplified extends Potential implements Poten
         return gradient(atoms);
     }
 
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
         return 0;
     }
 

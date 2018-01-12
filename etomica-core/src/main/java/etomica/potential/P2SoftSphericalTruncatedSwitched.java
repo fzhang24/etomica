@@ -5,7 +5,6 @@
 package etomica.potential;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.space.Boundary;
 import etomica.box.Box;
 import etomica.space.Vector;
@@ -157,7 +156,7 @@ public class P2SoftSphericalTruncatedSwitched extends Potential2 implements Pote
         return u;
     }
     
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
         dr.Ev1Mv2(atoms.get(1).getPosition(), atoms.get(0).getPosition());
         boundary.nearestImage(dr);
         if (dr.squared() < r2Cutoff) {

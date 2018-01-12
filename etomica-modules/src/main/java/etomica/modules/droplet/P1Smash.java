@@ -5,7 +5,6 @@
 package etomica.modules.droplet;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.space.Vector;
 import etomica.potential.PotentialSoft;
@@ -39,7 +38,7 @@ public class P1Smash implements PotentialSoft {
         return g;
     }
 
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
         return 0;
     }
 

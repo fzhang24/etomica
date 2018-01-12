@@ -87,8 +87,9 @@ public class Potential2SoftSphericalLSMulti extends Potential2 implements Potent
     
     /**
      * Virial of the pair as given by the du(double) method
+     * @param atoms
      */
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
         return 0;
     }
     

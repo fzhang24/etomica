@@ -4,7 +4,9 @@
 
 package etomica.potential;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
+
+import java.util.List;
 
 /**
  * Methods for properties obtained for a soft, differentiable pair potential.
@@ -15,8 +17,9 @@ public interface Potential2Soft extends PotentialSoft, Potential2Spherical {
 
     /**
      * Hypervirial of the pair as given by the du(double) and d2u(double) methods
+     * @param pair
      */
-    public double hyperVirial(IAtomList pair);
+    public double hyperVirial(List<IAtom> pair);
 
     /**
      * Integral used to evaluate correction to truncation of potential.

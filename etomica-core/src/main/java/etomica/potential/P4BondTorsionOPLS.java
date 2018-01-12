@@ -5,7 +5,6 @@
 package etomica.potential;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.util.random.IRandom;
 import etomica.space.Vector;
@@ -47,7 +46,7 @@ public class P4BondTorsionOPLS extends P4BondTorsion {
         return gradient(atoms);
     }
 
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
         return 0;
     }
     

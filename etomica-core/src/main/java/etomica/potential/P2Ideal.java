@@ -5,7 +5,6 @@
 package etomica.potential;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.space.Vector;
 import etomica.space.Space;
@@ -53,15 +52,17 @@ public class P2Ideal extends Potential2 implements Potential2Soft,
 
     /**
      * Returns zero.
+     * @param pair
      */
-    public double hyperVirial(IAtomList pair) {
+    public double hyperVirial(List<IAtom> pair) {
         return 0;
     }
 
     /**
      * Returns zero.
+     * @param pair
      */
-    public double virial(IAtomList pair) {
+    public double virial(List<IAtom> pair) {
         return 0;
     }
 

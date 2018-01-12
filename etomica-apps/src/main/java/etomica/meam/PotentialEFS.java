@@ -90,7 +90,7 @@ public class PotentialEFS extends PotentialN implements PotentialSoft{
         boundary=box.getBoundary();
     }
 
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
         double virial=0;
         gradient(atoms);
         Vector ipos=atoms.get(0).getPosition();

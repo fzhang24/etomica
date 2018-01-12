@@ -5,7 +5,6 @@
 package etomica.potential;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.atom.IAtomOriented;
 import etomica.box.Box;
 import etomica.chem.elements.Nitrogen;
@@ -788,7 +787,7 @@ public class P2NitrogenHellmann implements IPotentialAtomic, IPotentialTorque {
     }
 
 
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
         return 0;
     }
 

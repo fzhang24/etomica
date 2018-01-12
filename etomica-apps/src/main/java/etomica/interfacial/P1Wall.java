@@ -5,7 +5,6 @@
 package etomica.interfacial;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.space.Vector;
 import etomica.potential.Potential1;
 import etomica.potential.PotentialSoft;
@@ -34,7 +33,7 @@ public class P1Wall extends Potential1 implements PotentialSoft {
         return uSpring + gSat*dz;
     }
 
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
         return 0;
     }
 

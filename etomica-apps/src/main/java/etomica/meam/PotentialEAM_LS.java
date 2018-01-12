@@ -5,7 +5,6 @@
 package etomica.meam;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.normalmode.CoordinateDefinition;
 import etomica.potential.PotentialN;
@@ -130,7 +129,7 @@ public class PotentialEAM_LS extends PotentialN implements PotentialSoft{
         boundary=box.getBoundary();
     }
 
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
       Vector ipos=atoms.get(0).getPosition();
       Vector Ri = coordinateDefinition.getLatticePosition(atoms.get(0));
       Vector gij2b = space.makeVector();

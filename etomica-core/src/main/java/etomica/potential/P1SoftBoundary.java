@@ -5,7 +5,6 @@
 package etomica.potential;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.space.Vector;
 import etomica.space.Space;
 import etomica.space.Tensor;
@@ -77,7 +76,7 @@ public class P1SoftBoundary extends Potential1 implements PotentialSoft {
         return gradient(a);
     }
 	
-	public double virial(IAtomList atoms) {
+	public double virial(List<IAtom> atoms) {
 	    return 0.0;
     }
     

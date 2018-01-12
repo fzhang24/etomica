@@ -6,7 +6,6 @@ package etomica.potential;
 
 import etomica.atom.AtomType;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.space.Space;
 import etomica.space.Tensor;
@@ -149,11 +148,11 @@ public class P2SoftSphericalTruncated extends Potential2SoftSpherical
             return uCorrection(nPairs()/box.getBoundary().volume());
         }
 
-        public double virial(IAtomList atoms) {
+        public double virial(List<IAtom> atoms) {
             return duCorrection(nPairs()/box.getBoundary().volume());
         }
 
-        public double hyperVirial(IAtomList pair) {
+        public double hyperVirial(List<IAtom> pair) {
             return d2uCorrection(nPairs()/box.getBoundary().volume()) + duCorrection(nPairs()/box.getBoundary().volume());
         }
 

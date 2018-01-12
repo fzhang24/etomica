@@ -4,7 +4,6 @@
 
 package etomica.potential;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.space.Boundary;
 import etomica.box.Box;
 import etomica.space.Vector;
@@ -188,7 +187,7 @@ public class P2HardAssociationConeDoubleSites extends Potential2 implements Pote
         boundary = box.getBoundary();
     }
 
-	public double hyperVirial(IAtomList pair) {
+	public double hyperVirial(List<IAtom> pair) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -217,7 +216,7 @@ public class P2HardAssociationConeDoubleSites extends Potential2 implements Pote
 		return null;
 	}
 
-	public double virial(IAtomList atoms) {
+	public double virial(List<IAtom> atoms) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

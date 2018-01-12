@@ -123,8 +123,9 @@ public class Potential2SoftSphericalLSMultiLat extends Potential2 implements Pot
 
     /**
      * Virial of the pair as given by the du(double) method
+     * @param atoms
      */
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
         return 0;
     }
     

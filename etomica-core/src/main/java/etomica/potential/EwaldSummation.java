@@ -283,7 +283,7 @@ public class EwaldSummation implements PotentialSoft{
         return totalEnergy;
     }
 
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
         return 0;
     }
 
@@ -571,7 +571,7 @@ public class EwaldSummation implements PotentialSoft{
             return 2;
         }
 
-        public double virial(IAtomList atoms) {
+        public double virial(List<IAtom> atoms) {
             return 0;
         }
 

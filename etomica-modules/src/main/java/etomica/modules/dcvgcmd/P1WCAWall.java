@@ -5,7 +5,6 @@
 package etomica.modules.dcvgcmd;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.space.Vector;
 import etomica.potential.Potential1;
 import etomica.potential.PotentialSoft;
@@ -84,7 +83,7 @@ public class P1WCAWall extends Potential1 implements PotentialSoft {
         return gradient(atom);
     }
     
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
         return 0.0;
     }
 

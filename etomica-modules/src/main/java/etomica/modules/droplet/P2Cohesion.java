@@ -6,7 +6,6 @@ package etomica.modules.droplet;
 
 import etomica.atom.AtomFilter;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.potential.IPotentialAtomic;
 import etomica.potential.Potential2SoftSpherical;
 import etomica.space.Space;
@@ -53,14 +52,14 @@ public class P2Cohesion extends Potential2SoftSpherical implements
         return super.gradient(atoms);
     }
 
-    public double hyperVirial(IAtomList atoms) {
+    public double hyperVirial(List<IAtom> atoms) {
         if (useSurfaceOnly && (liquidFilter.test(atoms.get(0)) || liquidFilter.test(atoms.get(1)))) {
             return 0;
         }
         return super.hyperVirial(atoms);
     }
 
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
         if (useSurfaceOnly && (liquidFilter.test(atoms.get(0)) || liquidFilter.test(atoms.get(1)))) {
             return 0;
         }

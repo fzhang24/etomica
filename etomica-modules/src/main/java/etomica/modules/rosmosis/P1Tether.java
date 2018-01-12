@@ -7,7 +7,6 @@ package etomica.modules.rosmosis;
 import etomica.atom.AtomLeafAgentManager;
 import etomica.atom.AtomLeafAgentManager.AgentSource;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.potential.Potential1;
 import etomica.potential.PotentialSoft;
@@ -63,7 +62,7 @@ public class P1Tether extends Potential1 implements AgentSource<Vector>, Potenti
         return gradient(atoms);
     }
 
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
         return 0;
     }
     public Vector makeAgent(IAtom a, Box agentBox) {

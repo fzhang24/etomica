@@ -438,7 +438,7 @@ public class P2WaterSzalewicz implements IPotentialTorque {
         component = newComponent;
     }
 
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
         return 0;
     }
 

@@ -5,7 +5,6 @@
 package etomica.potential;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.space.Boundary;
 import etomica.box.Box;
 import etomica.space.Vector;
@@ -65,8 +64,9 @@ public abstract class Potential2SoftSpherical extends Potential2 implements Pote
     
     /**
      * Virial of the pair as given by the du(double) method
+     * @param atoms
      */
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
         dr.Ev1Mv2(atoms.get(1).getPosition(),atoms.get(0).getPosition());
         boundary.nearestImage(dr);
         return du(dr.squared());
@@ -74,8 +74,9 @@ public abstract class Potential2SoftSpherical extends Potential2 implements Pote
     
     /**
      * Hypervirial of the pair as given by the du(double) and d2u(double) methods
+     * @param atoms
      */
-    public double hyperVirial(IAtomList atoms) {
+    public double hyperVirial(List<IAtom> atoms) {
         dr.Ev1Mv2(atoms.get(1).getPosition(),atoms.get(0).getPosition());
         boundary.nearestImage(dr);
         double r2 = dr.squared();

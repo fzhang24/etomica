@@ -5,7 +5,6 @@
 package etomica.potential;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.space.Boundary;
 import etomica.box.Box;
 import etomica.space.Vector;
@@ -63,8 +62,9 @@ public class Potential2SoftSphericalLS extends Potential2 implements PotentialSo
     
     /**
      * Virial of the pair as given by the du(double) method
+     * @param atoms
      */
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
         double tmpVir = 0;
         dr.Ev1Mv2(atoms.get(1).getPosition(),atoms.get(0).getPosition());
         boundary.nearestImage(dr);

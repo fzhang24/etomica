@@ -100,7 +100,7 @@ public class PotentialCuLREP extends PotentialN implements PotentialSoft{
         boundary=box.getBoundary();
     }
 
-    public double virial(IAtomList atoms) {
+    public double virial(List<IAtom> atoms) {
         double virial=0;
         int ng = atoms.size();
         gradient(atoms);

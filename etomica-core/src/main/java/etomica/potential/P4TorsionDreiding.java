@@ -51,7 +51,7 @@ public class P4TorsionDreiding extends Potential implements PotentialSoft {
 		gradient[3] = space.makeVector();
 		}
 	
-	public double virial(IAtomList atomSet){
+	public double virial(List<IAtom> atomSet){
 		return 0.0;
 	}
 	

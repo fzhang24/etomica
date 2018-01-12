@@ -9,7 +9,6 @@ import etomica.action.IAction;
 import etomica.action.activity.ActivityIntegrate;
 import etomica.atom.AtomType;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.data.*;
 import etomica.data.DataSplitter.IDataSinkFactory;
@@ -136,7 +135,7 @@ public class SimLJVacancy extends Simulation {
             double uShifted = meterPE.getDataAsScalar();
             uShift = (uUnshifted - uShifted)/numAtoms;
             Potential0Lrc pShift = new Potential0Lrc(space, new AtomType[]{leafType, leafType}, potential) {
-                public double virial(IAtomList atoms) {
+                public double virial(List<IAtom> atoms) {
                     return 0;
                 }
                 

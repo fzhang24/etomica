@@ -560,7 +560,7 @@ public class PotentialMEAM extends PotentialN implements PotentialSoft {
 		boundary = box.getBoundary();
 	}
 
-	public double virial(IAtomList atoms) {
+	public double virial(List<IAtom> atoms) {
 		return calcVirial(atoms, null);
 	}
 
