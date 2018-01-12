@@ -6,11 +6,12 @@ package etomica.util;
 
 import etomica.atom.AtomPair;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.molecule.IMolecule;
 import etomica.molecule.IMoleculeList;
 import etomica.molecule.MoleculePair;
+
+import java.util.List;
 
 /**
  * Class holding static fields that determine whether debugging is on, how
@@ -108,7 +109,7 @@ public final class Debug {
      * @param atoms array of atoms to be checked for debugging status
      * @return true if any of the atoms in the atoms array should be debugged
      */
-    public static boolean anyAtom(IAtomList atoms) {
+    public static boolean anyAtom(List<IAtom> atoms) {
         for (int i = 0; i<atoms.size(); i++) {
             IAtom atom = atoms.get(i);
             if ((atom.getIndex() == ATOM1_INDEX || ATOM1_INDEX == -1) &&
@@ -152,7 +153,7 @@ public final class Debug {
      * @param atoms array of atoms to be checked for debugging status
      * @return true if all of the atoms in the atoms array should be debugged
      */
-    public static boolean allAtoms(IAtomList atoms) {
+    public static boolean allAtoms(List<IAtom> atoms) {
         for (int i = 0; i<atoms.size(); i++) {
             IAtom atom = atoms.get(i);
             if (((atom.getIndex() != ATOM1_INDEX && ATOM1_INDEX != -1) ||
