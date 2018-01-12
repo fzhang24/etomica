@@ -26,6 +26,7 @@ import org.jmol.util.Point3f;
 
 import java.awt.*;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class DisplayBoxCanvasG3DSys extends DisplayCanvas implements
@@ -664,7 +665,7 @@ public class DisplayBoxCanvasG3DSys extends DisplayCanvas implements
 	 * Add a bond to the graphical display between the given pairs. The given
 	 * bondType is used to decide how the bond should be drawn.
 	 */
-	public Object makeBond(IAtomList pair, Object bondType) {
+	public Object makeBond(List<IAtom> pair, Object bondType) {
 		/*
 		 * Ball objects here could be null if the bond is created before the
 		 * atoms have been added. Check for this and store atoms locally in a
