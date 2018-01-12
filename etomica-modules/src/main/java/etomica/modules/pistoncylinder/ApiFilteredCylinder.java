@@ -58,7 +58,7 @@ public class ApiFilteredCylinder extends ApiLeafAtoms implements AtomsetIterator
             bitFlipper = 1;
         }
         
-        public boolean accept(IAtomList atoms) {
+        public boolean accept(List<IAtom> atoms) {
             double radius = pistonPotential.getCollisionRadius()+padding;
             // always reject if both atoms are near a wall.  always accept if
             // both atoms are away from the wall.  If one is near and one not, 
