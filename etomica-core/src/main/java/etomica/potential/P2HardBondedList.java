@@ -15,6 +15,8 @@ import etomica.potential.P2HardBondedList.BondArrayList;
 import etomica.simulation.Simulation;
 import etomica.space.Tensor;
 
+import java.util.List;
+
 /**
  * Hard potential that wraps two others.  One potential applies to atoms that are found on each other's
  * list of bonded atoms, and the other applies for pairs not on each other's list. The list of bonded atoms must
@@ -74,7 +76,7 @@ public class P2HardBondedList extends Potential2 implements PotentialHard, Agent
         return lastCollisionIsBonded ? bondedPotential.lastCollisionVirialTensor() : nonBondedPotential.lastCollisionVirialTensor();
     }
     
-    public double energy(IAtomList pair) {
+    public double energy(List<IAtom> pair) {
         return isBonded(pair) ? bondedPotential.energy(pair) : nonBondedPotential.energy(pair);
     }
 
@@ -90,7 +92,7 @@ public class P2HardBondedList extends Potential2 implements PotentialHard, Agent
     public boolean isBonded(IAtom atom0, IAtom atom1) {
         return getBondedList(atom0).contains(atom1);
     }
-    public boolean isBonded(IAtomList pair) {
+    public boolean isBonded(List<IAtom> pair) {
         return isBonded(pair.get(0), pair.get(1));
     }
     

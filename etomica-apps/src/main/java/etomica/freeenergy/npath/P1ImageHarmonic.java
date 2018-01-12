@@ -14,6 +14,8 @@ import etomica.space.Space;
 import etomica.space.Tensor;
 import etomica.space.Vector;
 
+import java.util.List;
+
 /**
  * Created by andrew on 4/11/17.
  */
@@ -117,7 +119,7 @@ public class P1ImageHarmonic extends Potential1 implements PotentialSoft {
     }
 
     @Override
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         IAtom atom0 = atoms.get(0);
         int idx0 = atom0.getLeafIndex();
         IAtom atom1 = allAtoms.get(partners[idx0]);

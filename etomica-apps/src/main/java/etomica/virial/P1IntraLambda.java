@@ -4,11 +4,13 @@
 
 package etomica.virial;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.box.Box;
 import etomica.potential.IPotentialAtomic;
 import etomica.potential.P1IntraMolecular;
 import etomica.space.Space;
+
+import java.util.List;
 
 public class P1IntraLambda implements IPotentialAtomic, P1IntraMolecular {
 	protected double lambda = -1, u0 = 0;
@@ -31,7 +33,7 @@ public class P1IntraLambda implements IPotentialAtomic, P1IntraMolecular {
 		return 1;
 	}
 
-	public double energy(IAtomList atoms) {
+	public double energy(List<IAtom> atoms) {
 		if (lambda == -1) throw new RuntimeException("lambda needs to be set first");
 		return lambda*(((IPotentialAtomic)p1).energy(atoms) - u0);
 	}

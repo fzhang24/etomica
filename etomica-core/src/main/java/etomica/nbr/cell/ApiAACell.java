@@ -65,7 +65,7 @@ public class ApiAACell implements AtomsetIteratorCellular, java.io.Serializable 
 	}
 	
     public IAtomList nextPair() {
-        IAtomList nextPair = listIterator.next();
+        List<IAtom> nextPair = listIterator.next();
         if (nextPair == null) {
             return advanceLists();
         }

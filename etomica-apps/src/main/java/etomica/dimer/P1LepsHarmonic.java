@@ -4,12 +4,15 @@
 
 package etomica.dimer;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.space.Vector;
 import etomica.potential.Potential1;
 import etomica.potential.PotentialSoft;
 import etomica.space.Space;
 import etomica.space.Tensor;
+
+import java.util.List;
 
 /**
  * A combination of the basic LEPS potential describing 3 atoms moving in 1-dimension, paired with a harmonic potential.
@@ -52,7 +55,7 @@ public class P1LepsHarmonic extends Potential1 implements PotentialSoft {
 	    force = new Vector[]{space.makeVector()};
 	}
 	
-	public double energy(IAtomList atom) {
+	public double energy(List<IAtom> atom) {
 		double x = atom.get(0).getPosition().getX(0);
 		double y = atom.get(0).getPosition().getX(1);
 		

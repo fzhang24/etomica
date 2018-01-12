@@ -4,6 +4,7 @@
 
 package etomica.potential;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.space.Boundary;
 import etomica.box.Box;
@@ -12,6 +13,8 @@ import etomica.atom.IAtomOriented;
 import etomica.exception.MethodNotImplementedException;
 import etomica.space.Space;
 import etomica.space.Tensor;
+
+import java.util.List;
 
 /**
  * Lennard Jones molecule with a quadrupole.
@@ -50,7 +53,7 @@ public class P2LJQ extends Potential2 implements Potential2Soft {
         return Double.POSITIVE_INFINITY;
     }
 
-    public double energy(IAtomList pair){
+    public double energy(List<IAtom> pair){
         IAtomOriented atom1 = (IAtomOriented)pair.get(0);
         IAtomOriented atom2 = (IAtomOriented)pair.get(1);
 

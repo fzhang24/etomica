@@ -15,6 +15,8 @@ import etomica.units.dimensions.Energy;
 import etomica.units.dimensions.Length;
 import etomica.units.dimensions.Null;
 
+import java.util.List;
+
 /**
  * Basic square-well potential.
  * Energy is infinite if spheres overlap, is -epsilon if less than lambda*sigma and not overlapping,
@@ -187,7 +189,7 @@ public class P2SquareWellOneSide extends Potential2HardSpherical {
         return time + falseTime;
     }
 
-    public double energy(IAtomList pair) {
+    public double energy(List<IAtom> pair) {
         IAtom atom0 = pair.get(0);
         IAtom atom1 = pair.get(1);
         double x0 = atom0.getPosition().getX(0);

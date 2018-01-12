@@ -4,6 +4,7 @@
 
 package etomica.potential;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.atom.IAtomOriented;
 import etomica.box.Box;
@@ -20,6 +21,7 @@ import etomica.util.Constants;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
 //
 //Ab initio potential energy surface for the nitrogen molecule pair
@@ -354,7 +356,7 @@ public class P2NitrogenHellmann implements IPotentialAtomic, IPotentialTorque {
         return 2;
     }   
      
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         IAtomOriented a0 = (IAtomOriented)atoms.get(0);
 //        int aIndex0 = a0.getLeafIndex();
         IAtomOriented a1 = (IAtomOriented)atoms.get(1);
@@ -522,7 +524,7 @@ public class P2NitrogenHellmann implements IPotentialAtomic, IPotentialTorque {
             perp2.XE(perp1);
         }
 
-        public double energy(IAtomList atoms) {
+        public double energy(List<IAtom> atoms) {
             IAtomOriented atom0 = (IAtomOriented)atoms.get(0);
             IAtomOriented atom1 = (IAtomOriented)atoms.get(1);
             Vector cm0 = atom0.getPosition();

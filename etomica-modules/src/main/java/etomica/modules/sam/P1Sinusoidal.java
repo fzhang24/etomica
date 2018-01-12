@@ -13,6 +13,8 @@ import etomica.space.Space;
 import etomica.space.Tensor;
 import etomica.space.Vector;
 
+import java.util.List;
+
 public class P1Sinusoidal implements IPotential, PotentialSoft {
 
     public P1Sinusoidal(Space space) {
@@ -51,7 +53,7 @@ public class P1Sinusoidal implements IPotential, PotentialSoft {
         waveVectors[2].TE(2.0*Math.PI);
     }
     
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         IAtom a = atoms.get(0);
         r.Ev1Mv2(a.getPosition(), offset);
         double sum = 0;

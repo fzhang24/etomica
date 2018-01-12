@@ -4,13 +4,15 @@
 
 package etomica.potential;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.atom.IAtomOriented;
 import etomica.box.Box;
 import etomica.space.Boundary;
 import etomica.space.Space;
 import etomica.space.Vector;
 import etomica.units.dimensions.*;
+
+import java.util.List;
 
 /**
  * Lennard-Jones potential with a square-well cone of attraction. 
@@ -56,8 +58,9 @@ public class P2HardAssociationCone extends Potential2 {
 
     /**
      * Returns the pair potential energy.
+     * @param atoms
      */
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         IAtomOriented atom0 = (IAtomOriented)atoms.get(0);
         IAtomOriented atom1 = (IAtomOriented)atoms.get(1);
         dr.Ev1Mv2(atom1.getPosition(),atom0.getPosition());

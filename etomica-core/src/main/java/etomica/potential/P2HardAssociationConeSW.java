@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 package etomica.potential;
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.space.Boundary;
 import etomica.box.Box;
 import etomica.space.Vector;
@@ -14,6 +14,8 @@ import etomica.units.dimensions.Dimension;
 import etomica.units.dimensions.Energy;
 import etomica.units.dimensions.Length;
 import etomica.units.dimensions.Null;
+
+import java.util.List;
 
 /**
  * Square-Well cone of attraction for associating fluid theory
@@ -58,8 +60,9 @@ public class P2HardAssociationConeSW extends Potential2 {
 
     /**
      * Returns the pair potential energy.
+     * @param atoms
      */
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         IAtomOriented atom0 = (IAtomOriented)atoms.get(0);
         IAtomOriented atom1 = (IAtomOriented)atoms.get(1);
         dr.Ev1Mv2(atom1.getPosition(),atom0.getPosition());//dr=atom1-atom0

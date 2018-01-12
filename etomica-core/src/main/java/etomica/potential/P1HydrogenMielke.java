@@ -6,12 +6,13 @@ package etomica.potential;
 
 import etomica.atom.AtomHydrogen;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.space.Boundary;
 import etomica.space.Space;
 import etomica.units.BohrRadius;
 import etomica.units.Hartree;
+
+import java.util.List;
 
 public class P1HydrogenMielke implements IPotential, P1IntraMolecular{
 //    1 Eh (hartree) = 27.2113961eV = 627.5096 kcal/mol = 219474.7 cm^-1 
@@ -117,7 +118,7 @@ public class P1HydrogenMielke implements IPotential, P1IntraMolecular{
             super(space);     
         }
 
-        public double energy(IAtomList atoms) {
+        public double energy(List<IAtom> atoms) {
             AtomHydrogen m0 = (AtomHydrogen)atoms.get(0);
             double bL = m0.getBondLength();
             double f = u(bL);
@@ -135,7 +136,7 @@ public class P1HydrogenMielke implements IPotential, P1IntraMolecular{
     		return 2;
     	}
     	
-    	public double energy(IAtomList atoms) {
+    	public double energy(List<IAtom> atoms) {
     		IAtom a0 = atoms.get(0);
     		IAtom a1 = atoms.get(1);
             double bL = Math.sqrt(a0.getPosition().Mv1Squared(a1.getPosition()));

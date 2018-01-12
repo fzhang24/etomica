@@ -12,13 +12,15 @@ import etomica.potential.P2HardSphere;
 import etomica.space.Space;
 import etomica.util.Debug;
 
+import java.util.List;
+
 public class P2HardSphereMC extends P2HardSphere {
     public P2HardSphereMC(Space space, AtomLeafAgentManager<? extends IAtomList> bondManager) {
         super(space, 1.0, true);
         this.bondManager = bondManager;
     }
     
-    public double energy(IAtomList pair) {
+    public double energy(List<IAtom> pair) {
         IAtom atom0 = pair.get(0);
         IAtom atom1 = pair.get(1);
 

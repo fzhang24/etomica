@@ -4,6 +4,7 @@
 
 package etomica.potential;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.molecule.IMolecule;
 import etomica.molecule.IMoleculeList;
@@ -12,6 +13,8 @@ import etomica.molecule.MoleculePositionGeometricCenter;
 import etomica.space.Space;
 import etomica.space.Tensor;
 import etomica.space.Vector;
+
+import java.util.List;
 
 /** 
  * include virial and gradient for a molecular potential
@@ -92,7 +95,7 @@ public class PotentialGroupSoft extends PotentialGroup implements PotentialMolec
         	if(!link.enabled) continue;
             link.iterator.setBasis(basisAtoms);
             link.iterator.reset();
-            for (IAtomList atoms = link.iterator.next(); atoms != null; atoms = link.iterator.next()) {
+            for (List<IAtom> atoms = link.iterator.next(); atoms != null; atoms = link.iterator.next()) {
             	Vector[] gradient_ = ((PotentialSoft)link.potential).gradient(atoms);
             	gradients[0].PE(gradient_[0]);
             }

@@ -5,6 +5,7 @@
 package etomica.modules.adsorption;
 
 import etomica.action.AtomActionRandomizeVelocity;
+import etomica.atom.IAtom;
 import etomica.atom.IAtomKinetic;
 import etomica.atom.IAtomList;
 import etomica.space.Boundary;
@@ -15,6 +16,8 @@ import etomica.integrator.IntegratorBox;
 import etomica.potential.PotentialHard;
 import etomica.space.Space;
 import etomica.space.Tensor;
+
+import java.util.List;
 
 public class P1Wall implements PotentialHard {
 
@@ -43,7 +46,7 @@ public class P1Wall implements PotentialHard {
         return epsilon;
     }
 
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         Vector p = atoms.get(0).getPosition();
         double y = p.getX(1);
         double Ly = boundary.getBoxSize().getX(1);

@@ -4,6 +4,7 @@
 
 package etomica.modules.osmosis;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomKinetic;
 import etomica.atom.IAtomList;
 import etomica.space.Vector;
@@ -13,6 +14,8 @@ import etomica.space.Space;
 import etomica.space.Tensor;
 import etomica.units.dimensions.Dimension;
 import etomica.units.dimensions.Length;
+
+import java.util.List;
 
 /**
  */
@@ -31,7 +34,7 @@ public class P1HardWall extends Potential1 implements PotentialHard {
         collisionRadius = sigma;
     }
 
-    public double energy(IAtomList a) {
+    public double energy(List<IAtom> a) {
         double e = 0.0;
         //XXX ignore atoms in the wall.  this can happen due to bogus initial configurations
 //        if (Math.abs(((AtomLeaf)a).coord.position().get(0)) < collisionRadius) {

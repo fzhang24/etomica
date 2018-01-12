@@ -4,11 +4,14 @@
 
 package etomica.potential;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.space.Vector;
 import etomica.space.Space;
 import etomica.space.Tensor;
+
+import java.util.List;
 
 
 /**
@@ -42,8 +45,9 @@ public class P2Ideal extends Potential2 implements Potential2Soft,
 
     /**
      * Returns zero.
+     * @param atoms
      */
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         return 0;
     }
 

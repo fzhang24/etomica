@@ -4,7 +4,7 @@
 
 package etomica.potential;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.atom.IAtomOriented;
 import etomica.box.Box;
 import etomica.space.Boundary;
@@ -14,6 +14,8 @@ import etomica.units.BohrRadius;
 import etomica.units.Electron;
 import etomica.units.Hartree;
 import etomica.units.Kelvin;
+
+import java.util.List;
 
 public class P3NitrogenHellmannNonAdditive implements IPotentialAtomic{
             
@@ -73,7 +75,7 @@ public class P3NitrogenHellmannNonAdditive implements IPotentialAtomic{
         return 3;
     }
     
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         final IAtomOriented atom0 = (IAtomOriented) atoms.get(0);
         final IAtomOriented atom1 = (IAtomOriented) atoms.get(1);
         final IAtomOriented atom2 = (IAtomOriented) atoms.get(2);

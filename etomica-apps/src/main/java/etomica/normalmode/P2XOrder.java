@@ -15,6 +15,8 @@ import etomica.potential.PotentialHard;
 import etomica.space.Space;
 import etomica.space.Tensor;
 
+import java.util.List;
+
 /**
  * Hard potential that enforces ordering of the x-coordinates of the
  * pairs.  Returns infinite energy if the difference in atom indexes
@@ -41,8 +43,9 @@ public class P2XOrder extends Potential2 implements Potential2Spherical, Potenti
     /**
      * Interaction energy of the pair.
      * Zero if x coordinates are ordered differently from atom indexes.
+     * @param pair
      */
-    public double energy(IAtomList pair) {
+    public double energy(List<IAtom> pair) {
         IAtom atom0 = pair.get(0);
         IAtom atom1 = pair.get(1);
         dr.Ev1Mv2(atom1.getPosition(), atom0.getPosition());

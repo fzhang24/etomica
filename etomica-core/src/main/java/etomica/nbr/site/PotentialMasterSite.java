@@ -22,6 +22,8 @@ import etomica.species.ISpecies;
 import etomica.util.Arrays;
 import etomica.util.Debug;
 
+import java.util.List;
+
 public class PotentialMasterSite extends PotentialMasterNbr {
 
     protected final AtomSetSinglet atomSetSinglet;
@@ -236,7 +238,7 @@ public class PotentialMasterSite extends PotentialMasterNbr {
                 NeighborCriterion nbrCriterion = criteria[i];
                 neighborIterator.setTarget(atom);
                 neighborIterator.reset();
-                for (IAtomList pair = neighborIterator.next(); pair != null;
+                for (List<IAtom> pair = neighborIterator.next(); pair != null;
                      pair = neighborIterator.next()) {
                     if (nbrCriterion.accept(pair)) {
                         pc.doCalculation(pair, p2);

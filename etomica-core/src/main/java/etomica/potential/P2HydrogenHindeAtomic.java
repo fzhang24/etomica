@@ -38,7 +38,7 @@ package etomica.potential;
 //    variable potl, in units of wavenumbers.
 
 import etomica.atom.AtomHydrogen;
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.box.Box;
 import etomica.space.Boundary;
 import etomica.space.Space;
@@ -49,6 +49,7 @@ import etomica.util.Constants;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
 public class P2HydrogenHindeAtomic implements IPotentialAtomic {
 //    public static void main(String[] args) {
@@ -321,7 +322,7 @@ public class P2HydrogenHindeAtomic implements IPotentialAtomic {
         return 2;
     }
     
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         AtomHydrogen m0 = (AtomHydrogen) atoms.get(0);
         AtomHydrogen m1 = (AtomHydrogen) atoms.get(1);
         Vector hh0 = m0.getOrientation().getDirection();

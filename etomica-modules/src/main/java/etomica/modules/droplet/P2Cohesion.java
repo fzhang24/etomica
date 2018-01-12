@@ -5,6 +5,7 @@
 package etomica.modules.droplet;
 
 import etomica.atom.AtomFilter;
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.potential.IPotentialAtomic;
 import etomica.potential.Potential2SoftSpherical;
@@ -12,6 +13,7 @@ import etomica.space.Space;
 import etomica.space.Tensor;
 import etomica.space.Vector;
 
+import java.util.List;
 import java.util.function.Predicate;
 
 /**
@@ -25,7 +27,7 @@ public class P2Cohesion extends Potential2SoftSpherical implements
         super(space);
     }
 
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         if (useSurfaceOnly && (liquidFilter.test(atoms.get(0)) || liquidFilter.test(atoms.get(1)))) {
             return 0;
         }

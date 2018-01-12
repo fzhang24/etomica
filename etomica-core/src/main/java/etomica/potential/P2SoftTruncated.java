@@ -4,6 +4,7 @@
 
 package etomica.potential;
 
+import etomica.atom.IAtom;
 import etomica.space.Boundary;
 import etomica.atom.AtomType;
 import etomica.atom.IAtomList;
@@ -13,6 +14,8 @@ import etomica.space.Tensor;
 import etomica.space.Vector;
 import etomica.units.dimensions.Dimension;
 import etomica.units.dimensions.Length;
+
+import java.util.List;
 
 
 /**
@@ -57,8 +60,9 @@ public class P2SoftTruncated extends Potential2
     /**
      * Returns the energy of the wrapped potential if the separation
      * is less than the cutoff value
+     * @param atoms
      */
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         dr.Ev1Mv2(atoms.get(1).getPosition(),atoms.get(0).getPosition());
         boundary.nearestImage(dr);
         double r2 = dr.squared();
@@ -175,7 +179,7 @@ public class P2SoftTruncated extends Potential2
             D = space.D();              //spatial dimension
         }
 
-        public double energy(IAtomList atoms) {
+        public double energy(List<IAtom> atoms) {
             return uCorrection(nPairs()/box.getBoundary().volume());
         }
 

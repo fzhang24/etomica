@@ -4,11 +4,13 @@
 
 
 package etomica.potential;
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.box.Box;
 import etomica.space.Space;
 import etomica.units.Kelvin;
 import etomica.util.Constants;
+
+import java.util.List;
 
 /**
  * Simplified pair potential for Helium.  The potential has the form of an
@@ -98,7 +100,7 @@ public class P2HeSimplified extends Potential2SoftSpherical {
             fac = hbar*hbar/(24*mass/2)/temperature;
         }
 
-        public double energy(IAtomList atoms) {
+        public double energy(List<IAtom> atoms) {
             dr.Ev1Mv2(atoms.get(1).getPosition(),atoms.get(0).getPosition());
             boundary.nearestImage(dr);
             return u(dr.squared());
@@ -161,7 +163,7 @@ public class P2HeSimplified extends Potential2SoftSpherical {
             fac = hbar*hbar/(24*mass/2)/(temperature*temperature);
         }
 
-        public double energy(IAtomList atoms) {
+        public double energy(List<IAtom> atoms) {
             dr.Ev1Mv2(atoms.get(1).getPosition(),atoms.get(0).getPosition());
             boundary.nearestImage(dr);
             return u(dr.squared());

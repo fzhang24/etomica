@@ -4,7 +4,7 @@
 
 package etomica.potential;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.space.Boundary;
 import etomica.space.Vector;
 import etomica.box.Box;
@@ -13,6 +13,8 @@ import etomica.space3d.Space3D;
 import etomica.units.Hartree;
 import etomica.units.Kelvin;
 import etomica.util.Constants;
+
+import java.util.List;
 
 /**
  * Effective 2 body potential approximating the quantum behavior of atomic
@@ -61,8 +63,9 @@ public class P2EffectiveFeynmanHibbs implements Potential2Spherical {
 
     /**
      * Energy of the pair as given by the u(double) method
+     * @param atoms
      */
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         dr.Ev1Mv2(atoms.get(1).getPosition(),atoms.get(0).getPosition());
         boundary.nearestImage(dr);
         return u(dr.squared());

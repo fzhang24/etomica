@@ -21,6 +21,8 @@ import etomica.units.dimensions.Dimension;
 import etomica.units.dimensions.Energy;
 import etomica.util.random.RandomNumberGenerator;
 
+import java.util.List;
+
 /**
  * Simple 3-body soft bond-angle potential 
  * @author andrew
@@ -42,7 +44,7 @@ public class P3BondAngle extends Potential implements PotentialSoft {
         boundary = box.getBoundary();
     }
 
-    public double energy(IAtomList atomSet) {
+    public double energy(List<IAtom> atomSet) {
         IAtom atom0 = atomSet.get(0);
         IAtom atom1 = atomSet.get(1);
         IAtom atom2 = atomSet.get(2);

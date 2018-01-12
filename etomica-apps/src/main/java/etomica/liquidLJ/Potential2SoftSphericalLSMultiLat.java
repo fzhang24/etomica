@@ -4,6 +4,7 @@
 
 package etomica.liquidLJ;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.space.Boundary;
 import etomica.box.Box;
@@ -14,6 +15,8 @@ import etomica.potential.Potential2Soft;
 import etomica.potential.PotentialSoft;
 import etomica.space.Space;
 import etomica.space.Tensor;
+
+import java.util.List;
 
 /**
  * Methods for a soft (non-impulsive), spherically-symmetric pair potential.
@@ -50,7 +53,7 @@ public class Potential2SoftSphericalLSMultiLat extends Potential2 implements Pot
 		rv = new ReturnValue(rCut.length, space);
 	}
 
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         return 0;
     }
     

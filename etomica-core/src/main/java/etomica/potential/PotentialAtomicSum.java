@@ -4,8 +4,10 @@
 
 package etomica.potential;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.box.Box;
+
+import java.util.List;
 
 /**
  * Atomic potential class that simply sums up contributions from multiple
@@ -39,7 +41,7 @@ public class PotentialAtomicSum implements IPotentialAtomic {
         return p[0].nBody();
     }
 
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         double sum = 0;
         for (int i=0; i<p.length; i++) {
             sum += p[i].energy(atoms);

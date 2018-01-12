@@ -18,6 +18,8 @@ import etomica.units.dimensions.Angle;
 import etomica.units.dimensions.Dimension;
 import etomica.units.dimensions.Energy;
 
+import java.util.List;
+
 /**
  * Ab initio non-additive trimer potential for He developed by Cencek, Patkowski, and Szalewicz JCP 131 064105 2009.
  * 
@@ -44,7 +46,7 @@ public class P3CPSNonAdditiveHeOrig extends Potential implements PotentialSoft {
         boundary = box.getBoundary();
     }
 
-    public double energy(IAtomList atomSet) {
+    public double energy(List<IAtom> atomSet) {
     	
     	setA();
         setAlpha();
@@ -57,7 +59,7 @@ public class P3CPSNonAdditiveHeOrig extends Potential implements PotentialSoft {
         
         //Operate on duplicate of atomSet
         
-        IAtomList atomSet2 = atomSet;
+        List<IAtom> atomSet2 = atomSet;
         
         IAtom atomA = atomSet2.get(0);
         IAtom atomB = atomSet2.get(1);

@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
@@ -51,7 +52,7 @@ public class P3CPSNonAdditiveHeLessSimplified extends Potential implements Poten
     }
     
   
-    public double energy(IAtomList atomSet) {
+    public double energy(List<IAtom> atomSet) {
         IAtom atomA = atomSet.get(0);
         IAtom atomB = atomSet.get(1);
         IAtom atomC = atomSet.get(2);

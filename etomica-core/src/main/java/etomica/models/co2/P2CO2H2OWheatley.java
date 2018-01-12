@@ -4,6 +4,7 @@
 
 package etomica.models.co2;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.atom.IAtomOriented;
 import etomica.box.Box;
@@ -33,6 +34,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Ab initio potential for CO2-H2O by Wheatley and Harvey
@@ -252,7 +254,7 @@ public class P2CO2H2OWheatley implements IPotentialTorque {
         perp2.XE(perp1);
     }
     
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         IAtomOriented atom0 = (IAtomOriented)atoms.get(0);
         IAtomOriented atom1 = (IAtomOriented)atoms.get(1);
         Vector cm0 = atom0.getPosition();
@@ -519,7 +521,7 @@ public class P2CO2H2OWheatley implements IPotentialTorque {
             return 2;
         }
         public double[][] d2tot = new double[2][6];
-        public double energy(IAtomList atoms) {
+        public double energy(List<IAtom> atoms) {
             IAtomOriented atom0 = (IAtomOriented)atoms.get(0);
             IAtomOriented atom1 = (IAtomOriented)atoms.get(1);
             Vector cm0 = atom0.getPosition();
@@ -884,7 +886,7 @@ public class P2CO2H2OWheatley implements IPotentialTorque {
             return 2;
         }
 
-        public double energy(IAtomList atoms) {
+        public double energy(List<IAtom> atoms) {
             IAtomOriented atom0 = (IAtomOriented)atoms.get(0);
             IAtomOriented atom1 = (IAtomOriented)atoms.get(1);
             Vector cm0 = atom0.getPosition();

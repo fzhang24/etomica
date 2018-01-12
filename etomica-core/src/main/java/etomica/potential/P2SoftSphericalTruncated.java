@@ -5,6 +5,7 @@
 package etomica.potential;
 
 import etomica.atom.AtomType;
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.space.Space;
@@ -12,6 +13,8 @@ import etomica.space.Tensor;
 import etomica.space.Vector;
 import etomica.units.dimensions.Dimension;
 import etomica.units.dimensions.Length;
+
+import java.util.List;
 
 
 /**
@@ -142,7 +145,7 @@ public class P2SoftSphericalTruncated extends Potential2SoftSpherical
             D = space.D();              //spatial dimension
         }
 
-        public double energy(IAtomList atoms) {
+        public double energy(List<IAtom> atoms) {
             return uCorrection(nPairs()/box.getBoundary().volume());
         }
 

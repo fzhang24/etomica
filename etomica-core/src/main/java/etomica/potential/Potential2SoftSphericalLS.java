@@ -4,12 +4,15 @@
 
 package etomica.potential;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.space.Boundary;
 import etomica.box.Box;
 import etomica.space.Vector;
 import etomica.space.Space;
 import etomica.space.Tensor;
+
+import java.util.List;
 
 /**
  * Methods for a soft (non-impulsive), spherically-symmetric pair potential.
@@ -35,7 +38,7 @@ public class Potential2SoftSphericalLS extends Potential2 implements PotentialSo
 		nShells = new int[] {(int) Math.ceil(rCut/a0[0] - 0.49999), (int) Math.ceil(rCut/a0[1] - 0.49999), (int) Math.ceil(rCut/a0[2] - 0.49999)};
 	}
         
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
     	boolean isSelf = (atoms.get(1) == atoms.get(0));
 		double u_LJ = 0;
         dr.Ev1Mv2(atoms.get(1).getPosition(),atoms.get(0).getPosition());

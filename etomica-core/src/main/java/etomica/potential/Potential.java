@@ -4,9 +4,11 @@
 
 package etomica.potential;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.box.Box;
 import etomica.space.Space;
+
+import java.util.List;
 
 /**
  * Superclass for all Potential classes, which define how the atoms in the
@@ -36,8 +38,9 @@ public abstract class Potential implements IPotentialAtomic {
     /**
      * Returns the interaction energy between the given atoms.  There might be
      * 0, 1, 2 or more atoms in the AtomSet.
+     * @param atoms
      */
-    public abstract double energy(IAtomList atoms);
+    public abstract double energy(List<IAtom> atoms);
     
     /**
      * Informs the potential of the box on which it acts. Typically this

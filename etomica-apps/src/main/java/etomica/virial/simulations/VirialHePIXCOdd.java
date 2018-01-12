@@ -5,6 +5,7 @@
 package etomica.virial.simulations;
 
 import etomica.atom.AtomType;
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.atom.iterator.ANIntergroupExchange;
 import etomica.atom.iterator.ANIntragroupExchange;
@@ -34,6 +35,8 @@ import etomica.util.ParseArgs;
 import etomica.virial.*;
 import etomica.virial.PotentialGroupPI.PotentialGroupPISkip;
 import etomica.virial.cluster.Standard;
+
+import java.util.List;
 
 /**
  * MSMC calculation for pieces of the "odd" exchange component of helium-4 virial coefficients.
@@ -385,7 +388,7 @@ public class VirialHePIXCOdd {
 
         //Garberoglio and Harvey's U12 
         Potential2SoftSpherical p2B = new P2HePCKLJS(space) {
-        	public double energy(IAtomList molecules) {
+        	public double energy(List<IAtom> molecules) {
            	 	return (super.energy(molecules))/nBeads;
            	}
         };

@@ -4,6 +4,7 @@
 
 package etomica.modules.mu;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomKinetic;
 import etomica.atom.IAtomList;
 import etomica.box.Box;
@@ -16,6 +17,8 @@ import etomica.potential.PotentialHard;
 import etomica.space.Space;
 import etomica.space.Tensor;
 import etomica.space.Vector;
+
+import java.util.List;
 
 /**
  */
@@ -35,7 +38,7 @@ public class P1MagicWall extends Potential1 implements PotentialHard {
         dv = space.makeVector();
     }
     
-    public double energy(IAtomList a) {
+    public double energy(List<IAtom> a) {
         double e = 0.0;
         // this is probably wrong, unfortunately
         return e;

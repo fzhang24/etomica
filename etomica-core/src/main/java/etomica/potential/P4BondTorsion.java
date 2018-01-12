@@ -16,6 +16,8 @@ import etomica.box.RandomPositionSourceRectangular;
 import etomica.space3d.Space3D;
 import etomica.util.random.RandomNumberGenerator;
 
+import java.util.List;
+
 /**
  * Torsion potential.
  *    Jorgensen, W. L., Madura, J. D. and Swenson, C. J.
@@ -49,7 +51,7 @@ public class P4BondTorsion extends Potential implements PotentialSoft {
         boundary = box.getBoundary();
     }
 
-    public double energy(IAtomList atomSet) {
+    public double energy(List<IAtom> atomSet) {
         IAtom atom0 = atomSet.get(0);
         IAtom atom1 = atomSet.get(1);
         IAtom atom2 = atomSet.get(2);

@@ -4,12 +4,15 @@
 
 package etomica.modules.sam;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.space.Vector;
 import etomica.potential.Potential1;
 import etomica.potential.PotentialSoft;
 import etomica.space.Space;
 import etomica.space.Tensor;
+
+import java.util.List;
 
 /**
  * 1-D potential that has a WCA form in the Z direction.
@@ -42,7 +45,7 @@ public class P1WCAWall extends Potential1 implements PotentialSoft {
         return cutoff;
     }
 
-    public double energy(IAtomList atom) {
+    public double energy(List<IAtom> atom) {
         double rz = atom.get(0).getPosition().getX(wallDim) - wallPosition;
         return energy(rz*rz);
     }

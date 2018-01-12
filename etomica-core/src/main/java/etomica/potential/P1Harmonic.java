@@ -4,6 +4,7 @@
 
 package etomica.potential;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.space.Vector;
 import etomica.space.Space;
@@ -12,6 +13,8 @@ import etomica.units.dimensions.CompoundDimension;
 import etomica.units.dimensions.Dimension;
 import etomica.units.dimensions.Energy;
 import etomica.units.dimensions.Length;
+
+import java.util.List;
 
 /**
  * Potential in which attaches a harmonic spring between each affected atom and
@@ -58,7 +61,7 @@ public class P1Harmonic extends Potential1 implements PotentialSoft {
         return new CompoundDimension(new Dimension[]{Energy.DIMENSION,Length.DIMENSION},new double[]{1,-2});
     }
 
-    public double energy(IAtomList a) {
+    public double energy(List<IAtom> a) {
         return 0.5*w*a.get(0).getPosition().Mv1Squared(x0);
     }
     

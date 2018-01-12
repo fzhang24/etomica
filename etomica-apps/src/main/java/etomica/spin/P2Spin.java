@@ -4,10 +4,12 @@
 
 package etomica.spin;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.box.Box;
 import etomica.potential.Potential2;
 import etomica.space.Space;
+
+import java.util.List;
 
 /**
  * Magnetic spin potential, with an energy defined by
@@ -38,8 +40,9 @@ public class P2Spin extends Potential2 {
      * 
      * @throws ClassCastException
      *             if atoms is not an instance of AtomPair
+     * @param atoms
      */
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         return -coupling
                 * atoms.get(0).getPosition().dot(atoms.get(1).getPosition());
     }

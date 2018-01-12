@@ -4,10 +4,12 @@
 
 package etomica.virial;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.box.Box;
 import etomica.potential.IPotentialAtomic;
 import etomica.virial.cluster.VirialDiagrams;
+
+import java.util.List;
 
 
 public class PotentialCommonAtomic implements IPotentialAtomic {
@@ -40,7 +42,7 @@ public class PotentialCommonAtomic implements IPotentialAtomic {
         return nBody;
     }
 
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         CoordinatePairSet cPairs = ((BoxCluster)box1).getCPairSet();
         long thisCPairID = cPairs.getID();        
         int aIndex0 = atoms.get(0).getLeafIndex();

@@ -5,6 +5,7 @@
 package etomica.potential;
 
 import etomica.atom.AtomLeafAgentManager;
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.space.Space;
@@ -16,6 +17,7 @@ import etomica.units.dimensions.Energy;
 import etomica.units.dimensions.Length;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -59,7 +61,7 @@ public class P1HarmonicSite extends Potential1 implements PotentialSoft {
         return new CompoundDimension(new Dimension[]{Energy.DIMENSION,Length.DIMENSION},new double[]{1,-2});
     }
 
-    public double energy(IAtomList a) {
+    public double energy(List<IAtom> a) {
         Vector x0 = atomAgentManager.getAgent(a.get(0));
         return w*a.get(0).getPosition().Mv1Squared(x0);
     }

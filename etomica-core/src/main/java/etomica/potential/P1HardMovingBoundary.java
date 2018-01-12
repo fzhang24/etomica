@@ -4,6 +4,7 @@
 
 package etomica.potential;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomKinetic;
 import etomica.atom.IAtomList;
 import etomica.space.Boundary;
@@ -20,6 +21,8 @@ import etomica.units.dimensions.Mass;
 import etomica.units.dimensions.Pressure;
 import etomica.units.dimensions.Time;
 import etomica.util.Debug;
+
+import java.util.List;
 
 /**
  * Potential that places hard repulsive walls that move and 
@@ -118,7 +121,7 @@ public class P1HardMovingBoundary extends Potential1 implements PotentialHard, D
         return Mass.DIMENSION;
     }
     
-    public double energy(IAtomList a) {
+    public double energy(List<IAtom> a) {
         double dx = a.get(0).getPosition().getX(wallD) - wallPosition;
         if (dx*dx < collisionRadius*collisionRadius) {
             return Double.POSITIVE_INFINITY;

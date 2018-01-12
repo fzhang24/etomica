@@ -9,6 +9,8 @@ import etomica.atom.IAtomList;
 import etomica.space.Vector;
 import etomica.space.Space;
 
+import java.util.List;
+
 /**
  * Empirical Isotropic atom-atom repulsion-dispersion potential
  * Given formula:
@@ -34,7 +36,7 @@ public class P2ElectrostaticDreiding extends etomica.potential.P2Exp6 {
         super(_space, AA, BB, CC);
     }
     
-    public double energy(IAtomList atomSet) {
+    public double energy(List<IAtom> atomSet) {
     	
         IAtom atom0 = atomSet.get(0);
         IAtom atom1 = atomSet.get(1);

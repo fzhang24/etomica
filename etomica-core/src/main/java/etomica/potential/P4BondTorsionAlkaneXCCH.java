@@ -19,6 +19,8 @@ import etomica.space.Tensor;
 import etomica.space3d.Space3D;
 import etomica.util.random.RandomNumberGenerator;
 
+import java.util.List;
+
 /**
  * slight modification from P4BondTorsion class(change energyAtAngle method)
  * Siepmann's Alkane TraPPE-EH model, XCCH torsion potential, X can be H or C, H is for H on CH3 only
@@ -53,7 +55,7 @@ public class P4BondTorsionAlkaneXCCH extends Potential implements PotentialSoft 
         boundary = box.getBoundary();
     }
 
-    public double energy(IAtomList atomSet) {
+    public double energy(List<IAtom> atomSet) {
         IAtom atom0 = atomSet.get(0);
         IAtom atom1 = atomSet.get(1);
         IAtom atom2 = atomSet.get(2);

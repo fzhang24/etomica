@@ -4,6 +4,7 @@
 
 package etomica.meam;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.potential.PotentialN;
@@ -12,6 +13,8 @@ import etomica.space.Boundary;
 import etomica.space.Vector;
 import etomica.space.Space;
 import etomica.space.Tensor;
+
+import java.util.List;
 
 /**
  * EAM (Embedded Atom Method) potential
@@ -54,7 +57,7 @@ public class PotentialEAM extends PotentialN implements PotentialSoft{
         rC2 = rC1;
     }
     
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         double sumV=0;
         double rhoi=0;
         Vector ipos=atoms.get(0).getPosition();

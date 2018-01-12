@@ -4,12 +4,15 @@
 
 package etomica.potential;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.space.Boundary;
 import etomica.box.Box;
 import etomica.space.Vector;
 import etomica.space.Space;
 import etomica.space.Tensor;
+
+import java.util.List;
 
 /**
  * Methods for a soft (non-impulsive), spherically-symmetric pair potential.
@@ -52,8 +55,9 @@ public abstract class Potential2SoftSpherical extends Potential2 implements Pote
     
     /**
      * Energy of the pair as given by the u(double) method
+     * @param atoms
      */
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         dr.Ev1Mv2(atoms.get(1).getPosition(),atoms.get(0).getPosition());
         boundary.nearestImage(dr);
         return u(dr.squared());

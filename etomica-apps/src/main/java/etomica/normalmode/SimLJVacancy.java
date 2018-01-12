@@ -148,7 +148,7 @@ public class SimLJVacancy extends Simulation {
                     return null;
                 }
                 
-                public double energy(IAtomList atoms) {
+                public double energy(List<IAtom> atoms) {
                     if (divisor==0) return 0;
                     if (divisor==1) {
                         // the whole system

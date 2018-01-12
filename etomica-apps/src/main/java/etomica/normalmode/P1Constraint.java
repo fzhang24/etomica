@@ -4,11 +4,13 @@
 
 package etomica.normalmode;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.space.Vector;
 import etomica.box.Box;
 import etomica.potential.Potential1;
 import etomica.space.Space;
+
+import java.util.List;
 
 public class P1Constraint extends Potential1{
 
@@ -31,7 +33,7 @@ public class P1Constraint extends Potential1{
 	}
 	
 	@Override
-	public double energy(IAtomList atoms) {
+	public double energy(List<IAtom> atoms) {
 
 	    Vector posAtom = atoms.get(0).getPosition();
 

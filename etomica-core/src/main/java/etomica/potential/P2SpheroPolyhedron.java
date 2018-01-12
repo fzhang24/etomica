@@ -6,7 +6,7 @@ package etomica.potential;
 
 import java.util.List;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.space.Boundary;
 import etomica.box.Box;
 import etomica.space.Vector;
@@ -52,7 +52,7 @@ public class P2SpheroPolyhedron extends Potential2 {
         return Double.POSITIVE_INFINITY;
     }
 
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         AtomOrientedQuaternion atom0 = (AtomOrientedQuaternion)atoms.get(0);
         AtomOrientedQuaternion atom1 = (AtomOrientedQuaternion)atoms.get(1);
         AtomTypeSpheroPolyhedron atomType0 = (AtomTypeSpheroPolyhedron)atom0.getType();

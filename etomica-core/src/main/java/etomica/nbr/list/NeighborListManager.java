@@ -19,6 +19,8 @@ import etomica.potential.PotentialArray;
 import etomica.space.Space;
 import etomica.util.Debug;
 
+import java.util.List;
+
 /**
  * Initiates the process of updating the neighbor lists. Instance is constructed
  * by PotentialMasterNbr constructor. Acts as a listener of the integrator(s),
@@ -341,7 +343,7 @@ public class NeighborListManager implements IntegratorListener, AgentSource<Atom
         cell1ANbrIterator.setBox(box);
         cell1ANbrIterator.setTarget(atom);
         cell1ANbrIterator.reset();
-        for (IAtomList pair = cell1ANbrIterator.next(); pair != null;
+        for (List<IAtom> pair = cell1ANbrIterator.next(); pair != null;
              pair = cell1ANbrIterator.next()) {
             IAtom atom1 = pair.get(1);
             if (atom1 == atom) atom1 = pair.get(0);

@@ -4,6 +4,7 @@
 
 package etomica.potential;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.space.Boundary;
 import etomica.box.Box;
@@ -13,6 +14,8 @@ import etomica.space.Tensor;
 import etomica.space3d.Space3D;
 import etomica.units.dimensions.Dimension;
 import etomica.units.dimensions.Length;
+
+import java.util.List;
 
 
 /**
@@ -140,7 +143,7 @@ public class P2SoftSphericalTruncatedSwitched extends Potential2 implements Pote
         return gradient(atoms);
     }
     
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         dr.Ev1Mv2(atoms.get(1).getPosition(),atoms.get(0).getPosition());
         boundary.nearestImage(dr);
         double r2 = dr.squared();

@@ -17,6 +17,8 @@ import etomica.potential.PotentialMaster.AtomIterator0;
 import etomica.space.Space;
 import etomica.util.Debug;
 
+import java.util.List;
+
 /**
  * Collection of potentials that act between the atoms contained in
  * one or more groups of atoms.  This group iterates over all such atom-groups
@@ -159,7 +161,7 @@ public class PotentialGroup extends PotentialMolecular {
             //if(firstIterate) ((AtomsetIteratorBasisDependent)link.iterator).setDirective(id);
             link.iterator.setBasis(basisAtoms);
             link.iterator.reset();
-            for (IAtomList atoms = link.iterator.next(); atoms != null; atoms = link.iterator.next()) {
+            for (List<IAtom> atoms = link.iterator.next(); atoms != null; atoms = link.iterator.next()) {
                 sum += link.potential.energy(atoms);
                 if (Debug.ON && Double.isNaN(sum)) {
                     link.potential.energy(atoms);
@@ -225,8 +227,8 @@ public class PotentialGroup extends PotentialMolecular {
     	        atomIterator.setBasis(basisAtoms);
     	        atomIterator.reset();
     	        final IPotentialAtomic potential = link.potential;
-    	        for (IAtomList atoms = atomIterator.next(); atoms != null;
-    	             atoms = atomIterator.next()) {
+    	        for (List<IAtom> atoms = atomIterator.next(); atoms != null;
+                     atoms = atomIterator.next()) {
     	            pc.doCalculation(atoms, potential);
     	        }
     	    }

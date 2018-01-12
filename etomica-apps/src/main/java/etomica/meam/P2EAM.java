@@ -4,6 +4,7 @@
 
 package etomica.meam;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.integrator.IntegratorEvent;
@@ -13,6 +14,8 @@ import etomica.space.Boundary;
 import etomica.space.Space;
 import etomica.space.Tensor;
 import etomica.space.Vector;
+
+import java.util.List;
 
 /**
  * EAM (Embedded Atom Method) potential that pretends to be a pair potential.
@@ -89,7 +92,7 @@ public class P2EAM extends Potential2 implements PotentialSoft {
         }
     }
 
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         Vector pos0 = atoms.get(0).getPosition();
         Vector pos1 = atoms.get(1).getPosition();
         dr.Ev1Mv2(pos1, pos0);

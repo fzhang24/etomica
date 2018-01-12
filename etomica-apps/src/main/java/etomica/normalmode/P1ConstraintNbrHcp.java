@@ -13,6 +13,8 @@ import etomica.space.Boundary;
 import etomica.space.Space;
 import etomica.space.Vector;
 
+import java.util.List;
+
 public class P1ConstraintNbrHcp implements IPotentialAtomic {
 
     /**
@@ -67,8 +69,9 @@ public class P1ConstraintNbrHcp implements IPotentialAtomic {
 
     /**
      * Returns sum of energy for all triplets containing the given atom
+     * @param atoms
      */
-	public double energy(IAtomList atoms) {
+	public double energy(List<IAtom> atoms) {
 	    IAtom atom = atoms.get(0);
 	    double u = energyi(atom);
 	    if (u == Double.POSITIVE_INFINITY) {

@@ -12,6 +12,8 @@ import etomica.potential.PotentialSoft;
 import etomica.space.Space;
 import etomica.space.Tensor;
 
+import java.util.List;
+
 /**
  * Gravity-like potential that pushes the molecules toward the center.
  */
@@ -56,7 +58,7 @@ public class P1Smash implements PotentialSoft {
         return gradient;
     }
 
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         IAtom a = atoms.get(0);
         return Math.abs(a.getPosition().getX(2))*g;
     }

@@ -4,7 +4,7 @@
 
 package etomica.potential;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.atom.IAtomOriented;
 import etomica.box.Box;
 import etomica.space.Boundary;
@@ -17,6 +17,7 @@ import etomica.util.Constants;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 public class P2O2Bartolomei implements IPotentialAtomic {
     
@@ -135,7 +136,7 @@ public class P2O2Bartolomei implements IPotentialAtomic {
         return 2;
     }
 
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         IAtomOriented atom0 = (IAtomOriented)atoms.get(0);
         IAtomOriented atom1 = (IAtomOriented)atoms.get(1);
         double rCM = Math.sqrt(atom0.getPosition().Mv1Squared(atom1.getPosition()));        
@@ -754,7 +755,7 @@ public class P2O2Bartolomei implements IPotentialAtomic {
             fac = hbar*hbar/(24*mass/2)/(temperature*temperature);
         }
 
-        public double energy(IAtomList atoms) {
+        public double energy(List<IAtom> atoms) {
             dr.Ev1Mv2(atoms.get(1).getPosition(),atoms.get(0).getPosition());
             boundary.nearestImage(dr);
             return u(dr.squared());

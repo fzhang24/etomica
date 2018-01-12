@@ -16,6 +16,8 @@ import etomica.space.Tensor;
 import etomica.space.Vector;
 import etomica.species.ISpecies;
 
+import java.util.List;
+
 
 /**
  * Potential for a harmonic tether.
@@ -42,7 +44,7 @@ public class P1Tether extends Potential1 implements AgentSource<Vector>, Potenti
         return epsilon;
     }
 
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         IAtom atom = atoms.get(0);
         work.E(atom.getPosition());
         work.ME(agentManager.getAgent(atom));

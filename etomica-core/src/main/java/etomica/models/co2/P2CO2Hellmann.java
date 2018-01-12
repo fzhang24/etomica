@@ -4,6 +4,7 @@
 
 package etomica.models.co2;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.atom.IAtomOriented;
 import etomica.box.Box;
@@ -28,6 +29,8 @@ import etomica.units.dimensions.Null;
 import etomica.units.Unit;
 import etomica.util.Constants;
 import etomica.util.random.RandomMersenneTwister;
+
+import java.util.List;
 
 /**
  * Ab initio potential for CO2-CO2 developed by R. Hellmann.
@@ -235,7 +238,7 @@ public class P2CO2Hellmann implements IPotentialTorque {
         return gradientAndTorque;
     }
     
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         IAtomOriented atom0 = (IAtomOriented)atoms.get(0);
         IAtomOriented atom1 = (IAtomOriented)atoms.get(1);
         Vector cm0 = atom0.getPosition();
@@ -391,7 +394,7 @@ public class P2CO2Hellmann implements IPotentialTorque {
             perp2.XE(perp1);
         }
         
-        public double energy(IAtomList atoms) {
+        public double energy(List<IAtom> atoms) {
             IAtomOriented atom0 = (IAtomOriented)atoms.get(0);
             IAtomOriented atom1 = (IAtomOriented)atoms.get(1);
             Vector cm0 = atom0.getPosition();

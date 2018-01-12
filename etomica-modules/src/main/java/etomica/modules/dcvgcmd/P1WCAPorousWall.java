@@ -4,12 +4,15 @@
 
 package etomica.modules.dcvgcmd;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.space.Vector;
 import etomica.potential.Potential1;
 import etomica.potential.PotentialSoft;
 import etomica.space.Space;
 import etomica.space.Tensor;
+
+import java.util.List;
 
 /**
  * This acts as a 1-body WCA potential wall perpendicular to the z direction 
@@ -44,7 +47,7 @@ public class P1WCAPorousWall extends Potential1 implements PotentialSoft {
         return cutoff;
     }
 
-    public double energy(IAtomList atom) {
+    public double energy(List<IAtom> atom) {
         Vector r = atom.get(0).getPosition();
         double rz = r.getX(2);
         double dz2 = (z - rz);

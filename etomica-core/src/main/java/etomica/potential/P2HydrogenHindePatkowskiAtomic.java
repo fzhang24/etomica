@@ -5,7 +5,7 @@
 package etomica.potential;
 
 import etomica.atom.AtomHydrogen;
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.box.Box;
 import etomica.space.Boundary;
 import etomica.space.Space;
@@ -16,6 +16,7 @@ import etomica.units.Kelvin;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 public class P2HydrogenHindePatkowskiAtomic implements IPotentialAtomic {
     protected Boundary boundary;
@@ -56,7 +57,7 @@ public class P2HydrogenHindePatkowskiAtomic implements IPotentialAtomic {
     }
     
 
-        public double energy(IAtomList atoms) {
+        public double energy(List<IAtom> atoms) {
             AtomHydrogen m0 = (AtomHydrogen) atoms.get(0);
             AtomHydrogen m1 = (AtomHydrogen) atoms.get(1);
             Vector hh0 = m0.getOrientation().getDirection();

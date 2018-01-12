@@ -22,6 +22,8 @@ import etomica.units.Mole;
 import etomica.util.random.IRandom;
 import etomica.util.random.RandomMersenneTwister;
 
+import java.util.List;
+
 public class P2WaterPotentialsJankowski implements IPotentialAtomic {
     
     protected static final int nsitemax = 8;
@@ -2441,7 +2443,7 @@ public class P2WaterPotentialsJankowski implements IPotentialAtomic {
         return 2;
     }
 
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         if (tKelvin < 0) throw new RuntimeException("Temperature needs to be set while calling the constructor");
         processAtoms(atoms);
         double eTot = poten(); // flexible configuration with temperature dependent

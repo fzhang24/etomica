@@ -4,6 +4,7 @@
 
 package etomica.meam;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.space.Boundary;
 import etomica.box.Box;
@@ -13,6 +14,8 @@ import etomica.potential.PotentialSoft;
 import etomica.space.Space;
 import etomica.space.Tensor;
 import etomica.units.ElectronVolt;
+
+import java.util.List;
 
 public class PotentialCuLREP extends PotentialN implements PotentialSoft{
 
@@ -60,7 +63,7 @@ public class PotentialCuLREP extends PotentialN implements PotentialSoft{
     }
 
     
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         double sumV=0;
         double rhoi=0;
         double rij_c, rij_d , v1, v2;

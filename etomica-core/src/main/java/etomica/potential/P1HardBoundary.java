@@ -4,6 +4,7 @@
 
 package etomica.potential;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomKinetic;
 import etomica.atom.IAtomList;
 import etomica.space.Boundary;
@@ -15,6 +16,8 @@ import etomica.space.Tensor;
 import etomica.units.dimensions.Dimension;
 import etomica.units.dimensions.Length;
 import etomica.util.Debug;
+
+import java.util.List;
 
 /**
  * Potential that places hard repulsive walls coinciding with the
@@ -63,7 +66,7 @@ public class P1HardBoundary implements PotentialHard, Drawable {
         boundary = box.getBoundary();
     }
 
-    public double energy(IAtomList a) {
+    public double energy(List<IAtom> a) {
         Vector dimensions = boundary.getBoxSize();
         Vector pos = a.get(0).getPosition();
         for (int i=0; i<work.getD(); i++) {

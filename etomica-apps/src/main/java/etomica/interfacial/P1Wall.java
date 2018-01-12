@@ -4,12 +4,15 @@
 
 package etomica.interfacial;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.space.Vector;
 import etomica.potential.Potential1;
 import etomica.potential.PotentialSoft;
 import etomica.space.Space;
 import etomica.space.Tensor;
+
+import java.util.List;
 
 public class P1Wall extends Potential1 implements PotentialSoft {
 
@@ -25,7 +28,7 @@ public class P1Wall extends Potential1 implements PotentialSoft {
         grad = new Vector[]{space.makeVector()};
     }
 
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         double dz = atoms.get(0).getPosition().getX(2)-springPosition;
         double uSpring = 0.5*spring*dz*dz;
         return uSpring + gSat*dz;

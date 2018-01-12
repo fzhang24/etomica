@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 package etomica.potential;
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.space.Boundary;
 import etomica.box.Box;
 import etomica.space.Vector;
@@ -13,6 +13,8 @@ import etomica.space3d.IOrientationFull3D;
 import etomica.units.dimensions.Angle;
 import etomica.units.dimensions.Dimension;
 import etomica.units.dimensions.Length;
+
+import java.util.List;
 
 /**
  * potential with a square-well cone of attraction for reference system. 
@@ -48,8 +50,9 @@ public class P2HardAssociationConeReferenceFourSites extends Potential2 {
 
     /**
      * Returns the pair potential energy.
+     * @param atoms
      */
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         IAtomOriented atom0 = (IAtomOriented)atoms.get(0);
         IAtomOriented atom1 = (IAtomOriented)atoms.get(1);
         dr.Ev1Mv2(atom1.getPosition(),atom0.getPosition());//dr=atom1 - atom0

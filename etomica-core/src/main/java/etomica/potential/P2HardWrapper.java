@@ -4,10 +4,13 @@
 
 package etomica.potential;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.space.Space;
 import etomica.space.Tensor;
+
+import java.util.List;
 
 /**
  * Hard potential class that wraps another hard potential.
@@ -21,7 +24,7 @@ import etomica.space.Tensor;
         wrappedPotential = potential;
     }
 
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         return wrappedPotential.energy(atoms);
     }
 

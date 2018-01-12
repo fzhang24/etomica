@@ -4,11 +4,13 @@
 
 package etomica.threaded;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.box.Box;
 import etomica.potential.IPotentialAtomic;
 import etomica.potential.Potential;
 import etomica.space.Space;
+
+import java.util.List;
 
 public class PotentialThreaded extends Potential {
 
@@ -20,7 +22,7 @@ public class PotentialThreaded extends Potential {
 	
 	}
 
-	public double energy(IAtomList atoms) {
+	public double energy(List<IAtom> atoms) {
 		//Only the energy from one thread (a partition of atoms)
 		return potential[0].energy(atoms);
 	}

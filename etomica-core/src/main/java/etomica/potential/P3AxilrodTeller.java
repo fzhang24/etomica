@@ -5,12 +5,13 @@
 package etomica.potential;
 
 import etomica.atom.AtomType;
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.box.Box;
 import etomica.space.Boundary;
 import etomica.space.Space;
 import etomica.space.Vector;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,7 +34,7 @@ public class P3AxilrodTeller implements IPotentialAtomic {
         dr2 = space.makeVector();
     }
 
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         double ep = 1;
         double es = 0;
         double[] eps = new double[3];

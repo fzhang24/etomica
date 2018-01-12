@@ -5,7 +5,6 @@
 package etomica.potential;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.atom.IAtomOriented;
 import etomica.box.Box;
 import etomica.space.Boundary;
@@ -14,6 +13,7 @@ import etomica.space.Vector;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 public class P3HydrogenATM implements IPotential{
     public static void main(String[] args) {       
@@ -57,7 +57,7 @@ public class P3HydrogenATM implements IPotential{
             super(space);     
         }
         
-        public double energy(IAtomList atoms) {
+        public double energy(List<IAtom> atoms) {
             IAtom a0 = atoms.get(0);
             IAtom a1 = atoms.get(1);
             IAtom a2 = atoms.get(2);

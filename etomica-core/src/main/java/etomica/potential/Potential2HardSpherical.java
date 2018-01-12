@@ -5,11 +5,12 @@
 package etomica.potential;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.space.Boundary;
 import etomica.space.Vector;
 import etomica.space.Space;
+
+import java.util.List;
 
 /**
  * Methods for a hard (impulsive), spherically-symmetric pair potential.
@@ -34,8 +35,9 @@ public abstract class Potential2HardSpherical extends Potential2 implements Pote
      * of any PotentialTruncation that may be defined for the potential.  This
      * does not take into account any false positioning that the Integrator may
      * be using.
+     * @param pair
      */
-    public double energy(IAtomList pair) {
+    public double energy(List<IAtom> pair) {
         IAtom atom0 = pair.get(0);
         IAtom atom1 = pair.get(1);
 

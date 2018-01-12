@@ -16,6 +16,7 @@ import etomica.space.Tensor;
 import etomica.space.Vector;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author Kate Schadel
@@ -544,7 +545,7 @@ public class PotentialMEAM extends PotentialN implements PotentialSoft {
 	/* (non-Javadoc)
 	 * @see etomica.potential.Potential#energy(etomica.atom.AtomSet)
 	 */
-	public double energy(IAtomList atoms) {
+	public double energy(List<IAtom> atoms) {
 		calcSums(atoms);
 		double rhoi = rhoi(atoms);
 		pi = parameters[atoms.get(0).getType().getIndex()];

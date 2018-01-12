@@ -6,7 +6,6 @@ package etomica.potential;
 
 import etomica.atom.AtomType;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.atom.IAtomOriented;
 import etomica.box.Box;
 import etomica.space.Space;
@@ -14,6 +13,7 @@ import etomica.space.Vector;
 import etomica.util.Constants;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -64,7 +64,7 @@ public class P2SemiclassicalAtomic implements IPotentialAtomic {
         return 2;
     }
 
-    public double energy(IAtomList molecules) {
+    public double energy(List<IAtom> molecules) {
         double uC = p2Classy.energy(molecules);
         if (uC / temperature > 100) return Double.POSITIVE_INFINITY;
         Vector[][] gradAndTorque = p2Classy.gradientAndTorque(molecules);

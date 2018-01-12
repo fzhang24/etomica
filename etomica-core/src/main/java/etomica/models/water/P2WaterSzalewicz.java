@@ -5,6 +5,7 @@
 package etomica.models.water;
 
 import etomica.atom.AtomPair;
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.atom.IAtomOriented;
 import etomica.box.Box;
@@ -28,6 +29,7 @@ import etomica.util.random.RandomMersenneTwister;
 import etomica.util.random.RandomNumberGeneratorUnix;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Water potential as described by
@@ -454,7 +456,7 @@ public class P2WaterSzalewicz implements IPotentialTorque {
     protected static final double core = 1.2;
     public static boolean debug = false;
 
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         for (int i = 0; i<atoms.size(); i++) {
             rTmp.Ea1Tv1(bohrConv, atoms.get(i).getPosition());
             // everything after this is in Bohr
@@ -1022,7 +1024,7 @@ public class P2WaterSzalewicz implements IPotentialTorque {
             return sitePos.length;
         }
 
-        public double energy(IAtomList atoms) {
+        public double energy(List<IAtom> atoms) {
             for (int i = 0; i<atoms.size(); i++) {
                 rTmp.Ea1Tv1(bohrConv, atoms.get(i).getPosition());
                 // everything after this is in Bohr

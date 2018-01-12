@@ -4,6 +4,7 @@
 
 package etomica.meam;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.space.Boundary;
 import etomica.box.Box;
@@ -12,6 +13,8 @@ import etomica.potential.PotentialN;
 import etomica.potential.PotentialSoft;
 import etomica.space.Space;
 import etomica.space.Tensor;
+
+import java.util.List;
 
 /**
  * EFS (Extended Finnis-Sinclair) potential
@@ -57,7 +60,7 @@ public class PotentialEFS extends PotentialN implements PotentialSoft{
     }
 
     
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         double sumV=0;
         double rhoi=0;
         Vector ipos=atoms.get(0).getPosition();

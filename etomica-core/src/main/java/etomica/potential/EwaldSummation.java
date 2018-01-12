@@ -18,6 +18,8 @@ import etomica.units.Joule;
 import etomica.util.Constants;
 import org.apache.commons.math3.special.Erf;
 
+import java.util.List;
+
 /**Sabry*/
 //Given: rc=L/2  ,  s  ,  
 //Calc.: alpha = s/rc    ,  F&S: radius => nc=(s*alpha/PI)*L Sabry: n_max=N  , nx = ny = nz ~ N^1/3   ,
@@ -262,7 +264,7 @@ public class EwaldSummation implements PotentialSoft{
         public final double charge;
     }
 
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         double real = doRealSum ? uReal() : 0;
         double fourier = uFourier();
         double self = uSelf();
@@ -540,7 +542,7 @@ public class EwaldSummation implements PotentialSoft{
             gradient2[1] = space.makeVector();
         }
 
-        public double energy(IAtomList atoms) {
+        public double energy(List<IAtom> atoms) {
             IAtom atomA = atoms.get(0);
             double chargeA = atomAgentManager.getAgent(atomA).charge;
 

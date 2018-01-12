@@ -15,6 +15,8 @@ import etomica.units.dimensions.Energy;
 import etomica.units.dimensions.Length;
 import etomica.units.dimensions.Null;
 
+import java.util.List;
+
 /**
  * Hard core with an attractive tail that goes to zero linearly with r.
  * 
@@ -36,7 +38,7 @@ public class P2TriangleWell extends Potential2 {
         dr = space.makeVector();
     }
 
-    public double energy(IAtomList pair) {
+    public double energy(List<IAtom> pair) {
         IAtom atom0 = pair.get(0);
         IAtom atom1 = pair.get(1);
         

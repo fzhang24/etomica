@@ -29,6 +29,7 @@ import etomica.util.random.RandomMersenneTwister;
 import etomica.util.random.RandomNumberGeneratorUnix;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -63,7 +64,7 @@ public class P3Induction implements IPotentialAtomic {
         or3 = space.makeVector();
     }
 
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         double sum = 0;
         for (int i=0; i<3; i++) {
             

@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 package etomica.modules.materialfracture;
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.space.Vector;
@@ -11,6 +12,8 @@ import etomica.space.Space;
 import etomica.space.Tensor;
 import etomica.units.dimensions.Dimension;
 import etomica.units.dimensions.Null;
+
+import java.util.List;
 
 public class P1Tension implements PotentialSoft {
     
@@ -49,7 +52,7 @@ public class P1Tension implements PotentialSoft {
         box = newBox;
     }
 
-    public double energy(IAtomList a) {
+    public double energy(List<IAtom> a) {
         Vector r = a.get(0).getPosition();
         double aSum = 0.0;
         double x = r.getX(0);

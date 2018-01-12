@@ -5,10 +5,7 @@
 package etomica.interfacial;
 
 import etomica.action.activity.ActivityIntegrate;
-import etomica.atom.AtomSourceRandomSpecies;
-import etomica.atom.AtomType;
-import etomica.atom.DiameterHashByType;
-import etomica.atom.IAtomList;
+import etomica.atom.*;
 import etomica.box.Box;
 import etomica.chem.elements.ElementSimple;
 import etomica.data.*;
@@ -99,7 +96,7 @@ public class LJMC extends Simulation {
 
         Potential1 p1F = new Potential1(space) {
             
-            public double energy(IAtomList atoms) {
+            public double energy(List<IAtom> atoms) {
                 double pz = atoms.get(0).getPosition().getX(2);
                 double zMin = -0.5*boundary.getBoxSize().getX(2);
                 double zMax = box.getMoleculeList(speciesTopWall).getMolecule(0).getChildList().get(0).getPosition().getX(2);

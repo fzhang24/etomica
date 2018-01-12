@@ -4,13 +4,16 @@
 
 package etomica.potential;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
+
+import java.util.List;
 
 public interface IPotentialAtomic extends IPotential {
 
     /**
      * Returns the interaction energy between the given atoms.  There might be
      * 0, 1, 2 or more atoms in the AtomSet.
+     * @param atoms
      */
-    public double energy(IAtomList atoms);
+    public double energy(List<IAtom> atoms);
 }

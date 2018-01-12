@@ -7,7 +7,6 @@ package etomica.virial.simulations;
 import etomica.action.IAction;
 import etomica.atom.AtomTypeSpheroPolyhedron;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.chem.elements.ElementSimple;
 import etomica.data.*;
@@ -42,6 +41,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Calculation for virial coefficients of hard spheres
@@ -104,7 +104,7 @@ public class VirialPolyhedra2 {
                 return sigmaHSRef;
             }
             
-            public double energy(IAtomList atoms) {
+            public double energy(List<IAtom> atoms) {
                 int i0 = atoms.get(0).getLeafIndex();
                 int i1 = atoms.get(1).getLeafIndex();
                 if (Double.isNaN(uValues[i0][i1])) {

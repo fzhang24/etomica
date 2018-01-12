@@ -18,6 +18,8 @@ import etomica.units.BohrRadius;
 import etomica.units.Hartree;
 import etomica.units.Kelvin;
 
+import java.util.List;
+
 /**
  * Ab initio non-additive trimer potential for He developed by Cencek, Patkowski, and Szalewicz JCP 131 064105 2009.
  *  
@@ -47,7 +49,7 @@ public class P3CPSNonAdditiveHe extends Potential implements PotentialSoft, IPot
         this.nullRegionMethod = nullRegionMethod;
     }
 
-    public double energy(IAtomList atomSet) {
+    public double energy(List<IAtom> atomSet) {
         IAtom atomA = atomSet.get(0);
         IAtom atomB = atomSet.get(1);
         IAtom atomC = atomSet.get(2);

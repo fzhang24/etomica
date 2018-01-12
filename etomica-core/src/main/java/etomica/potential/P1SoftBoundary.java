@@ -4,12 +4,15 @@
 
 package etomica.potential;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomList;
 import etomica.space.Vector;
 import etomica.space.Space;
 import etomica.space.Tensor;
 import etomica.units.dimensions.Dimension;
 import etomica.units.dimensions.Length;
+
+import java.util.List;
 
 /**
  * @author David Kofke
@@ -34,7 +37,7 @@ public class P1SoftBoundary extends Potential1 implements PotentialSoft {
 		setRadius(radius);
 	}
 
-	public double energy(IAtomList a) {
+	public double energy(List<IAtom> a) {
 		Vector dimensions = boundary.getBoxSize();
 		double rx = a.get(0).getPosition().getX(0);
 		double ry = a.get(0).getPosition().getX(1);

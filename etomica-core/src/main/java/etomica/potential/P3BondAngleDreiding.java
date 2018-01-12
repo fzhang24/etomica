@@ -12,6 +12,8 @@ import etomica.space.Vector;
 import etomica.space.Space;
 import etomica.space.Tensor;
 
+import java.util.List;
+
 /**
  * Simple 3-body soft bond-angle for Dreiding potential 
  * 
@@ -163,7 +165,7 @@ public class P3BondAngleDreiding extends Potential implements PotentialSoft {
 		boundary = box.getBoundary();
 	}
 	
-	public double energy(IAtomList atomSet){
+	public double energy(List<IAtom> atomSet){
         IAtom atom0 = atomSet.get(0);
         IAtom atom1 = atomSet.get(1);
         IAtom atom2 = atomSet.get(2);

@@ -4,12 +4,14 @@
 
 package etomica.yukawa;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.space.Boundary;
 import etomica.space.Vector;
 import etomica.box.Box;
 import etomica.potential.Potential2SoftSpherical;
 import etomica.space.Space;
+
+import java.util.List;
 
 /**
  * Hard-core plus two Yukawa fluid (HC2Yukawa): A Lennard-Jones like potential.
@@ -83,8 +85,9 @@ public final class P2HC2Yukawa extends Potential2SoftSpherical {
 		
     /**
      * Energy of the pair as given by the u(double) method
+     * @param atoms
      */
-    public double energy(IAtomList atoms) {
+    public double energy(List<IAtom> atoms) {
         dr.Ev1Mv2(atoms.get(1).getPosition(), atoms.get(0).getPosition());
         nearestImageTransformer.nearestImage(dr);
         return u(dr.squared());
