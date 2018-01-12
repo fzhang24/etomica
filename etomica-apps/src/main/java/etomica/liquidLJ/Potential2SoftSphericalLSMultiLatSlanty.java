@@ -4,12 +4,14 @@
 
 package etomica.liquidLJ;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.space.Vector;
 import etomica.box.Box;
 import etomica.normalmode.CoordinateDefinition;
 import etomica.potential.Potential2Soft;
 import etomica.space.Space;
+
+import java.util.List;
 
 /**
  * Methods for a soft (non-impulsive), spherically-symmetric pair potential.
@@ -32,7 +34,7 @@ public class Potential2SoftSphericalLSMultiLatSlanty extends Potential2SoftSpher
 		System.arraycopy(nShells, 0, this.nShells, 0, 3);
 	}
 
-    public ReturnValue energyVirialCut(IAtomList atoms) {
+    public ReturnValue energyVirialCut(List<IAtom> atoms) {
     	boolean isSelf = (atoms.get(1) == atoms.get(0));
         dr.Ev1Mv2(atoms.get(1).getPosition(),atoms.get(0).getPosition());
         drLat.E(coordinateDefinition.getLatticePosition(atoms.get(1)));

@@ -87,7 +87,7 @@ public class P1ImageHarmonic extends Potential1 implements PotentialSoft {
         w = newW;
     }
 
-    public double getDUDW(IAtomList atoms) {
+    public double getDUDW(List<IAtom> atoms) {
         IAtom atom0 = atoms.get(0);
         int idx0 = atom0.getLeafIndex();
         if (partners[idx0] < idx0) return 0;

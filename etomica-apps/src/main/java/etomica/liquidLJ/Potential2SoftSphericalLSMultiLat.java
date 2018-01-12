@@ -5,7 +5,6 @@
 package etomica.liquidLJ;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.space.Boundary;
 import etomica.box.Box;
 import etomica.space.Vector;
@@ -57,7 +56,7 @@ public class Potential2SoftSphericalLSMultiLat extends Potential2 implements Pot
         return 0;
     }
     
-    public ReturnValue energyVirialCut(IAtomList atoms) {
+    public ReturnValue energyVirialCut(List<IAtom> atoms) {
     	boolean isSelf = (atoms.get(1) == atoms.get(0));
         dr.Ev1Mv2(atoms.get(1).getPosition(),atoms.get(0).getPosition());
         drLat.E(coordinateDefinition.getLatticePosition(atoms.get(1)));

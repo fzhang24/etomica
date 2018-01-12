@@ -6,7 +6,6 @@ package etomica.meam;
 
 import etomica.atom.AtomType;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.potential.PotentialN;
 import etomica.potential.PotentialSoft;
@@ -296,7 +295,7 @@ public class PotentialMEAM extends PotentialN implements PotentialSoft {
 		return kcut;
 	}
 
-	public void calcSums(IAtomList atoms) {
+	public void calcSums(List<IAtom> atoms) {
 		for (int i = 0; i < sum.length; i++) {
     		sum[i] = 0;
 		}
@@ -533,7 +532,7 @@ public class PotentialMEAM extends PotentialN implements PotentialSoft {
         return ((tav1 * rhoi1sq) + (tav2 * rhoi2sq) + (tav3 * rhoi3sq)) / (rhoi0 * rhoi0);
     }
 
-    protected double rhoi(IAtomList atoms) {
+    protected double rhoi(List<IAtom> atoms) {
     	double rhoi0 = rhoi0(), gamma = gamma();
 		pi = parameters[atoms.get(0).getType().getIndex()];
     	if (pi == pSn) {
@@ -582,7 +581,7 @@ public class PotentialMEAM extends PotentialN implements PotentialSoft {
      * PotentialSoft interface call this method and return what the particular
      * method wants.
      */
-	private double calcVirial(IAtomList atoms, Tensor pressureTensor) {
+	private double calcVirial(List<IAtom> atoms, Tensor pressureTensor) {
         double virial = 0;
 
 		if (atoms.size() > gnEi.length) {
