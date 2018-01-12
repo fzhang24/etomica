@@ -6,6 +6,7 @@ package etomica.atom.iterator;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 import etomica.action.AtomAction;
 import etomica.atom.IAtom;
@@ -39,8 +40,9 @@ class Lister implements AtomAction {
 	/**
      * Adds atomSet.toString() to list.
 	 * kmb 4/27/05
-	 */
-	public void actionPerformed(IAtomList atomSet) {
+     * @param atomSet
+     */
+	public void actionPerformed(List<IAtom> atomSet) {
         list.add(atomSet.toString());
 	}
     

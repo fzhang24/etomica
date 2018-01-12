@@ -9,7 +9,10 @@ import etomica.atom.*;
 import etomica.potential.IteratorDirective;
 import junit.framework.TestCase;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Provides library methods to test the basic functioning of an iterator.
@@ -75,7 +78,7 @@ public abstract class IteratorTestAbstract extends TestCase {
 
         //******* test of next
         iterator.reset();
-        for (IAtomList atomSet = iterator.next(); atomSet != null;
+        for (List<IAtom> atomSet = iterator.next(); atomSet != null;
              atomSet = iterator.next()) {
             lister[0].actionPerformed(atomSet);
         }
@@ -83,25 +86,24 @@ public abstract class IteratorTestAbstract extends TestCase {
         print("Testing size -- iterator.size, lister.list.size: "+iterator.size()+" "+lister[0].list.size());
         assertEquals(iterator.size(), lister[0].list.size());
 
-        IAtomList[] atoms = new IAtomList[lister[0].list.size()];
+//        IAtomList[] atoms = new IAtomList[lister[0].list.size()];
+        List<List<IAtom>> atoms = new ArrayList<>();
         
         //******* test of next
         iterator.reset();
-        int j=0;
-        for (IAtomList nextAtom = iterator.next(); nextAtom != null;
-               nextAtom = iterator.next()) {
-            atoms[j] = new AtomsetArray(nextAtom);
+        for (List<IAtom> nextAtom = iterator.next(); nextAtom != null;
+             nextAtom = iterator.next()) {
+            atoms.add(nextAtom);
             lister[1].actionPerformed(nextAtom);
-            j++;
         }
 
         //******* test of nextAtom
         if(iterator instanceof AtomIterator) {
             iterator.reset();
             int i = 0;
-            for (IAtom next = ((AtomIterator)iterator).nextAtom(); i<atoms.length;
+            for (IAtom next = ((AtomIterator)iterator).nextAtom(); i<atoms.size();
                  next = ((AtomIterator)iterator).nextAtom()) {
-                assertEquals(next, atoms[i++].get(0));
+                assertEquals(next, atoms.get(i++).get(0));
             }
             assertNull(((AtomIterator)iterator).nextAtom());
         }
@@ -118,7 +120,7 @@ public abstract class IteratorTestAbstract extends TestCase {
 
         //******* test of nBody
         iterator.reset();
-        for (IAtomList atomSet = iterator.next(); atomSet != null;
+        for (List<IAtom> atomSet = iterator.next(); atomSet != null;
              atomSet = iterator.next()) {
             assertEquals(atomSet.size(), iterator.nBody());
         }
