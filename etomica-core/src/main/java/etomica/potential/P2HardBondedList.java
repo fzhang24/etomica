@@ -42,7 +42,7 @@ public class P2HardBondedList extends Potential2 implements PotentialHard, Agent
         return Math.max(bondedPotential.getRange(), nonBondedPotential.getRange());
     }
 
-    public void bump(IAtomList pair, double falseTime) {
+    public void bump(List<IAtom> pair, double falseTime) {
         MyBond bond = getBond(pair);
         lastCollisionIsBonded = (bond != null);
         if(lastCollisionIsBonded) {
@@ -54,7 +54,7 @@ public class P2HardBondedList extends Potential2 implements PotentialHard, Agent
         }
     }
 
-    public double collisionTime(IAtomList pair, double falseTime) {
+    public double collisionTime(List<IAtom> pair, double falseTime) {
         MyBond bond = getBond(pair);
         if(bond != null) {
 //            bondedPotential.setBondLengthSquared(bond.bondLengthSquared);

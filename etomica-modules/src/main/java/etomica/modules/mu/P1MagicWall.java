@@ -50,7 +50,7 @@ public class P1MagicWall extends Potential1 implements PotentialHard {
     }
 
      
-    public double collisionTime(IAtomList a, double falseTime) {
+    public double collisionTime(List<IAtom> a, double falseTime) {
         IAtomKinetic atom = (IAtomKinetic)a.get(0);
         Vector r = atom.getPosition();
         Vector v = atom.getVelocity();
@@ -64,7 +64,7 @@ public class P1MagicWall extends Potential1 implements PotentialHard {
         return t+falseTime;
     }
 
-    public void bump(IAtomList a, double falseTime) {
+    public void bump(List<IAtom> a, double falseTime) {
         IAtomKinetic atom = (IAtomKinetic)a.get(0);
         Vector v = atom.getVelocity();
         Vector p = atom.getPosition();

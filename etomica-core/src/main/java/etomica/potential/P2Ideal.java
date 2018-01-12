@@ -104,13 +104,13 @@ public class P2Ideal extends Potential2 implements Potential2Soft,
     /**
      * Does nothing.
      */
-    public void bump(IAtomList atom, double falseTime) {
+    public void bump(List<IAtom> atom, double falseTime) {
     }
 
     /**
      * Returns Double.POSITIVE_INFINITY.
      */
-    public double collisionTime(IAtomList atom, double falseTime) {
+    public double collisionTime(List<IAtom> atom, double falseTime) {
         return Double.POSITIVE_INFINITY;
     }
 

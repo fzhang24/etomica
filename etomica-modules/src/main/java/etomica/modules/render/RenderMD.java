@@ -26,10 +26,7 @@ import etomica.species.SpeciesSpheresMono;
 import etomica.util.ParameterBase;
 import etomica.util.random.RandomNumberGenerator;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 
@@ -218,7 +215,7 @@ public class RenderMD extends Simulation {
             }
         }
 
-        public void bump(IAtomList pair, double falseTime) {
+        public void bump(List<IAtom> pair, double falseTime) {
             IAtomKinetic atom0 = (IAtomKinetic)pair.get(0);
             IAtomKinetic atom1 = (IAtomKinetic)pair.get(1);
             double v2old = atom1.getVelocity().Mv1Squared(atom0.getVelocity());
@@ -234,7 +231,7 @@ public class RenderMD extends Simulation {
 
         }
 
-        public double collisionTime(IAtomList pair, double falseTime) {
+        public double collisionTime(List<IAtom> pair, double falseTime) {
             setCoreDiameterSquared(bondMap.get(pair));
             return super.collisionTime(pair, falseTime);
         }

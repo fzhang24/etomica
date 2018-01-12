@@ -18,6 +18,7 @@ import etomica.units.dimensions.Null;
 import etomica.util.Debug;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -96,7 +97,7 @@ public class P2SquareWellRobust extends Potential2HardSpherical implements AtomL
      * Includes all possibilities involving collision of hard cores, and collision of wells
      * both approaching and diverging
      */
-    public void bump(IAtomList pair, double falseTime) {
+    public void bump(List<IAtom> pair, double falseTime) {
         IAtomKinetic atom0 = (IAtomKinetic)pair.get(0);
         IAtomKinetic atom1 = (IAtomKinetic)pair.get(1);
         dv.Ev1Mv2(atom1.getVelocity(), atom0.getVelocity());
@@ -178,7 +179,7 @@ public class P2SquareWellRobust extends Potential2HardSpherical implements AtomL
      * Collision may occur when cores collides, or when wells first encounter each other on
      * approach, or when they edge of the wells are reached as atoms diverge.
      */
-    public double collisionTime(IAtomList pair, double falseTime) {
+    public double collisionTime(List<IAtom> pair, double falseTime) {
         IAtomKinetic coord0 = (IAtomKinetic)pair.get(0);
         IAtomKinetic coord1 = (IAtomKinetic)pair.get(1);
         dv.Ev1Mv2(coord1.getVelocity(), coord0.getVelocity());

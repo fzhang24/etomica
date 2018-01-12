@@ -4,8 +4,8 @@
 
 package etomica.potential;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomKinetic;
-import etomica.atom.IAtomList;
 import etomica.space.Vector;
 import etomica.space.Space;
 import etomica.space.Tensor;
@@ -13,6 +13,8 @@ import etomica.units.dimensions.Dimension;
 import etomica.units.dimensions.Energy;
 import etomica.units.dimensions.Length;
 import etomica.util.Debug;
+
+import java.util.List;
 
 /**
  * Potential with a well having a finite potential on either side. Similar to P2HardBond,
@@ -76,7 +78,7 @@ public class P2PenetrableBond extends Potential2HardSpherical {
      * Includes all possibilities involving collision of hard cores, and collision of wells
      * both approaching and diverging
      */
-    public void bump(IAtomList pair, double falseTime) {
+    public void bump(List<IAtom> pair, double falseTime) {
         IAtomKinetic atom0 = (IAtomKinetic)pair.get(0);
         IAtomKinetic atom1 = (IAtomKinetic)pair.get(1);
         dv.Ev1Mv2(atom1.getVelocity(), atom0.getVelocity());
@@ -184,7 +186,7 @@ public class P2PenetrableBond extends Potential2HardSpherical {
         return lastCollisionVirialTensor;
     }
 
-    public double collisionTime(IAtomList pair, double falseTime) {
+    public double collisionTime(List<IAtom> pair, double falseTime) {
         IAtomKinetic coord0 = (IAtomKinetic)pair.get(0);
         IAtomKinetic coord1 = (IAtomKinetic)pair.get(1);
         dv.Ev1Mv2(coord1.getVelocity(), coord0.getVelocity());

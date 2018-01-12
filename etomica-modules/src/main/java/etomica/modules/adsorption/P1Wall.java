@@ -7,7 +7,6 @@ package etomica.modules.adsorption;
 import etomica.action.AtomActionRandomizeVelocity;
 import etomica.atom.IAtom;
 import etomica.atom.IAtomKinetic;
-import etomica.atom.IAtomList;
 import etomica.space.Boundary;
 import etomica.box.Box;
 import etomica.util.random.IRandom;
@@ -71,7 +70,7 @@ public class P1Wall implements PotentialHard {
         boundary = box.getBoundary();
     }
 
-    public void bump(IAtomList a, double falseTime) {
+    public void bump(List<IAtom> a, double falseTime) {
         IAtomKinetic atom = (IAtomKinetic)a.get(0);
         Vector v = atom.getVelocity();
         double vy = v.getX(1);
@@ -134,7 +133,7 @@ public class P1Wall implements PotentialHard {
         
     }
 
-    public double collisionTime(IAtomList a, double falseTime) {
+    public double collisionTime(List<IAtom> a, double falseTime) {
         IAtomKinetic atom = (IAtomKinetic)a.get(0);
         double y = atom.getPosition().getX(1);
         double v = atom.getVelocity().getX(1);

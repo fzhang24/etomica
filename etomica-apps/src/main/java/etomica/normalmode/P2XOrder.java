@@ -5,7 +5,6 @@
 package etomica.normalmode;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.space.Vector;
 import etomica.box.Box;
 import etomica.potential.Potential2;
@@ -99,11 +98,11 @@ public class P2XOrder extends Potential2 implements Potential2Spherical, Potenti
         hasPBC = dr.getX(0) < 0.5*box.getBoundary().getBoxSize().getX(0);
     }
 
-    public void bump(IAtomList atom, double falseTime) {
+    public void bump(List<IAtom> atom, double falseTime) {
         wrappedPotential.bump(atom, falseTime);
     }
 
-    public double collisionTime(IAtomList atom, double falseTime) {
+    public double collisionTime(List<IAtom> atom, double falseTime) {
         return wrappedPotential.collisionTime(atom, falseTime);
     }
 

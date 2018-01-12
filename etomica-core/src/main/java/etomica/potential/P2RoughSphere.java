@@ -6,12 +6,13 @@ package etomica.potential;
 
 import etomica.atom.AtomTypeOriented;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.atom.IAtomOrientedKinetic;
 import etomica.space.Space;
 import etomica.space.Tensor;
 import etomica.space.Vector;
 import etomica.space3d.Vector3D;
+
+import java.util.List;
 
 /**
  * Basic hard-(rod/disk/sphere) potential, with surface roughness to couple rotation and translational motions.
@@ -44,7 +45,7 @@ public class P2RoughSphere extends P2HardSphere {
      * Implements collision dynamics and updates lastCollisionVirial
      * Assumes atoms have same size and mass
      */
-    public void bump(IAtomList pair, double falseTime) {
+    public void bump(List<IAtom> pair, double falseTime) {
         IAtom atom0 = pair.get(0);
         IAtom atom1 = pair.get(1);
         IAtomOrientedKinetic coord0 = (IAtomOrientedKinetic)atom0;

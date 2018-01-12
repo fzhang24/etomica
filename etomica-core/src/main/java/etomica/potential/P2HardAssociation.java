@@ -4,14 +4,16 @@
 
 package etomica.potential;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomKinetic;
-import etomica.atom.IAtomList;
 import etomica.space.Vector;
 import etomica.space.Space;
 import etomica.space.Tensor;
 import etomica.units.dimensions.Dimension;
 import etomica.units.dimensions.Energy;
 import etomica.units.dimensions.Length;
+
+import java.util.List;
 
 /**
  * Purely attractive square-well potential with no repulsive core.  Similar
@@ -38,7 +40,7 @@ public class P2HardAssociation extends Potential2HardSpherical {
     * Implements the collision dynamics.  Does not deal with the hard cores, only the wells.  This
     * section is essentially the same as PotentialSquareWell without the hard core section.
     */
-    public void bump(IAtomList pair, double falseTime) {
+    public void bump(List<IAtom> pair, double falseTime) {
         double eps = 1e-6;
         IAtomKinetic atom0 = (IAtomKinetic)pair.get(0);
         IAtomKinetic atom1 = (IAtomKinetic)pair.get(1);
@@ -98,7 +100,7 @@ public class P2HardAssociation extends Potential2HardSpherical {
     * Computes the next time of collision of the given atomPair assuming free flight.  Only computes the next
     * collision of the wells.  Takes into account both separation and convergence.
     */
-    public double collisionTime(IAtomList pair, double falseTime) {
+    public double collisionTime(List<IAtom> pair, double falseTime) {
         IAtomKinetic atom0 = (IAtomKinetic)pair.get(0);
         IAtomKinetic atom1 = (IAtomKinetic)pair.get(1);
         dv.Ev1Mv2(atom1.getVelocity(), atom0.getVelocity());

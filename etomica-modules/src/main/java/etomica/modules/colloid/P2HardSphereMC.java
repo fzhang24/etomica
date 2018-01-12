@@ -45,7 +45,7 @@ public class P2HardSphereMC extends P2HardSphere {
      * Collision may occur when cores collides, or when wells first encounter each other on
      * approach, or when they edge of the wells are reached as atoms diverge.
      */
-    public double collisionTime(IAtomList pair, double falseTime) {
+    public double collisionTime(List<IAtom> pair, double falseTime) {
         IAtomKinetic coord0 = (IAtomKinetic)pair.get(0);
         IAtomKinetic coord1 = (IAtomKinetic)pair.get(1);
         dv.Ev1Mv2(coord1.getVelocity(), coord0.getVelocity());

@@ -6,7 +6,6 @@ package etomica.potential;
 
 import etomica.atom.IAtom;
 import etomica.atom.IAtomKinetic;
-import etomica.atom.IAtomList;
 import etomica.space.Vector;
 import etomica.space.Space;
 import etomica.space.Tensor;
@@ -52,7 +51,7 @@ public class P1HardPeriodic extends Potential1 implements PotentialHard {
         return 0.0;
     }
     
-    public double collisionTime(IAtomList a, double falseTime) {
+    public double collisionTime(List<IAtom> a, double falseTime) {
         IAtomKinetic atom = (IAtomKinetic)a.get(0);
         Vector v = atom.getVelocity();
         Vector dim = boundary.getBoxSize();
@@ -78,7 +77,7 @@ public class P1HardPeriodic extends Potential1 implements PotentialHard {
     /**
      * Performs no action.
      */
-    public void bump(IAtomList a, double falseTime) { }
+    public void bump(List<IAtom> a, double falseTime) { }
     
     /**
      * Returns zero.

@@ -4,8 +4,10 @@
 
 package etomica.potential;
 
-import etomica.atom.IAtomList;
+import etomica.atom.IAtom;
 import etomica.space.Tensor;
+
+import java.util.List;
 
 /**
  * Interface for hard potentials, having impulsive forces.
@@ -33,14 +35,14 @@ public interface PotentialHard extends IPotentialAtomic {
      * according to the action of the collision. Extensions can be defined to
      * instead implement other, perhaps unphysical changes.
      */
-    public void bump(IAtomList atom, double falseTime);
+    public void bump(List<IAtom> atom, double falseTime);
 
     /**
      * Computes the time of collision of the given atom(s) with the hard
      * potential, assuming no intervening collisions. Usually assumes
      * free-flight between collisions.
      */
-    public double collisionTime(IAtomList atom, double falseTime);
+    public double collisionTime(List<IAtom> atom, double falseTime);
 
     /**
      * returns change in potential energy due to the last collision

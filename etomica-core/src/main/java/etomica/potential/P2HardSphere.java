@@ -4,14 +4,16 @@
 
 package etomica.potential;
 
+import etomica.atom.IAtom;
 import etomica.atom.IAtomKinetic;
-import etomica.atom.IAtomList;
 import etomica.space.Vector;
 import etomica.space.Space;
 import etomica.space.Tensor;
 import etomica.units.dimensions.Dimension;
 import etomica.units.dimensions.Length;
 import etomica.util.Debug;
+
+import java.util.List;
 
 /**
  * Basic hard-(rod/disk/sphere) potential.
@@ -56,7 +58,7 @@ public class P2HardSphere extends Potential2HardSpherical {
     /**
      * Time to collision of pair, assuming free-flight kinematics
      */
-    public double collisionTime(IAtomList pair, double falseTime) {
+    public double collisionTime(List<IAtom> pair, double falseTime) {
         IAtomKinetic atom0 = (IAtomKinetic)pair.get(0);
         IAtomKinetic atom1 = (IAtomKinetic)pair.get(1);
         dv.Ev1Mv2(atom1.getVelocity(), atom0.getVelocity());
@@ -86,7 +88,7 @@ public class P2HardSphere extends Potential2HardSpherical {
     /**
      * Implements collision dynamics and updates lastCollisionVirial
      */
-    public void bump(IAtomList pair, double falseTime) {
+    public void bump(List<IAtom> pair, double falseTime) {
         IAtomKinetic atom0 = (IAtomKinetic)pair.get(0);
         IAtomKinetic atom1 = (IAtomKinetic)pair.get(1);
         dv.Ev1Mv2(atom1.getVelocity(), atom0.getVelocity());

@@ -6,7 +6,6 @@ package etomica.potential;
 
 import etomica.atom.IAtom;
 import etomica.atom.IAtomKinetic;
-import etomica.atom.IAtomList;
 import etomica.space.Boundary;
 import etomica.box.Box;
 import etomica.space.Vector;
@@ -84,7 +83,7 @@ public class P1HardBoundary implements PotentialHard, Drawable {
      
     public double energyChange() {return 0.0;}
     
-    public double collisionTime(IAtomList a, double falseTime) {
+    public double collisionTime(List<IAtom> a, double falseTime) {
         IAtomKinetic atom = (IAtomKinetic)a.get(0);
         work.E(atom.getPosition());
         Vector v = atom.getVelocity();
@@ -121,7 +120,7 @@ public class P1HardBoundary implements PotentialHard, Drawable {
         return tmin + falseTime;
     }
 
-    public void bump(IAtomList a, double falseTime) {
+    public void bump(List<IAtom> a, double falseTime) {
         IAtomKinetic atom = (IAtomKinetic)a.get(0);
         work.E(atom.getPosition());
         Vector v = atom.getVelocity();

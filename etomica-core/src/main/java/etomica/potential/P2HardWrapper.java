@@ -5,7 +5,6 @@
 package etomica.potential;
 
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.box.Box;
 import etomica.space.Space;
 import etomica.space.Tensor;
@@ -48,11 +47,11 @@ import java.util.List;
         return wrappedPotential.getRange();
     }
     
-    public void bump(IAtomList atoms, double falseTime) {
+    public void bump(List<IAtom> atoms, double falseTime) {
         wrappedPotential.bump(atoms, falseTime);
     }
 
-    public double collisionTime(IAtomList atoms, double falseTime) {
+    public double collisionTime(List<IAtom> atoms, double falseTime) {
         return wrappedPotential.collisionTime(atoms, falseTime);
     }
 

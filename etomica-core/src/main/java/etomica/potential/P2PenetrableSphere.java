@@ -3,8 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 package etomica.potential;
+import etomica.atom.IAtom;
 import etomica.atom.IAtomKinetic;
-import etomica.atom.IAtomList;
 import etomica.space.Vector;
 import etomica.space.Space;
 import etomica.space.Tensor;
@@ -12,6 +12,9 @@ import etomica.units.dimensions.Dimension;
 import etomica.units.dimensions.Energy;
 import etomica.units.dimensions.Length;
 import etomica.util.Debug;
+
+import java.util.List;
+
 /**
  * Basic penetrable-sphere potential.
  * Energy is epsilon if spheres overlap, and is zero otherwise.  
@@ -51,7 +54,7 @@ public class P2PenetrableSphere extends Potential2HardSpherical {
     /**
      * Implements collision dynamics between two penetrable-sphere atoms.
      */
-    public void bump(IAtomList pair, double falseTime) {
+    public void bump(List<IAtom> pair, double falseTime) {
         IAtomKinetic atom0 = (IAtomKinetic)pair.get(0);
         IAtomKinetic atom1 = (IAtomKinetic)pair.get(1);
         dv.Ev1Mv2(atom1.getVelocity(), atom0.getVelocity());
@@ -121,7 +124,7 @@ public class P2PenetrableSphere extends Potential2HardSpherical {
      * Collision may occur when cores collides, or when wells first encounter each other on
      * approach, or when they edge of the wells are reached as atoms diverge.
      */
-    public double collisionTime(IAtomList pair, double falseTime) {
+    public double collisionTime(List<IAtom> pair, double falseTime) {
         IAtomKinetic coord0 = (IAtomKinetic)pair.get(0);
         IAtomKinetic coord1 = (IAtomKinetic)pair.get(1);
         dv.Ev1Mv2(coord1.getVelocity(), coord0.getVelocity());

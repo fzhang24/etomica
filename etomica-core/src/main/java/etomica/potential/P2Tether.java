@@ -3,13 +3,16 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 package etomica.potential;
+import etomica.atom.IAtom;
 import etomica.atom.IAtomKinetic;
-import etomica.atom.IAtomList;
 import etomica.space.Vector;
 import etomica.space.Space;
 import etomica.space.Tensor;
 import etomica.units.dimensions.Dimension;
 import etomica.units.dimensions.Length;
+
+import java.util.List;
+
 /**
  * Potential that acts like a hard string connecting the centers of two atoms.
  * Meant for use as an intra-molecular interaction.
@@ -48,7 +51,7 @@ public class P2Tether extends Potential2HardSpherical {
     /**
      * Implements collision dynamics for pair attempting to separate beyond tether distance
      */
-    public final void bump(IAtomList pair, double falseTime) {
+    public final void bump(List<IAtom> pair, double falseTime) {
         IAtomKinetic atom0 = (IAtomKinetic)pair.get(0);
         IAtomKinetic atom1 = (IAtomKinetic)pair.get(1);
         dv.Ev1Mv2(atom1.getVelocity(), atom0.getVelocity());
@@ -92,7 +95,7 @@ public class P2Tether extends Potential2HardSpherical {
     /**
      * Time at which two atoms will reach the end of their tether, assuming free-flight kinematics
      */
-    public final double collisionTime(IAtomList pair, double falseTime) {
+    public final double collisionTime(List<IAtom> pair, double falseTime) {
         IAtomKinetic coord0 = (IAtomKinetic)pair.get(0);
         IAtomKinetic coord1 = (IAtomKinetic)pair.get(1);
         dv.Ev1Mv2(coord1.getVelocity(), coord0.getVelocity());
