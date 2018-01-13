@@ -6,9 +6,7 @@ package etomica.atom;
 
 import etomica.util.Debug;
 
-import java.util.AbstractList;
-import java.util.Arrays;
-import java.util.RandomAccess;
+import java.util.*;
 
 public final class AtomArrayList extends AbstractList<IAtom> implements IAtomList, RandomAccess {
 
@@ -127,7 +125,7 @@ public final class AtomArrayList extends AbstractList<IAtom> implements IAtomLis
         return true;
     }
 
-    public void addAll(IAtomList atoms) {
+    public boolean addAll(Collection<? extends IAtom> atoms) {
         if((itemsInList + atoms.size()) > atomList.length) {
             atomList = Arrays.copyOf(
                     atomList,
@@ -138,11 +136,12 @@ public final class AtomArrayList extends AbstractList<IAtom> implements IAtomLis
             System.arraycopy(((AtomArrayList) atoms).atomList, 0, this.atomList, itemsInList, atoms.size());
             itemsInList += atoms.size();
         } else {
-            for(int i = 0; i < atoms.size(); i++) {
-                atomList[itemsInList] = atoms.get(i);
+            for (IAtom atom : atoms) {
+                atomList[itemsInList] = atom;
                 itemsInList++;
             }
         }
+        return true;
     }
 
     /**
