@@ -91,9 +91,8 @@ public abstract class IteratorTestAbstract extends TestCase {
         
         //******* test of next
         iterator.reset();
-        for (List<IAtom> nextAtom = iterator.next(); nextAtom != null;
-             nextAtom = iterator.next()) {
-            atoms.add(nextAtom);
+        for (List<IAtom> nextAtom = iterator.next(); nextAtom != null; nextAtom = iterator.next()) {
+            atoms.add(new ArrayList<>(nextAtom));
             lister[1].actionPerformed(nextAtom);
         }
 
@@ -101,8 +100,7 @@ public abstract class IteratorTestAbstract extends TestCase {
         if(iterator instanceof AtomIterator) {
             iterator.reset();
             int i = 0;
-            for (IAtom next = ((AtomIterator)iterator).nextAtom(); i<atoms.size();
-                 next = ((AtomIterator)iterator).nextAtom()) {
+            for (IAtom next = ((AtomIterator)iterator).nextAtom(); i<atoms.size(); next = ((AtomIterator)iterator).nextAtom()) {
                 assertEquals(next, atoms.get(i++).get(0));
             }
             assertNull(((AtomIterator)iterator).nextAtom());
