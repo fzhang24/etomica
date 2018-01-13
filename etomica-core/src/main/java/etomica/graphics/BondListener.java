@@ -77,7 +77,7 @@ public class BondListener implements AtomLeafAgentManager.AgentSource<ArrayList>
                 else {
                     System.err.println("iterator wasn't directable, strange things may happen");
                 }
-                atomSetSinglet.atom = molecule;
+                atomSetSinglet.mol = molecule;
                 iterator.setBasis(atomSetSinglet);
                 iterator.setTarget(null);
                 iterator.reset();
@@ -144,7 +144,7 @@ public class BondListener implements AtomLeafAgentManager.AgentSource<ArrayList>
                 else {
                     System.err.println("iterator wasn't directable, strange things may happen");
                 }
-                atomSetSinglet.atom = molecule;
+                atomSetSinglet.mol = molecule;
                 iterator.setBasis(atomSetSinglet);
                 iterator.setTarget(newAtom);
                 iterator.reset();

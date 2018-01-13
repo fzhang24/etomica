@@ -6,7 +6,6 @@ package etomica.nbr;
 
 import etomica.atom.AtomType;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.atom.iterator.AtomsetIteratorBasisDependent;
 import etomica.atom.iterator.AtomsetIteratorDirectable;
 import etomica.molecule.IMolecule;
@@ -47,7 +46,7 @@ public class PotentialGroupNbr extends PotentialGroup {
         }
         for (PotentialLinker link=firstRangeIndependent; link!= null; link=link.next) {
             if(!link.enabled) continue;
-            atomSetSinglet.atom = atom;
+            atomSetSinglet.mol = atom;
             AtomsetIteratorBasisDependent atomIterator = link.iterator;
             atomIterator.setBasis(atomSetSinglet);
             atomIterator.reset();
