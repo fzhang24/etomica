@@ -4,13 +4,15 @@
 
 package etomica.molecule;
 
+import java.util.List;
+
 /**
  * Interface for a set of IAtoms.  The IAtomSet might contain 0, 1, 2 or many
  * IAtoms.
  * 
  * @author Andrew Schultz
  */
-public interface IMoleculeList {
+public interface IMoleculeList extends List<IMolecule> {
 
     /**
      * Returns the i-th atom, with numbering beginning from 0. 
