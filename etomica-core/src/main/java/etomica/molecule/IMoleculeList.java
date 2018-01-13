@@ -16,10 +16,10 @@ public interface IMoleculeList {
      * Returns the i-th atom, with numbering beginning from 0. 
      * If i is greater than count-1, throws an IllegalArgumentException.
      */
-    public IMolecule getMolecule(int i);
+    IMolecule get(int i);
 
     /**
      * @return the number of atoms in the set
      */
-    public int getMoleculeCount();
+    int size();
 }

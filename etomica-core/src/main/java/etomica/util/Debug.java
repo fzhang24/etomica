@@ -133,8 +133,8 @@ public final class Debug {
      * @return true if any of the atoms in the atoms array should be debugged
      */
     public static boolean anyMolecule(IMoleculeList atoms) {
-        for (int i=0; i<atoms.getMoleculeCount(); i++) {
-            IMolecule molecule = atoms.getMolecule(i);
+        for (int i = 0; i<atoms.size(); i++) {
+            IMolecule molecule = atoms.get(i);
             if (molecule.getIndex() == MOLECULE1_INDEX &&
                 molecule.getType().getIndex() == SPECIES1_INDEX) {
                 return true;
@@ -175,8 +175,8 @@ public final class Debug {
      * @return true if all of the atoms in the atoms array should be debugged
      */
     public static boolean allAtoms(IMoleculeList atoms) {
-        for (int i=0; i<atoms.getMoleculeCount(); i++) {
-            IMolecule molecule = atoms.getMolecule(i);
+        for (int i = 0; i<atoms.size(); i++) {
+            IMolecule molecule = atoms.get(i);
             if ((molecule.getIndex() != MOLECULE1_INDEX ||
                  molecule.getType().getIndex() != SPECIES1_INDEX) ||
                 (molecule.getIndex() != MOLECULE2_INDEX ||
@@ -208,8 +208,8 @@ public final class Debug {
         }
         if ((ATOM1_INDEX > -1 && MOLECULE1_INDEX > -1) || (ATOM2_INDEX > -1 && MOLECULE2_INDEX > -1)) {
             IMoleculeList moleculeList = box.getMoleculeList();
-            for (int i=0; i<moleculeList.getMoleculeCount(); i++) {
-                IMolecule molecule = moleculeList.getMolecule(i);
+            for (int i = 0; i<moleculeList.size(); i++) {
+                IMolecule molecule = moleculeList.get(i);
                 if (molecule.getIndex() == MOLECULE1_INDEX && molecule.getType().getIndex() == SPECIES1_INDEX) {
                     debugPair.atom0 = molecule.getChildList().get(ATOM1_INDEX);
                 }
@@ -234,8 +234,8 @@ public final class Debug {
         }
         if (MOLECULE1_INDEX > -1 && MOLECULE2_INDEX > -1) {
             IMoleculeList moleculeList = box.getMoleculeList();
-            for (int i=0; i<moleculeList.getMoleculeCount(); i++) {
-                IMolecule molecule = moleculeList.getMolecule(i);
+            for (int i = 0; i<moleculeList.size(); i++) {
+                IMolecule molecule = moleculeList.get(i);
                 if (molecule.getIndex() == MOLECULE1_INDEX && molecule.getType().getIndex() == SPECIES1_INDEX) {
                     debugMoleculePair.atom0 = molecule;
                 }

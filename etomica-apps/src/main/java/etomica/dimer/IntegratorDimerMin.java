@@ -173,7 +173,7 @@ public class IntegratorDimerMin extends IntegratorBox implements AgentSource<Int
 		super.setup();     
         movableAtoms = 0;
         for(int i=0; i<movableSpecies.length; i++){
-            movableAtoms += box.getMoleculeList(movableSpecies[i]).getMoleculeCount();
+            movableAtoms += box.getMoleculeList(movableSpecies[i]).size();
         }
         workVector = space.makeVector();
         N = new Vector[movableAtoms];
@@ -247,9 +247,9 @@ public class IntegratorDimerMin extends IntegratorBox implements AgentSource<Int
 		for(int i=0; i<movableSpecies.length; i++){
             IMoleculeList molecules = box.getMoleculeList(movableSpecies[i]);
             IMoleculeList molecules1 = boxMin.getMoleculeList(movableSpecies[i]);
-            for (int j=0; j<molecules.getMoleculeCount(); j++) {
-                list.add(molecules.getMolecule(j).getChildList().get(0));
-                listMin.add(molecules1.getMolecule(j).getChildList().get(0));
+            for (int j = 0; j<molecules.size(); j++) {
+                list.add(molecules.get(j).getChildList().get(0));
+                listMin.add(molecules1.get(j).getChildList().get(0));
             }
 		}  
 		

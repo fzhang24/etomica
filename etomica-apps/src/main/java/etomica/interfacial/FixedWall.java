@@ -33,8 +33,8 @@ public class FixedWall implements IntegratorListenerMD {
         IMoleculeList molecules = box.getMoleculeList(species);
         double zTotMomentum = 0;
         double totMass = 0;
-        for (int i=0; i<molecules.getMoleculeCount(); i++) {
-            IAtomList atoms = molecules.getMolecule(i).getChildList();
+        for (int i = 0; i<molecules.size(); i++) {
+            IAtomList atoms = molecules.get(i).getChildList();
             for (int j = 0; j<atoms.size(); j++) {
                 IAtomKinetic jAtom = (IAtomKinetic)atoms.get(j);
                 double m = jAtom.getType().getMass();
@@ -44,8 +44,8 @@ public class FixedWall implements IntegratorListenerMD {
         }
 
         double vz = zTotMomentum/totMass;
-        for (int i=0; i<molecules.getMoleculeCount(); i++) {
-            IAtomList atoms = molecules.getMolecule(i).getChildList();
+        for (int i = 0; i<molecules.size(); i++) {
+            IAtomList atoms = molecules.get(i).getChildList();
             for (int j = 0; j<atoms.size(); j++) {
                 IAtomKinetic jAtom = (IAtomKinetic)atoms.get(j);
                 Vector v = jAtom.getVelocity();
@@ -65,8 +65,8 @@ public class FixedWall implements IntegratorListenerMD {
         IMoleculeList molecules = box.getMoleculeList(species);
         double fz = 0;
         double totMass = 0;
-        for (int i=0; i<molecules.getMoleculeCount(); i++) {
-            IAtomList atoms = molecules.getMolecule(i).getChildList();
+        for (int i = 0; i<molecules.size(); i++) {
+            IAtomList atoms = molecules.get(i).getChildList();
             for (int j = 0; j<atoms.size(); j++) {
                 IAtom jAtom = atoms.get(j);
                 fz += agentManager.getAgent(jAtom).force.getX(2);
@@ -76,8 +76,8 @@ public class FixedWall implements IntegratorListenerMD {
 
         
         fz /= totMass;
-        for (int i=0; i<molecules.getMoleculeCount(); i++) {
-            IAtomList atoms = molecules.getMolecule(i).getChildList();
+        for (int i = 0; i<molecules.size(); i++) {
+            IAtomList atoms = molecules.get(i).getChildList();
             for (int j = 0; j<atoms.size(); j++) {
                 IAtom jAtom = atoms.get(j);
                 Vector jf = agentManager.getAgent(jAtom).force;

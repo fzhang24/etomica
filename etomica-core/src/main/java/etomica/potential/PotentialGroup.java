@@ -6,7 +6,6 @@ package etomica.potential;
 
 import etomica.atom.AtomType;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.atom.iterator.*;
 import etomica.box.Box;
 import etomica.molecule.IMoleculeList;
@@ -152,7 +151,7 @@ public class PotentialGroup extends PotentialMolecular {
     
     //TODO this needs some work
     public double energy(IMoleculeList basisAtoms) {
-        if(basisAtoms.getMoleculeCount() != this.nBody()) {
+        if(basisAtoms.size() != this.nBody()) {
             throw new IllegalArgumentException("Error: number of atoms for energy calculation inconsistent with order of potential");
         }
         double sum = 0.0;

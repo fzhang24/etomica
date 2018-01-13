@@ -233,7 +233,7 @@ public class MinimizationBetaNitrogenModel extends Simulation{
 		        double[] g = new double[12];
 		        double t = 0;
 		        for (int i=0; i<4; i++) {
-		            IMolecule iMol = sim.box.getMoleculeList().getMolecule(i<2 ? i : i+(nA-2));
+		            IMolecule iMol = sim.box.getMoleculeList().get(i<2 ? i : i+(nA-2));
 		            IteratorDirective id = new IteratorDirective(null, iMol);
 		            sim.potentialMaster.calculate(sim.box, id, pcForce);
 		            Vector f = ((IntegratorRigidIterative.MoleculeAgent)molAgentManager.getAgent(iMol)).force;
@@ -314,7 +314,7 @@ public class MinimizationBetaNitrogenModel extends Simulation{
 		                boolean isA = (k/nA)%2 == 0;
 		                if ((i<2 && !isA) || (i>1 && isA)) continue;
 		//                    System.out.println(i+" "+k);
-		                IMolecule iMol = sim.box.getMoleculeList().getMolecule(k);
+		                IMolecule iMol = sim.box.getMoleculeList().get(k);
 		                p.E(pos.position(iMol));
 		                for (int j=0; j<3; j++) {
 		                    if (x0[i*3+j] == 0) {
@@ -358,7 +358,7 @@ public class MinimizationBetaNitrogenModel extends Simulation{
         double disp = 0.0;
         double angleDisp = 0.0;
         for (int i=0; i<4; i++) {
-            IMolecule iMol = sim.box.getMoleculeList().getMolecule(i<2 ? i : i+(nA-2));
+            IMolecule iMol = sim.box.getMoleculeList().get(i<2 ? i : i+(nA-2));
             p.E(pos.position(iMol));
             for (int j=0; j<3; j++) {
 //                System.out.println(x0[i*3+j]+" => "+p.getX(j)+"    "+(p.getX(j)-x0[i*3+j]));
@@ -397,7 +397,7 @@ public class MinimizationBetaNitrogenModel extends Simulation{
                 for (int k=i%2; k<numMolecule; k+=2) {
                     boolean isA = (k/nA)%2 == 0;
                     if ((i<2 && !isA) || (i>1 && isA)) continue;
-                    IMolecule iMol = sim.box.getMoleculeList().getMolecule(k);
+                    IMolecule iMol = sim.box.getMoleculeList().get(k);
                     p.E(pos.position(iMol));
                     for (int j=0; j<3; j++) {
                         if (l==0) {
@@ -416,7 +416,7 @@ public class MinimizationBetaNitrogenModel extends Simulation{
                 for (int k=(4*nA)+i%2; k<numMolecule; k+=2) {
                     boolean isA = (k/nA)%2 == 0;
                     if ((i<2 && !isA) || (i>1 && isA)) continue;
-                    IMolecule iMol = sim.box.getMoleculeList().getMolecule(k);
+                    IMolecule iMol = sim.box.getMoleculeList().get(k);
                     meterPotentialEnergy.setTarget(iMol);
                     u += meterPotentialEnergy.getDataAsScalar();
                     break;

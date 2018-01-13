@@ -65,7 +65,7 @@ public class PotentialMasterListWorker extends Thread {
            threadCalculate = System.currentTimeMillis(); 
             // Thread completes objective
             for(int i=startAtom; i<stopAtom; i++){
-                IMolecule molecule = threadList.getMolecule(i-startAtom);
+                IMolecule molecule = threadList.get(i-startAtom);
                 PotentialArray potentialArray = pmlt.getIntraPotentials(molecule.getType());
                 IPotential[] potentials = potentialArray.getPotentials();
                 for(int j=0; j<potentials.length; j++) {
@@ -188,7 +188,7 @@ public class PotentialMasterListWorker extends Thread {
         
         // Make reference to neighbor lists
         IMoleculeList list = box.getMoleculeList();
-        int size = list.getMoleculeCount();
+        int size = list.size();
         
         int startAtom = (threadNumber*size)/numThreads;
         int stopAtom = ((threadNumber+1)*size)/numThreads;
@@ -200,8 +200,8 @@ public class PotentialMasterListWorker extends Thread {
         neighborLists = new IAtomList[stopAtom-startAtom][];
                 
         for(int i=0; i<(stopAtom-startAtom); i++){
-            threadList.add(list.getMolecule(i+startAtom));
-            neighborLists[i] = neighborManager.getUpList(list.getMolecule(i+startAtom).getChildList().get(0));
+            threadList.add(list.get(i+startAtom));
+            neighborLists[i] = neighborManager.getUpList(list.get(i+startAtom).getChildList().get(0));
             
         }
             

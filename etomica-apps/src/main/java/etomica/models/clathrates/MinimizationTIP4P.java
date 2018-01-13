@@ -91,8 +91,8 @@ public class MinimizationTIP4P extends Simulation{
 		
 //Wrap all MOLECULES (make O in the BOX)
 		if(!true){
-	      for(int i=0;i<box.getMoleculeList().getMoleculeCount();i++){
-	    	IMolecule molecule = box.getMoleculeList().getMolecule(i);
+	      for(int i = 0; i<box.getMoleculeList().size(); i++){
+	    	IMolecule molecule = box.getMoleculeList().get(i);
 	        IAtomList childList = molecule.getChildList();
 	        Vector O = childList.get(2).getPosition();//O
 	        O.PE(boundary.centralImage(O));// to wrap all O inside the BOX; next steps will move Hs and M with O to keep the conformation.
@@ -114,7 +114,7 @@ public class MinimizationTIP4P extends Simulation{
 		System.out.println("selfELJ = "+Joule.UNIT.fromSim(selfELJ)*1.0E-3*Constants.AVOGADRO);
 		MeterPotentialEnergy meterPotentialEnergy = new MeterPotentialEnergy(potentialMaster);
 		meterPotentialEnergy.setBox(box);
-		double E = Joule.UNIT.fromSim(meterPotentialEnergy.getDataAsScalar()/box.getMoleculeList().getMoleculeCount()+selfELJ)*1.0E-3*Constants.AVOGADRO;
+		double E = Joule.UNIT.fromSim(meterPotentialEnergy.getDataAsScalar()/box.getMoleculeList().size()+selfELJ)*1.0E-3*Constants.AVOGADRO;
         System.out.println("E (kJ/mol)  = " + E);
         System.out.println("E (kCal/mol)  = " + E*0.239005736);
         System.out.println("");
@@ -205,7 +205,7 @@ public class MinimizationTIP4P extends Simulation{
 		        System.out.println("latticeEnergy/N (kCal/mol) = " + latticeEnergy*0.239005736);
 		        for (int i=0; i<nBasis; i++) {
 		            torques[i].E(0); 
-		            IMolecule iMol = sim.box.getMoleculeList().getMolecule(i);
+		            IMolecule iMol = sim.box.getMoleculeList().get(i);
 		            IAtomList atoms = iMol.getChildList();
                     Vector pO = atoms.get(SpeciesWater4P.indexO).getPosition();
                     for (int j = 0; j < atoms.size(); j++){
@@ -287,7 +287,7 @@ public class MinimizationTIP4P extends Simulation{
 		        }//end iter
 		        
 		        for (int i=0; i<nBasis; i++) {
-	                IMolecule iMol = sim.box.getMoleculeList().getMolecule(i);
+	                IMolecule iMol = sim.box.getMoleculeList().get(i);
 	                p.E(pos.position(iMol));
 	                for (int j=0; j<3; j++) {
 	                    if (x0[i*3+j] == 0) {
@@ -313,7 +313,7 @@ public class MinimizationTIP4P extends Simulation{
         double disp = 0.0;
         double angleDisp = 0.0;
         for (int i=0; i<nBasis; i++) {
-            IMolecule iMol = sim.box.getMoleculeList().getMolecule(i);
+            IMolecule iMol = sim.box.getMoleculeList().get(i);
             p.E(pos.position(iMol));
             for (int j=0; j<3; j++) {
                 xf[i*3+j] = p.getX(j);
@@ -343,8 +343,8 @@ public class MinimizationTIP4P extends Simulation{
         id.includeLrc = false;
         sim.potentialMaster.calculate(sim.box, id, pcForce);
 
-        for(int I=0;I<sim.box.getMoleculeList().getMoleculeCount();I++){
-        	IMolecule iMol = sim.box.getMoleculeList().getMolecule(I);
+        for(int I = 0; I<sim.box.getMoleculeList().size(); I++){
+        	IMolecule iMol = sim.box.getMoleculeList().get(I);
         	fSum.E(0);
         	T.E(0);
         	for(int j = 0; j<iMol.getChildList().size(); j++){

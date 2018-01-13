@@ -120,7 +120,7 @@ public class DerivativeEnergyFunction implements FunctionMultiDimensionalDiffere
 		
 		IMoleculeList molecules = coordinateDefinition.getBasisCells()[0].molecules;
 		
-		for (int m=0; m<molecules.getMoleculeCount(); m++){
+		for (int m = 0; m<molecules.size(); m++){
 				
 			if (m==0){
 				for (int k=0; k<3; k++){
@@ -133,7 +133,7 @@ public class DerivativeEnergyFunction implements FunctionMultiDimensionalDiffere
 					
 			} else {
 				
-				IAtomList childList = molecules.getMolecule(m).getChildList();
+				IAtomList childList = molecules.get(m).getChildList();
 				
 				moleculeForce.E(0); //initialize moleculeForce to zero
 				
@@ -150,7 +150,7 @@ public class DerivativeEnergyFunction implements FunctionMultiDimensionalDiffere
 					}
 				}
 			}
-			j += coordinateDefinition.getCoordinateDim() /molecules.getMoleculeCount();
+			j += coordinateDefinition.getCoordinateDim() /molecules.size();
 		}
 		
 		return fPrime[index];

@@ -7,7 +7,6 @@ package etomica.integrator.mcmove;
 import etomica.atom.AtomArrayList;
 import etomica.atom.AtomSetSinglet;
 import etomica.atom.IAtom;
-import etomica.atom.IAtomList;
 import etomica.atom.iterator.AtomIteratorAtomDependent;
 import etomica.atom.iterator.AtomsetIteratorDirectable;
 import etomica.box.Box;
@@ -202,7 +201,7 @@ public class MCMoveInsertDeleteLatticeVacancy extends MCMoveInsertDeleteBiased i
         numNewDeleteCandidates = 0;
         if (dirty || lastStepCount != integrator.getStepCount()) findCandidates();
         if (insert) {
-            if(!reservoir.isEmpty()) testMolecule = reservoir.remove(reservoir.getMoleculeCount()-1);
+            if(!reservoir.isEmpty()) testMolecule = reservoir.remove(reservoir.size()-1);
             else testMolecule = species.makeMolecule();
             IAtom testAtom = testMolecule.getChildList().get(0);
 

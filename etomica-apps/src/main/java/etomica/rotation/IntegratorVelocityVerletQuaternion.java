@@ -209,9 +209,9 @@ public class IntegratorVelocityVerletQuaternion extends IntegratorMD implements 
             }
         }
         IMoleculeList moleculeList = box.getMoleculeList();
-        int nMolecules = moleculeList.getMoleculeCount();
+        int nMolecules = moleculeList.size();
         for (int iMolecule = 0; iMolecule<nMolecules; iMolecule++) {
-            IMolecule molecule = moleculeList.getMolecule(iMolecule);
+            IMolecule molecule = moleculeList.get(iMolecule);
             MyTypeAgent typeAgent = (MyTypeAgent)typeAgentManager.getAgent(molecule.getType());
             IAtomList children = molecule.getChildList();
             if (typeAgent == null) {
@@ -358,7 +358,7 @@ public class IntegratorVelocityVerletQuaternion extends IntegratorMD implements 
         }
 
         for (int iMolecule = 0; iMolecule<nMolecules; iMolecule++) {
-            IMolecule molecule = moleculeList.getMolecule(iMolecule);
+            IMolecule molecule = moleculeList.get(iMolecule);
             IAtomList children = molecule.getChildList();
             MyTypeAgent typeAgent = (MyTypeAgent)typeAgentManager.getAgent(molecule.getType());
             if (typeAgent == null) {
@@ -423,9 +423,9 @@ public class IntegratorVelocityVerletQuaternion extends IntegratorMD implements 
 
     public void randomizeMomenta() {
         IMoleculeList moleculeList = box.getMoleculeList();
-        int nMolecules = moleculeList.getMoleculeCount();
+        int nMolecules = moleculeList.size();
         for (int iMolecule = 0; iMolecule<nMolecules; iMolecule++) {
-            IMolecule molecule = moleculeList.getMolecule(iMolecule);
+            IMolecule molecule = moleculeList.get(iMolecule);
             MyTypeAgent typeAgent = (MyTypeAgent)typeAgentManager.getAgent(molecule.getType());
             if (typeAgent == null) {
                 super.randomizeMomentum((IAtomKinetic)molecule.getChildList().get(0));
@@ -522,10 +522,10 @@ public class IntegratorVelocityVerletQuaternion extends IntegratorMD implements 
         potentialMaster.calculate(box, allAtoms, forceSum);
 
         IMoleculeList moleculeList = box.getMoleculeList();
-        int nMolecules = moleculeList.getMoleculeCount();
+        int nMolecules = moleculeList.size();
 
         for (int iMolecule=0; iMolecule<nMolecules; iMolecule++) {
-            IMolecule molecule = moleculeList.getMolecule(iMolecule);
+            IMolecule molecule = moleculeList.get(iMolecule);
             MyTypeAgent typeAgent = (MyTypeAgent)typeAgentManager.getAgent(molecule.getType());
             if (typeAgent== null) {
                 continue;

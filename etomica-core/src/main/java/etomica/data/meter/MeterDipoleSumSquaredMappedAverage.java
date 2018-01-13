@@ -102,7 +102,7 @@ public class MeterDipoleSumSquaredMappedAverage implements IDataSource, Molecule
 		IMoleculeList moleculeList = box.getMoleculeList();
 		
 		
-		int nM = moleculeList.getMoleculeCount();	
+		int nM = moleculeList.size();
 		
 		//TODO
 //		IAtomList atomList0 = moleculeList.getMolecule(0).getChildList();
@@ -129,12 +129,12 @@ public class MeterDipoleSumSquaredMappedAverage implements IDataSource, Molecule
 		 double A = 0;
 		 vectorSum.E(0);
 		 for (int i = 0;i < nM; i++){
-			 dr.E(dipoleSource.getDipole(moleculeList.getMolecule(i)));
+			 dr.E(dipoleSource.getDipole(moleculeList.get(i)));
 			 dr.normalize();
 			 
 			 A += -2.0/3.0*bt2*mu2*(dr.squared()-1);
 			 
-			 MoleculeAgent torqueAgent = (MoleculeAgent) moleculeAgentManager.getAgent(moleculeList.getMolecule(i));
+			 MoleculeAgent torqueAgent = (MoleculeAgent) moleculeAgentManager.getAgent(moleculeList.get(i));
 			 dr.XE(torqueAgent.torque);
 			 vectorSum.PE(dr);
 		 }//i loop

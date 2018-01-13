@@ -117,7 +117,7 @@ public class PotentialMasterListThreaded extends PotentialMasterList {
 
         //cannot use AtomIterator field because of recursive call
         IMoleculeList list = box.getMoleculeList();
-        int size = list.getMoleculeCount();
+        int size = list.size();
 			                            
             for(int i=0; i<threads.length; i++){
                 synchronized(threads[i]){

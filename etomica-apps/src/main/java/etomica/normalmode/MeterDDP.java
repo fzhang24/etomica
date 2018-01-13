@@ -95,7 +95,7 @@ public class MeterDDP implements IDataSource {
         meterPotential.setBox(realBox);
         double u = meterPotential.getDataAsScalar();
         
-        int nMolecules = realBox.getMoleculeList().getMoleculeCount();
+        int nMolecules = realBox.getMoleculeList().size();
         double rho = nMolecules / realBox.getBoundary().volume();
         int D = realBox.getBoundary().getBoxSize().getD();
         
