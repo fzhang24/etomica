@@ -12,7 +12,9 @@ import etomica.molecule.iterator.MoleculesetIterator;
 import etomica.potential.IteratorDirective;
 import junit.framework.TestCase;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Provides library methods to test the basic functioning of an iterator.
@@ -93,14 +95,15 @@ public abstract class MoleculeIteratorTestAbstract extends TestCase {
         print("Testing size -- iterator.size, ListerMolecule.list.size: "+iterator.size()+" "+listerMolecule[0].list.size());
         assertEquals(iterator.size(), listerMolecule[0].list.size());
 
-        IMoleculeList[] atoms = new IMoleculeList[listerMolecule[0].list.size()];
+//        IMoleculeList[] atoms = new IMoleculeList[listerMolecule[0].list.size()];
+        List<List<IMolecule>> atoms = new ArrayList<>();
         
         //******* test of next
         iterator.reset();
         int j=0;
         for (IMoleculeList nextAtom = iterator.next(); nextAtom != null;
                nextAtom = iterator.next()) {
-            atoms[j] = new MoleculesetArray(nextAtom);
+            atoms.add(new ArrayList<>(nextAtom));
             listerMolecule[1].actionPerformed(nextAtom);
             j++;
         }
@@ -109,9 +112,9 @@ public abstract class MoleculeIteratorTestAbstract extends TestCase {
         if(iterator instanceof MoleculeIterator) {
             iterator.reset();
             int i = 0;
-            for (IMolecule next = ((MoleculeIterator)iterator).nextMolecule(); i<atoms.length;
+            for (IMolecule next = ((MoleculeIterator)iterator).nextMolecule(); i<atoms.size();
                  next = ((MoleculeIterator)iterator).nextMolecule()) {
-                assertEquals(next, atoms[i++].get(0));
+                assertEquals(next, atoms.get(i++).get(0));
             }
             assertNull(((MoleculeIterator)iterator).nextMolecule());
         }
@@ -158,7 +161,7 @@ public abstract class MoleculeIteratorTestAbstract extends TestCase {
     /**
      * Tests that iterates given by iterator match a specified list.
      * @param iterator the conditioned iterator
-     * @param partners array of expected iterates
+     * @param iterates array of expected iterates
      * @return the ListerMolecule list of iterates
      */
     protected LinkedList testIterates(MoleculeIterator iterator, IMolecule[] iterates) {
