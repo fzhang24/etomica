@@ -49,6 +49,7 @@ public final class AtomPair extends AbstractList<IAtom> implements IAtomList, Ra
             case 1:
                 oldAtom = atom1;
                 atom1 = iAtom;
+                break;
             default:
                 throw new IndexOutOfBoundsException();
         }
