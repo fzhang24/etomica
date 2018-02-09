@@ -46,10 +46,10 @@ public class ActionMinimizeEnergy implements IAction, AtomLeafAgentManager.Agent
 
     protected void takeStep(Vector[] direction, Vector[] rotationDirection, double stepSize) {
         IAtomList atoms = box.getLeafList();
-        int numAtoms = atoms.getAtomCount();
+        int numAtoms = atoms.size();
 
         for (int i = 0; i < numAtoms; i++) {
-            IAtom atom = atoms.getAtom(i);
+            IAtom atom = atoms.get(i);
             atom.getPosition().PEa1Tv1(stepSize, direction[i]);
             if (atom instanceof IAtomOriented) {
                 if (space.getD() == 2) {
@@ -65,7 +65,7 @@ public class ActionMinimizeEnergy implements IAction, AtomLeafAgentManager.Agent
         final MeterPotentialEnergy meterPotentialEnergy = new MeterPotentialEnergy(potentialMaster);
         meterPotentialEnergy.setBox(box);
         IAtomList atoms = box.getLeafList();
-        int numAtoms = atoms.getAtomCount();
+        int numAtoms = atoms.size();
         Vector[] direction = space.makeVectorArray(numAtoms);
         Vector[] rotationDirection = space.makeVectorArray(numAtoms);
         double u0 = meterPotentialEnergy.getDataAsScalar();
@@ -76,7 +76,7 @@ public class ActionMinimizeEnergy implements IAction, AtomLeafAgentManager.Agent
             potentialMaster.calculate(box, id, pc);
             double dSum = 0;
             for (int i = 0; i < numAtoms; i++) {
-                IAtom atom = atoms.getAtom(i);
+                IAtom atom = atoms.get(i);
                 direction[i].E(agentManager.getAgent(atom).force);
                 dSum += direction[i].squared();
                 if (atom instanceof IAtomOriented) {
@@ -86,7 +86,7 @@ public class ActionMinimizeEnergy implements IAction, AtomLeafAgentManager.Agent
             }
             dSum = Math.sqrt(dSum);
             for (int i = 0; i < numAtoms; i++) {
-                IAtom atom = atoms.getAtom(i);
+                IAtom atom = atoms.get(i);
                 direction[i].TE(1 / dSum);
                 if (atom instanceof IAtomOriented) {
                     rotationDirection[i].TE(1 / dSum);
@@ -98,7 +98,7 @@ public class ActionMinimizeEnergy implements IAction, AtomLeafAgentManager.Agent
             potentialMaster.calculate(box, id, pc);
             double dSum2 = 0;
             for (int i = 0; i < numAtoms; i++) {
-                IAtom atom = atoms.getAtom(i);
+                IAtom atom = atoms.get(i);
                 dSum2 += direction[i].dot(agentManager.getAgent(atom).force);
                 if (atom instanceof IAtomOriented) {
                     dSum2 += rotationDirection[i].dot(agentManager.getAgent(atom).torque);
